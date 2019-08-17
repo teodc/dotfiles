@@ -1,0 +1,37 @@
+[user]
+    name = teodc
+    email = theo.dacosta@gmail.com
+[color]
+    ui = auto
+[core]
+    editor = vim
+[status]
+    showUntrackedFiles = all
+[diff]
+    renames = true
+[commit]
+    gpgSign = true
+[push]
+    default = simple
+    # default = upstream
+    followTags = true
+[pull]
+    rebase = true
+[merge]
+    ff = only
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[log]
+    abbrevCommit = true
+    decorate = true
+    date = relative
+    # date = short
+[format]
+    pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+[alias]
+    amend = commit --amend
+    fp = fetch -p
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
