@@ -5,7 +5,7 @@ export GOPATH="$HOME/Workspace/go"
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 export LANG=en_US.UTF-8
 export CLICOLOR=1
-export ARCHFLAGS="-arch x86_64"
+#export ARCHFLAGS="-arch x86_64"
 export UPDATE_ZSH_DAYS=7
 export HOMEBREW_GITHUB_API_TOKEN=abcd1234
 
@@ -15,7 +15,7 @@ else
   export EDITOR='vim'
 fi
 
-ZSH_THEME="gude"
+ZSH_THEME="teodc"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -27,7 +27,7 @@ HIST_STAMPS="yyyy-mm-dd"
 #DISABLE_UNTRACKED_FILES_DIRTY="true"
 #ZSH_CUSTOM=/path/to/custom/folder
 
-plugins=(ansible aws brew composer docker docker-composer docker-machine git github go golang homestead laravel5 mix node npm osx redis-cli rsync sublime supervisor terraform tmux vagrant)
+plugins=(ansible aws brew composer docker docker-compose git github go golang homestead kubectl laravel mix node npm npx osx redis-cli rsync ssh-agent sublime supervisor terraform tmux vagrant vscode)
 
 source $ZSH/oh-my-zsh.sh
 
