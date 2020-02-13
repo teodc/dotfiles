@@ -6,7 +6,7 @@ My dotfiles
 
 ```
 cp zsh/.zshrc ~
-cp zsh/gude.zsh-theme ~/.oh-my-zsh/themes
+cp zsh/teodc.zsh-theme ~/.oh-my-zsh/themes
 ```
 
 ## vim
