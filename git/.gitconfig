@@ -1,6 +1,7 @@
 [user]
     name = teodc
     email = theo.dacosta@gmail.com
+    #signingKey = ABC123
 [color]
     ui = auto
 [core]
@@ -11,9 +12,14 @@
     renames = true
 [commit]
     gpgSign = true
+[gpg]
+    program = gpg
+[tag]
+    gpgSign = true
+[fetch]
+    prune = true
 [push]
     default = simple
-    # default = upstream
     followTags = true
 [pull]
     rebase = true
@@ -26,12 +32,12 @@
     required = true
 [log]
     abbrevCommit = true
-    decorate = true
-    date = relative
-    # date = short
+    decorate = short
+    date = iso
+    #showSignature = true
 [format]
     pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [alias]
     amend = commit --amend
     fp = fetch -p
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate=short --date=iso

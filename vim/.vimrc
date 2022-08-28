@@ -1,5 +1,9 @@
 " Set color scheme
-colorscheme railscasts
+colorscheme catppuccin_macchiato
+
+let g:lightline = {'colorscheme': 'catppuccin_macchiato'}
+
+set termguicolors
 
 " Set UTF8 as standard encoding
 set encoding=utf8
@@ -132,7 +136,7 @@ set modeline
 set modelines=4
 
 " Enable the use of the mouse in all modes
-set mouse=a
+" set mouse=a
 
 " Show the current mode
 set showmode
@@ -160,5 +164,4 @@ if has("autocmd")
 	" Treat .json files as .js
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
-
 

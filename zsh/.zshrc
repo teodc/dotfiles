@@ -1,46 +1,110 @@
-export ZSH="$HOME/.oh-my-zsh"
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-export MANPATH="/usr/local/man:$MANPATH"
-export GOPATH="$HOME/Workspace/go"
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-export LANG=en_US.UTF-8
-export CLICOLOR=1
-#export ARCHFLAGS="-arch x86_64"
-export UPDATE_ZSH_DAYS=7
-export HOMEBREW_GITHUB_API_TOKEN=abcd1234
+# If you come from bash you might have to change your $PATH.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="teodc"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+zstyle ':omz:update' frequency 7
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="yyyy-mm-dd"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(aws composer docker docker-compose git kubectl macos mix pip)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
   export EDITOR='vim'
 fi
 
-ZSH_THEME="teodc"
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="yyyy-mm-dd"
-#CASE_SENSITIVE="true"
-#HYPHEN_INSENSITIVE="true"
-#DISABLE_AUTO_UPDATE="true"
-#DISABLE_LS_COLORS="true"
-#DISABLE_AUTO_TITLE="true"
-#DISABLE_UNTRACKED_FILES_DIRTY="true"
-#ZSH_CUSTOM=/path/to/custom/folder
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-plugins=(ansible aws brew composer docker docker-compose git github go golang homestead kubectl laravel mix node npm npx osx redis-cli rsync ssh-agent sublime supervisor terraform tmux vagrant vscode)
-
-source $ZSH/oh-my-zsh.sh
+# Extra stuff
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
+export CLICOLOR=1
+#export HOMEBREW_GITHUB_API_TOKEN=SECRET
 
 unsetopt correct_all
 unsetopt correct
 
+# Aliases
 alias zshconf="vim ~/.zshrc"
 alias sshconf="vim ~/.ssh/config"
+alias vimconf="vim ~/.vimrc"
 
 alias ls='ls -hGF'
 alias lsa='ls -ahGF'
 alias ll='ls -lhGF'
 alias lla='ls -lahGF'
-
+alias hg='history | grep'
+alias lg='lazygit'
 alias artisan="php artisan"
 alias tinker="php artisan tinker"
+alias symfony="~/.symfony/bin/symfony"
+alias dc="docker compose"
+alias dce="docker compose exec"
+
