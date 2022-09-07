@@ -95,16 +95,25 @@ unsetopt correct
 alias zshconf="vim ~/.zshrc"
 alias sshconf="vim ~/.ssh/config"
 alias vimconf="vim ~/.vimrc"
+alias tmuxconf="vim ~/.tmux.conf"
 
-alias ls='ls -hGF'
-alias lsa='ls -ahGF'
-alias ll='ls -lhGF'
-alias lla='ls -lahGF'
-alias hg='history | grep'
-alias lg='lazygit'
+alias ls="ls -hGF"
+alias lsa="ls -ahGF"
+alias ll="ls -lhGF"
+alias lla="ls -lahGF"
+alias hg="history | grep"
+
+alias tt="vit"
+alias lzg="lazygit"
+alias lzd="lazydocker"
+
 alias artisan="php artisan"
 alias tinker="php artisan tinker"
 alias symfony="~/.symfony/bin/symfony"
+
+alias pypip="python3 -m pip"
+alias pyvenv="python3 -m venv"
+
 alias dc="docker compose"
 alias dce="docker compose exec"
 
