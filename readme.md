@@ -41,3 +41,6 @@ cp vim/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme/*.vim ~/
 cp git/.gitconfig ~/.gitconfig
 ```
 
+> Install diff-so-fancy with `brew install diff-so-fancy`
+> To set the signing key check how to [manage commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification)
+
