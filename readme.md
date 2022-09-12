@@ -1,6 +1,8 @@
 # Dotfiles
 
-My almost up-to-date dotfiles (like in any dotfiles repo)
+My dotfiles (not really up-to-date, like in any dotfiles repo)
+
+> I use [Catppuccin](https://github.com/catppuccin/catppuccin) wherever I can
 
 ## zsh
 
@@ -33,7 +35,7 @@ cp vim/.vim/colors/*.vim ~/.vim/colors
 cp vim/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme/*.vim ~/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme
 ```
 
-> Install lightline.vim with ` git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline`
+> Install lightline.vim with `git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline`
 
 ## git
 
