@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME="spaceship"
 ZSH_THEME="teodc"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -21,7 +22,7 @@ ZSH_THEME="teodc"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 7
+zstyle ":omz:update" frequency 7
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -75,9 +76,9 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="vim"
 else
-  export EDITOR='vim'
+  export EDITOR="vim"
 fi
 
 # Compilation flags
@@ -97,11 +98,12 @@ alias sshconf="vim ~/.ssh/config"
 alias vimconf="vim ~/.vimrc"
 alias tmuxconf="vim ~/.tmux.conf"
 
-alias ls="ls -hGF"
-alias lsa="ls -ahGF"
-alias ll="ls -lhGF"
-alias lla="ls -lahGF"
 alias hg="history | grep"
+
+alias ls="lsd"
+alias ll="lsd -l"
+alias lst="lsd --tree"
+alias llt="lsd -l --tree"
 
 alias tt="vit"
 alias lzg="lazygit"

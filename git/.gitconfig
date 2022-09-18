@@ -1,7 +1,7 @@
 [user]
     name = teodc
-    email = theo.dacosta@gmail.com
-    #signingKey = ABC123
+    #email = t*****@gmail.com
+    #signingKey = SECRET
 [color]
     ui = auto
 [core]

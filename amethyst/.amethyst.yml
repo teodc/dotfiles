@@ -1,0 +1,118 @@
+# -------------------
+# --- Preferences ---
+# -------------------
+
+layouts:
+    - fullscreen
+    - tall
+
+mod1:
+    - option
+    - shift
+mod2:
+    - option
+    - shift
+    - control
+
+window-margins: true
+window-margin-size: 4
+window-minimum-height: 0
+window-minimum-width: 0
+smart-window-margins: true
+
+float-small-windows: true
+floating-is-blacklist: true
+floating:
+    - com.apple.systempreferences
+
+ignore-menu-bar: false
+
+mouse-follows-focus: false
+focus-follows-mouse: false
+mouse-swaps-windows: true
+mouse-resizes-windows: true
+
+enables-layout-hud: false
+enables-layout-hud-on-space-change: false
+
+use-canary-build: false
+
+new-windows-to-main: false
+
+follow-space-thrown-windows: true
+
+window-resize-step: 5
+
+screen-padding-left: 0
+screen-padding-right: 0
+screen-padding-top: 0
+screen-padding-bottom: 0
+
+restore-layouts-on-launch: true
+
+debug-layout-info: false
+
+# -----------------
+# --- Shortcuts ---
+# -----------------
+
+focus-screen-1:
+    mod: mod1
+    key: w
+
+throw-screen-1:
+    mod: mod2
+    key: w
+
+focus-screen-2:
+    mod: mod1
+    key: e
+
+throw-screen-2:
+    mod: mod2
+    key: e
+
+focus-screen-3:
+    mod:
+    key:
+
+throw-screen-3:
+    mod:
+    key:
+
+focus-screen-4:
+    mod:
+    key:
+
+throw-screen-4:
+    mod:
+    key:
+
+select-tall-layout:
+    mod: mod1
+    key: a
+
+select-wide-layout:
+    mod:
+    key:
+
+select-fullscreen-layout:
+    mod: mod1
+    key: d
+
+select-column-layout:
+    mod:
+    key:
+
+toggle-tiling:
+    mod:
+    key:
+
+toggle-focus-follows-mouse:
+    mod:
+    key:
+
+relaunch-amethyst:
+    mod: mod2
+    key: x
+
