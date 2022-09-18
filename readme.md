@@ -2,7 +2,7 @@
 
 My almost up-to-date dotfiles and list of stuff I use.
 
-> I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever I can
+> I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever it's available.
 
 ## Prerequesites
 
@@ -32,7 +32,7 @@ cp zsh/teodc.zsh-theme "$ZSH_CUSTOM/themes"
 ### iTerm2
 
 - Get the `iterm/teodc.json` file.
-- Open iTerm2 and go to: `Preferences -> Profiles -> Other Actions... -> Import JSON Profiles...`
+- Open iTerm2 and go to: `Preferences` -> `Profiles` -> `Other Actions...` -> `Import JSON Profiles...`
 
 ### tmux
 

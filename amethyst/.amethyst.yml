@@ -5,6 +5,7 @@
 layouts:
     - fullscreen
     - tall
+    - wide
 
 mod1:
     - option
@@ -93,8 +94,8 @@ select-tall-layout:
     key: a
 
 select-wide-layout:
-    mod:
-    key:
+    mod: mod1
+    key: s
 
 select-fullscreen-layout:
     mod: mod1
