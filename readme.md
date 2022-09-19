@@ -4,7 +4,7 @@ My almost up-to-date dotfiles and list of stuff I use.
 
 > I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever it's available.
 
-## Prerequesites
+## ⚠️ Prerequesites
 
 ### Homebrew
 
@@ -19,7 +19,7 @@ brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 ```
 
-## Configs
+## 🛠 Configs
 
 ### zsh
 
@@ -87,7 +87,7 @@ cp lf/* ~/.config/lf
 cp amethyst/.amethyst.yml ~
 ```
 
-## Packages & Apps
+## 📦 Packages & Apps
 
 ### Homebrew Packages
 
@@ -187,5 +187,28 @@ zoom
 EasyRes
 LINE
 Pocket
+Simplenote
 Twitter
 ```
+
+## 💰 macOS Productivity Tips
+
+My way to waste less time using my mouse or `Cmd+Tab` on macOS.
+
+- Disable `Automatically rearrange Spaces based on most recent use`.
+- Create a dedicated Space for each app or app type in the `Mission Control` view.
+- Assign each app to its own Space with the `Assign To` option from the Dock.
+- Set the keyboard shortcuts to switch directly to Spaces. `Space 1` -> `Ctrl+1`, `Space 2` -> `Ctrl+2`, etc.
+- Use `Amethyst` or `Yabai` to tile and manage windows.
+- Fullscreen as many windows as possible (and not "Full Screen").
+
+That way, I can directly jump to a specific Space depending on what I want to do. I usually set my Spaces like this:
+- `Space 1`: Main browser (`Chrome`/`Firefox`) & notes (`Sublime Text`/`Simplenote`)
+- `Space 2`: Terminal (`iTerm2`)
+- `Space 3`: Code editor (`VS Code`)
+- `Space 4`: API client (`Insomnia`/`Postman`)
+- `Space 5`: Database GUI (`TablePlus`/`Sequel Ace`)
+- `Space 6`: Communication tools (`Discord`/`Slack`/`Skype`)
+- `Space 7`: Dev browser (`Brave`)
+
+You're welcome!
