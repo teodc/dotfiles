@@ -63,7 +63,21 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws composer docker docker-compose git kubectl macos mix pip)
+plugins=(
+    aws
+    docker
+    docker-compose
+    fd
+    gh
+    pip
+    python
+    taskwarrior
+    terraform
+    zsh-autosuggestions
+)
+
+# Enable the zsh-completions plugin
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
@@ -98,14 +112,21 @@ alias sshconf="vim ~/.ssh/config"
 alias vimconf="vim ~/.vimrc"
 alias tmuxconf="vim ~/.tmux.conf"
 
+alias h="history"
 alias hg="history | grep"
+alias hgi="history | grep -i"
 
 alias ls="lsd"
 alias ll="lsd -l"
 alias lst="lsd --tree"
 alias llt="lsd -l --tree"
 
-alias tt="vit"
+alias rsync-cp="rsync -avz --progress -h"
+alias rsync-mv="rsync -avz --progress -h --remove-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-sync="rsync -avzu --delete --progress -h"
+
+alias tw="vit"
 alias lzg="lazygit"
 alias lzd="lazydocker"
 
@@ -113,6 +134,7 @@ alias artisan="php artisan"
 alias tinker="php artisan tinker"
 alias symfony="~/.symfony/bin/symfony"
 
+alias py="python3"
 alias pypip="python3 -m pip"
 alias pyvenv="python3 -m venv"
 

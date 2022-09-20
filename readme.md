@@ -25,8 +25,10 @@ brew install --cask font-hack-nerd-font
 
 ```
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+cp zsh/teodc.zsh-theme $ZSH_CUSTOM/themes
 cp zsh/.zshrc ~
-cp zsh/teodc.zsh-theme "$ZSH_CUSTOM/themes"
 ```
 
 ### iTerm2
