@@ -100,6 +100,7 @@ fi
 
 # Extra stuff
 export SSH_KEY_PATH="~/.ssh/id_ed25519"
+export XDG_CONFIG_HOME="$HOME/.config"
 export CLICOLOR=1
 #export HOMEBREW_GITHUB_API_TOKEN=SECRET
 
@@ -116,6 +117,8 @@ alias h="history"
 alias hg="history | grep"
 alias hgi="history | grep -i"
 
+alias cat="bat"
+
 alias ls="lsd"
 alias ll="lsd -l"
 alias lst="lsd --tree"
@@ -126,7 +129,8 @@ alias rsync-mv="rsync -avz --progress -h --remove-source-files"
 alias rsync-update="rsync -avzu --progress -h"
 alias rsync-sync="rsync -avzu --delete --progress -h"
 
-alias tw="vit"
+alias tw="task"
+
 alias lzg="lazygit"
 alias lzd="lazydocker"
 
