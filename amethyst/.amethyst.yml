@@ -28,12 +28,12 @@ floating:
 
 ignore-menu-bar: false
 
-mouse-follows-focus: false
+mouse-follows-focus: true
 focus-follows-mouse: false
 mouse-swaps-windows: true
 mouse-resizes-windows: true
 
-enables-layout-hud: false
+enables-layout-hud: true
 enables-layout-hud-on-space-change: false
 
 use-canary-build: false

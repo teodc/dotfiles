@@ -206,7 +206,7 @@ How I improved my window management on macOS:
 - Disable `Automatically rearrange Spaces based on most recent use`.
 - Create a dedicated Space for each app or app type in the `Mission Control` view.
 - Assign each app to its own Space with the `Assign To` option from the Dock.
-- Set the keyboard shortcuts to switch directly to Spaces: `Space 1`->`Ctrl+1`, `Space 2`->`Ctrl+2`, etc.
+- Set the keyboard shortcuts to switch directly to Spaces: `Space 1`->`Option+1`, `Space 2`->`Option+2`, etc.
 - Use `Amethyst` (or `Yabai`) to tile and manage windows.
 - Use the `fullscreen` layout as default layout (and never use "Full Screen").
 
