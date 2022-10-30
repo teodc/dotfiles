@@ -25,7 +25,7 @@ set softtabstop=4
 set expandtab
 
 " Show line numbers
-set number
+set number relativenumber
 
 " Show the (partial) command as it’s being typed
 set showcmd

@@ -171,6 +171,7 @@ google-chrome
 google-drive
 grammarly
 grammarly-desktop
+iina
 insomnia
 ipvanish-vpn
 iterm2
@@ -194,9 +195,8 @@ zoom
 
 ```
 EasyRes
-LINE
-Pocket
 Simplenote
+ReadKit
 Twitter
 ```
 
@@ -212,14 +212,14 @@ How I improved my window management on macOS:
 
 This way, I can directly jump to a specific Space depending on what I want to do. I usually have my Spaces organized like this:
 - Main screen:
-  * `Space 1`: Main browser (`Chrome`, `Firefox`) & notes (`Sublime Text`, `Simplenote`)
-  * `Space 2`: Terminal (`iTerm2`)
-  * `Space 3`: Code editor (`VS Code`)
-  * `Space 4`: API client (`Insomnia`, `Postman`)
-  * `Space 5`: Database GUI (`TablePlus`, `Sequel Ace`)
+  * `Space 1`: Main browser (Chrome, Firefox) & notes (Sublime Text, Simplenote)
+  * `Space 2`: Terminal (iTerm2)
+  * `Space 3`: Code editor (VS Code)
+  * `Space 4`: API client (Insomnia, Postman)
+  * `Space 5`: Database GUI (TablePlus, Sequel Ace)
 - Side screen:
-  * `Space 6`: Communication tools (`Discord`, `Slack`, `Skype`)
-  * `Space 7`: Dev browser (`Brave`)
-  * `Space 8`: Music app (`Music`)
+  * `Space 6`: Communication tools (Discord, Slack, Skype)
+  * `Space 7`: Dev browser (Brave)
+  * `Space 8`: Music app (Music)
 
 Enjoy!
