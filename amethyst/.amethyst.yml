@@ -16,7 +16,7 @@ mod2:
     - control
 
 window-margins: true
-window-margin-size: 4
+window-margin-size: 6
 window-minimum-height: 0
 window-minimum-width: 0
 smart-window-margins: true
