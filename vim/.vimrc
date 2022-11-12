@@ -98,7 +98,7 @@ let mapleader=","
 set nocompatible
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Enables recognition of arrow key codes which start off with an ESC
 set esckeys
