@@ -31,10 +31,10 @@ cp zsh/teodc.zsh-theme $ZSH_CUSTOM/themes
 cp zsh/.zshrc ~
 ```
 
-### iTerm2
+### Alacritty
 
-- Get the `iterm/teodc.json` file.
-- Open iTerm2 and go to: `Preferences` -> `Profiles` -> `Other Actions...` -> `Import JSON Profiles...`
+- `cp alacritty/alacritty.yml ~/.config/alacritty`
+- `git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppuccin`
 
 ### tmux
 
@@ -159,6 +159,7 @@ zsh
 > Install with `brew install --cask <app_name>`
 
 ```
+alacritty
 amethyst
 beamer
 brave-browser
@@ -174,7 +175,6 @@ grammarly-desktop
 iina
 insomnia
 ipvanish-vpn
-iterm2
 macs-fan-control
 obs
 plex-media-server
@@ -213,7 +213,7 @@ How I improved my window management on macOS:
 This way, I can directly jump to a specific Space depending on what I want to do. I usually have my Spaces organized like this:
 - Main screen:
   * `Space 1`: Main browser (Chrome, Firefox) & notes (Sublime Text, Simplenote)
-  * `Space 2`: Terminal (iTerm2)
+  * `Space 2`: Terminal (Alacritty)
   * `Space 3`: Code editor (VS Code)
   * `Space 4`: API client (Insomnia, Postman)
   * `Space 5`: Database GUI (TablePlus, Sequel Ace)

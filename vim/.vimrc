@@ -24,17 +24,20 @@ set softtabstop=4
 " Replace tabs with spaces
 set expandtab
 
-" Show line numbers
+" Show hybrid line numbers
 set number relativenumber
 
 " Show the (partial) command as it’s being typed
 set showcmd
 
+" Use only 1 line for the command-line
+set cmdheight=1
+
 " Highlight current line
 set cursorline
 
 " Set number of history lines to remember
-set history=500
+set history=1000
 
 " Enable filetype plugins
 filetype plugin indent on
@@ -145,7 +148,7 @@ set showmode
 set title
 
 " Minimal number of lines to keep above and below the cursor when scrolling
-set scrolloff=4
+set scrolloff=10
 
 " Strip trailing whitespaces (,ss)
 function! StripTrailingWhitespaces()
@@ -165,3 +168,11 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
 
+" remaps
+inoremap <C-c> <Esc>
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-b> <C-b>zz
+nnoremap <C-f> <C-f>zz
