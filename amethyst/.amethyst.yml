@@ -3,17 +3,17 @@
 # -------------------
 
 layouts:
-    - fullscreen
-    - tall
-    - wide
+  - fullscreen
+  - tall
+  - wide
 
 mod1:
-    - option
-    - shift
+  - option
+  - shift
 mod2:
-    - option
-    - shift
-    - control
+  - option
+  - shift
+  - control
 
 window-margins: true
 window-margin-size: 6
@@ -24,7 +24,7 @@ smart-window-margins: true
 float-small-windows: true
 floating-is-blacklist: true
 floating:
-    - com.apple.systempreferences
+  - com.apple.systempreferences
 
 ignore-menu-bar: false
 
@@ -58,62 +58,61 @@ debug-layout-info: false
 # -----------------
 
 focus-screen-1:
-    mod: mod1
-    key: w
+  mod: mod1
+  key: w
 
 throw-screen-1:
-    mod: mod2
-    key: w
+  mod: mod2
+  key: w
 
 focus-screen-2:
-    mod: mod1
-    key: e
+  mod: mod1
+  key: e
 
 throw-screen-2:
-    mod: mod2
-    key: e
+  mod: mod2
+  key: e
 
 focus-screen-3:
-    mod:
-    key:
+  mod:
+  key:
 
 throw-screen-3:
-    mod:
-    key:
+  mod:
+  key:
 
 focus-screen-4:
-    mod:
-    key:
+  mod:
+  key:
 
 throw-screen-4:
-    mod:
-    key:
+  mod:
+  key:
 
 select-tall-layout:
-    mod: mod1
-    key: a
+  mod: mod1
+  key: a
 
 select-wide-layout:
-    mod: mod1
-    key: s
+  mod: mod1
+  key: s
 
 select-fullscreen-layout:
-    mod: mod1
-    key: d
+  mod: mod1
+  key: d
 
 select-column-layout:
-    mod:
-    key:
+  mod:
+  key:
 
 toggle-tiling:
-    mod:
-    key:
+  mod:
+  key:
 
 toggle-focus-follows-mouse:
-    mod:
-    key:
+  mod:
+  key:
 
 relaunch-amethyst:
-    mod: mod2
-    key: x
-
+  mod: mod2
+  key: x

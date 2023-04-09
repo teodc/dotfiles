@@ -10,24 +10,26 @@ gui:
   theme:
     lightTheme: false # For terminals with a light background
     activeBorderColor:
-      - '#f0c6c6' # Flamingo
+      - '#a6da95' # green
       - bold
     inactiveBorderColor:
-      - '#6e738d' # Overlay0
+      - '#6e738d' # white
     optionsTextColor:
-      - '#8aadf4' # Blue
+      - '#7dc4e4' # blue
     selectedLineBgColor:
-      - '#494d64' # Surface1 (set to `default` to have no background colour)
+      - '#3f64b0' # blue (set to `default` to have no background colour)
     selectedRangeBgColor:
-      - '#494d64' # Surface1
+      - '#3f64b0' # blue
     cherryPickedCommitBgColor:
-      - '#494d64' # Surface1
+      - '#91d7e3' # cyan
     cherryPickedCommitFgColor:
-      - '#f5bde6' # Pink
+      - '#3f64b0' # blue
     unstagedChangesColor:
-      - '#8bd5ca' # Teal
+      - '#d4dcfa' # red
+    defaultFgColor:
+      - '#cad3f5'
   authorColors:
-    '*': '#c6a0f6' # Mauve
+    '*': '#c6a0f6'
   commitLength:
     show: true
   mouseEvents: true

@@ -1,6 +1,6 @@
 # Dotfiles
 
-My almost up-to-date dotfiles and list of stuff I use.
+My (almost) up-to-date dotfiles and the list of software/packages I use.
 
 > I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever it's available.
 
@@ -16,7 +16,7 @@ My almost up-to-date dotfiles and list of stuff I use.
 
 ```
 brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+brew install --cask font-jetbrainsmono-nerd-font
 ```
 
 ## 🛠 Configs
@@ -40,6 +40,8 @@ cp zsh/.zshrc ~
 
 ```
 cp tmux/.tmux.conf ~
+mkdir -p ~/.config/tmux/themes
+cp tmux/themes/catppuccin ~/.config/tmux/themes
 ```
 
 ### vim
@@ -106,6 +108,7 @@ cp lazygit/* ~/.config/lazygit
 ansible
 awscli
 bat
+black
 boundary
 certbot
 composer
@@ -117,13 +120,16 @@ docker-clean
 eksctl
 elixir
 fd
+flake8
 fzf
 gh
 git
+gnu-sed
 gnupg
 go
 htop
 iperf3
+isort
 jq
 kubectx
 lazydocker
@@ -132,10 +138,15 @@ lf
 lsd
 nmap
 node
-php-cs-fixer
 php
+php-cs-fixer
+phpstan
+pnpm
+psalm
 pwgen
+pylint
 python
+ripgrep
 rust
 screen
 ssh
@@ -150,7 +161,6 @@ vault
 vim
 vit
 wget
-yarn
 zsh
 ```
 
@@ -181,6 +191,7 @@ plex-media-server
 sequel-ace
 skype
 slack
+sloth
 spacelauncher
 sublime-text
 tableplus
@@ -195,14 +206,15 @@ zoom
 
 ```
 EasyRes
-Simplenote
 ReadKit
+Simplenote
 Twitter
 ```
 
 ## 💰 macOS Productivity Tips
 
 How I improved my window management on macOS:
+
 - Disable `Automatically rearrange Spaces based on most recent use`.
 - Create a dedicated Space for each app or app type in the `Mission Control` view.
 - Assign each app to its own Space with the `Assign To` option from the Dock.
@@ -211,15 +223,16 @@ How I improved my window management on macOS:
 - Use the `fullscreen` layout as default layout (and never use "Full Screen").
 
 This way, I can directly jump to a specific Space depending on what I want to do. I usually have my Spaces organized like this:
+
 - Main screen:
-  * `Space 1`: Main browser (Chrome, Firefox) & notes (Sublime Text, Simplenote)
-  * `Space 2`: Terminal (Alacritty)
-  * `Space 3`: Code editor (VS Code)
-  * `Space 4`: API client (Insomnia, Postman)
-  * `Space 5`: Database GUI (TablePlus, Sequel Ace)
+    * `Space 1`: Main browser & notes
+    * `Space 2`: Terminal
+    * `Space 3`: Code editor
+    * `Space 4`: API client
+    * `Space 5`: Database GUI
 - Side screen:
-  * `Space 6`: Communication tools (Discord, Slack, Skype)
-  * `Space 7`: Dev browser (Brave)
-  * `Space 8`: Music app (Music)
+    * `Space 6`: Communication tools
+    * `Space 7`: Dev browser
+    * `Space 8`: Music app
 
 Enjoy!

@@ -1,73 +1,14 @@
 " ------------------------------------------------------------------------------
-" Plugin Manager
-" ------------------------------------------------------------------------------
-
-""" vim-plug
-" Basic Usage:
-"   PlugInstall [name ...] [#threads]	Install plugins
-"   PlugUpdate [name ...] [#threads]	Install or update plugins
-"   PlugClean[!]						Remove unlisted plugins (bang version will clean without prompt)
-"   PlugUpgrade							Upgrade vim-plug itself
-"   PlugStatus							Check the status of plugins
-"   PlugDiff							Examine changes from the previous update and the pending changes
-" See: https://github.com/junegunn/vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" ------------------------------------------------------------------------------
 " Options
 " ------------------------------------------------------------------------------
-
-" Enable syntax processing
-syntax on
-
-" Enable filetype plugins
-filetype plugin indent on
-
-" Set color scheme
-colorscheme catppuccin_macchiato
-let g:lightline = {'colorscheme': 'catppuccin_macchiato'}
 
 " Define map leader key
 let mapleader=" "
 let maplocalleader=" "
 
 " Use a bar cursor within insert mode and a block cursor everywhere else
-" Using iTerm2? Go-to preferences / profile / colors and disable the smart bar
-" cursor color. Then pick a cursor and highlight color that matches your theme.
-" That will ensure your cursor is always visible within insert mode.
-" Reference chart of values:
-"   Ps = 0 -> blinking block
-"   Ps = 1 -> blinking block (default)
-"   Ps = 2 -> steady block
-"   Ps = 3 -> blinking underline
-"   Ps = 4 -> steady underline
-"   Ps = 5 -> blinking bar (xterm)
-"   Ps = 6 -> steady bar (xterm)
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-
-" Use 24-bit colors
-set termguicolors
-
-" Set UTF8 as standard encoding
-set encoding=utf8
-
-" Always show the signcolumn
-set signcolumn=yes
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" Number of visual spaces per tab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-
-" Replace tabs with spaces
-set expandtab
 
 " Show hybrid line numbers
 set number relativenumber
@@ -75,20 +16,8 @@ set number relativenumber
 " Show the (partial) command as it’s being typed
 set showcmd
 
-" Use only 1 line for the command-line
-set cmdheight=1
-
-" Highlight current line
-set cursorline
-
 " Set number of history lines to remember
 set history=5000
-
-" Visual autocomplete for command menu
-set wildmenu
-
-" Highlight matching bracket
-set showmatch
 
 " Search as characters are entered
 set incsearch
@@ -102,14 +31,11 @@ set nomore
 " Ignore case when searching
 set ignorecase
 
+" Use visual bell instead of beeping
+set novisualbell
+
 " When searching, try to be smart about cases
 set smartcase
-
-" Configure backspace so it acts as it should
-set backspace=eol,start,indent
-
-" Auto read when a file is changed on disk
-set autoread
 
 " Configure backups & swap files
 set nobackup
@@ -127,70 +53,17 @@ set undoreload=5000
 " Some commands move the cursor to the start of the line
 set startofline
 
-" Always show current position
-set ruler
-
-" Auto indent
-set ai
-
-" Smart indent
-set si
-
-" Don't wrap lines
-set nowrap
-
-" No annoying sound/flash on errors
-set noerrorbells
-set novisualbell
-
-" Always show the status line
-set laststatus=2
-
-" Turn on the improvements of vim
-set nocompatible
-
 " Default clipboard
-set clipboard=""
-
-" Enables recognition of arrow key codes which start off with an ESC
-set esckeys
-
-" Prevent the cursor from changing the current column when jumping to another line
-set nostartofline
-
-" Optimize for fast terminal connections
-set ttyfast
+set clipboard="ideaput"
 
 " Default 'g' flag for ':s'
 set gdefault
 
-" Write eol at the end of the file
-set eol
-
-" The minimal height of a window
-set wmh=1
-
 " ???
 set viminfo+=!
 
-" Enable per directory .vimrc files
-set exrc
-
-" Disable unsafe commands in .vimrc files
-set secure
-
-" Number of lines checked for set commands
-set modeline
-set modelines=4
-
-" Enable the use of the mouse in all modes
-"set mouse=a
-
 " Show the current mode
 set showmode
-
-" Show title of the window
-set title
 
 " Vertical & horizontal scrolling behavior
 set scroll=0
@@ -202,32 +75,29 @@ set sidescrolloff=10
 set timeout
 set timeoutlen=300
 
-" Open new split panes to right and bottom
-set splitbelow
-set splitright
-
-" Prevent cursor to be positioned where there is no character
-set virtualedit=none
-
-" Show trailing spaces, tabs and other special formatting characters
-set list
-set listchars=tab:▸\ ,trail:·
-"set listchars=tab:▸\ ,trail:•,eol:↲,nbsp:·,extends:»,precedes:«
+""" IdeaVim only commands
+" Keep the mode that was enabled before starting a refactoring
+set idearefactormode=keep
+" Behavior of IdeaVim icon in the status bar
+set ideastatusicon=gray
+" Execution of :wa (save all) command on :w (save)
+set ideawrite=all
+" Define the list of additional buffers where IdeaVim is enabled
+set ideavimsupport=dialog
+" Extended join behaviors (https://github.com/JetBrains/ideavim/wiki/ideajoin-examples)
+set ideajoin
 
 " ------------------------------------------------------------------------------
 " Plugins
 " ------------------------------------------------------------------------------
 
-call plug#begin()
-
 """ Quickscope
 " See: https://plugins.jetbrains.com/plugin/19417-ideavim-quickscope
-Plug 'unblevable/quick-scope'
+set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 """ EasyMotion
-" Basic Usage:
-" Available Commands: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
+" See: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
 nmap <leader>f <Plug>(easymotion-bd-f)
@@ -254,7 +124,7 @@ nmap <leader>T <Plug>(easymotion-bd-t2)
 "   <C-K>   Jump up to previous sibling of the current directory
 "   R       Recursively refresh the current root
 "   m       Display the NERDTree menu
-" Available Commands: https://github.com/JetBrains/ideavim/wiki/NERDTree-support#supported-commands
+" See: https://github.com/JetBrains/ideavim/wiki/NERDTree-support#supported-commands
 Plug 'preservim/nerdtree'
 let NERDTreeHijackNetrw = 0
 let NERDTreeShowHidden = 1
@@ -284,16 +154,16 @@ Plug 'tpope/vim-surround'
 "   <C-p> Remove current match and go back to previous one
 "   <C-m> Select all matches
 " See: https://github.com/terryma/vim-multiple-cursors
-Plug 'terryma/vim-multiple-cursors'
-let g:multi_cursor_support_imap = 0
-let g:multi_cursor_start_word_key = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<C-m>'
-let g:multi_cursor_start_key = 'g<C-n>'
-let g:multi_cursor_select_all_key = 'g<C-m>'
-let g:multi_cursor_next_key = '<C-n>'
-let g:multi_cursor_prev_key = '<C-p>'
-let g:multi_cursor_skip_key = '<C-x>'
-let g:multi_cursor_quit_key = '<Esc>'
+"Plug 'terryma/vim-multiple-cursors'
+"let g:multi_cursor_support_imap = 0
+"let g:multi_cursor_start_word_key = '<C-n>'
+"let g:multi_cursor_select_all_word_key = '<C-m>'
+"let g:multi_cursor_start_key = 'g<C-n>'
+"let g:multi_cursor_select_all_key = 'g<C-m>'
+"let g:multi_cursor_next_key = '<C-n>'
+"let g:multi_cursor_prev_key = '<C-p>'
+"let g:multi_cursor_skip_key = '<C-x>'
+"let g:multi_cursor_quit_key = '<Esc>'
 
 """ Highlightedyank
 " See: https://github.com/machakann/vim-highlightedyank
@@ -354,7 +224,6 @@ Plug 'vim-scripts/argtextobj.vim'
 let g:argtextobj_pairs="[:],(:),<:>"
 
 """ Paragraph Motion
-" The { and } motions also match lines that only contain whitespace.
 " See: https://github.com/dbakker/vim-paragraph-motion
 Plug 'dbakker/vim-paragraph-motion'
 
@@ -368,39 +237,8 @@ Plug 'dbakker/vim-paragraph-motion'
 " See: https://github.com/chrisbra/matchit
 Plug 'chrisbra/matchit'
 
-""" Devicons
-" See: https://github.com/ryanoasis/vim-devicons
-"Plug 'ryanoasis/vim-devicons'
-"let g:WebDevIconsConcealNerdTreeBrackets = 0
-"let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-"let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 0
-
-call plug#end()
-
 " ------------------------------------------------------------------------------
-" Auto Commands
-" ------------------------------------------------------------------------------
-
-if has("autocmd")
-
-    " Treat .json files as .js
-    "autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-
-    " Exit Vim if NERDTree is the only window remaining in the only tab
-    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-    " Close the tab if NERDTree is the only window remaining in it
-    autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree
-    autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-        \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-endif
-
-" ------------------------------------------------------------------------------
-" Remaps
+"  Remaps
 " ------------------------------------------------------------------------------
 
 " Unmap space key
@@ -423,8 +261,8 @@ nnoremap <C-z> :nohl<CR><C-l>
 "nnoremap <C-t> :Explore<CR>
 
 " Center screen when navigating search results
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n nzz
+nnoremap N Nzz
 
 " Center screen when moving it
 nnoremap <C-u> <C-u>zz
@@ -437,7 +275,7 @@ nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
 " Delete line without yanking it
-nnoremap <leader>D "_dd
+"nnoremap <leader>D "_dd
 
 " Yank into the system clipboard
 nnoremap <leader>y "+y
@@ -455,20 +293,20 @@ xnoremap <leader>p "_dP
 nnoremap J mzJ`z
 
 " Move line or visual block up/down
-nnoremap <C-j> :mo +1<CR>
-nnoremap <C-k> :mo -2<CR>
-vnoremap <C-j> :mo '>+1<CR>gv
-vnoremap <C-k> :mo '<-2<CR>gv
+"nnoremap <C-j> :mo +1<CR>
+"nnoremap <C-k> :mo -2<CR>
+"vnoremap <C-j> :mo '>+1<CR>gv
+"vnoremap <C-k> :mo '<-2<CR>gv
 
 " Indent/outdent line or visual block
-nnoremap <C-h> <<
-nnoremap <C-l> >>
-vnoremap <C-h> <gv
-vnoremap <C-l> >gv
+"nnoremap <C-h> <<
+"nnoremap <C-l> >>
+"vnoremap <C-h> <gv
+"vnoremap <C-l> >gv
 
 " Duplicate line or visual block without yanking it
-nnoremap <leader>o :co .<CR>
-vnoremap <leader>o :co '><CR>gv
+"nnoremap <leader>g :co .<CR>
+"vnoremap <leader>g :co '><CR>gv
 
 " Comment line or visual block
 nnoremap <leader>m <Plug>CommentaryLine
@@ -483,7 +321,7 @@ nnoremap <leader>_ :vnew<CR>
 nnoremap <leader>= <C-w>=
 " Move cursor to the left window
 nnoremap <leader>h <C-w>h
-" Move cursor to the right window
+" Move cursor to tjhe right window
 nnoremap <leader>l <C-w>l
 " Move cursor to the window below
 nnoremap <leader>k <C-w>k
@@ -494,39 +332,183 @@ nnoremap <leader>K <C-w>T
 
 """ Tabs
 " Open a new tab
-nnoremap <leader>+ :tabnew<CR>
+"nnoremap <leader>+ :tabnew<CR>
 " Move to the next tab
-nnoremap <leader>] gt<CR>
+"nnoremap <leader>] gt<CR>
 " Move to the previous tab
-nnoremap <leader>[ gT<CR>
+"nnoremap <leader>[ gT<CR>
 " Close the current tab and all its windows
-nnoremap <leader>w :tabc<CR>
+"nnoremap <leader>w :tabc<CR>
 " Close all tabs except for the current one
-nnoremap <leader>W :tabo<CR>
+"nnoremap <leader>W :tabo<CR>
 
 """ Buffers
 " Open new buffer
-nnoremap <leader>B :enew<CR>
+"nnoremap <leader>B :enew<CR>
 " List all opened buffers & offer to move to one of them
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
+"nnoremap <Leader>b :buffers<CR>:buffer<Space>
 " Go to the next buffer
-nnoremap <leader>} :bn<CR>
+"nnoremap <leader>} :bn<CR>
 " Go to the previous buffer
-nnoremap <leader>{ :bp<CR>
+"nnoremap <leader>{ :bp<CR>
 " Delete buffer
-nnoremap <leader>q :bd<CR>
+"nnoremap <leader>q :bd<CR>
 
 " ------------------------------------------------------------------------------
-" Custom Commands
+" IDE Actions
 " ------------------------------------------------------------------------------
 
-" Strip trailing whitespaces
-function! StripTrailingWhitespaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripTrailingWhitespaces()<cr>
+" Edit & reload the IdeaVim config
+map \e :e ~/.ideavimrc<CR>
+map \r <Action>(IdeaVim.ReloadVimRc.reload)
 
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+""" Tool windows
+map <leader>1 <Action>(ActivateProjectToolWindow)
+map <leader>2 <Action>(ActivateStructureToolWindow)
+map <leader>3 <Action>(ActivateDatabaseToolWindow)
+map <leader>4 <Action>(ActivateTerminalToolWindow)
+map <leader>5 <Action>(ActivateProblemsViewToolWindow)
+map <leader>6 <Action>(ActivateTODOToolWindow)
+"map <leader>? <Action>(ActivateVersionControlToolWindow)
+"map <leader>? <Action>(ActivateCommitToolWindow)
+"map <leader>? <Action>(Activategithub.copilotToolWindowToolWindow)
+map <leader>0 <Action>(ActivateNotificationsToolWindow)
+map <leader>` <Action>(HideAllWindows)
+
+""" Files
+map <leader>t <Action>(NewFile)
+map <leader>x <Action>(RecentFiles)
+map <leader>! <Action>(SelectInProjectView)
+
+""" Search
+"map <leader>? <Action>(SearchEverywhere)
+"map <leader>? <Action>(SearchEverywhere.NextTab)
+"map <leader>? <Action>(SearchEverywhere.PrevTab)
+
+"" Find & replace
+map <leader>/ <Action>(Find)
+map <leader>? <Action>(FindInPath)
+map <leader>n <Action>(FindNext)
+map <leader>N <Action>(FindPrevious)
+map <leader>' <Action>(Replace)
+map <leader>\" <Action>(ReplaceInPath)
+
+""" Quick selection
+map <C-v> <Action>(EditorSelectWord)
+map <C-V> <Action>(EditorUnSelectWord)
+map <C-n> <Action>(SelectNextOccurrence)
+map <C-p> <Action>(UnselectPreviousOccurrence)
+map <C-m> <Action>(SelectAllOccurrences)
+
+""" Navigate code
+map <leader>s <Action>(FileStructurePopup)
+map <leader>gs <Action>(GotoSymbol)
+map <leader>ga <Action>(GotoAction)
+map <leader>gc <Action>(GotoClass)
+map <leader>gf <Action>(GotoFile)
+map <leader>gd <Action>(GotoDeclaration)
+map <leader>gt <Action>(GotoTypeDeclaration)
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gm <Action>(GotoSuperMethod)
+map <leader>gu <Action>(FindUsages)
+
+""" Cursor jumps
+map [p <Action>(Back)
+map ]p <Action>(Forward)
+map [c <Action>(JumpToLastChange)
+map ]c <Action>(JumpToNextChange)
+map [m <Action>(MethodUp)
+map ]m <Action>(MethodDown)
+
+""" Move line/selection
+map <C-k> <Action>(MoveLineUp)
+map <C-j> <Action>(MoveLineDown)
+map <C-l> <Action>(EditorIndentSelection)
+map <C-h> <Action>(EditorUnindentSelection)
+
+""" Line operations
+map <leader>D <Action>(EditorDeleteLine)
+map <leader>o <Action>(EditorDuplicate)
+map <leader>m <Action>(CommentByLineComment)
+
+""" Errors
+map <leader>E <Action>(InspectCode)
+map <leader>ep <Action>(GotoPreviousError)
+map <leader>en <Action>(GotoNextError)
+
+""" Cleaning
+map <leader>C <Action>(ReformatCode)
+map <leader>cf <Action>(ShowReformatFileDialog)
+map <leader>cc <Action>(CodeCleanup)
+map <leader>ci <Action>(OptimizeImports)
+map <leader>ca <Action>(AutoIndentLines)
+
+""" Refactoring
+map <leader>R <Action>(Refactorings).QuickListPopupAction
+map <leader>rn <Action>(RenameElement)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+
+""" Code actions
+map <leader>i <Action>(ShowIntentionActions)
+map <leader>I <Action>(QuickImplementations)
+map <leader>G <Action>(Generate)
+
+""" Completion
+map <leader>q <Action>(CodeCompletion)
+map <leader>Q <Action>(SmartTypeCompletion)
+map <leader>\ <Action>(EditorCompleteStatement)
+
+""" Splits
+"...
+
+""" Tabs
+map <leader>] <Action>(NextTab)
+map <leader>[ <Action>(PreviousTab)
+map <leader>w <Action>(CloseEditor)
+"map <leader>? <Action>(CloseAllEditors)
+map <leader>W <Action>(CloseAllEditorsButActive)
+"map <leader>? <Action>(PinActiveEditorTab)
+
+""" Expand/collapse
+"map <leader>? <Action>(ExpandCollapseToggleAction)
+"map <leader>? <Action>(CollapseRegion)
+"map <leader>? <Action>(ExpandRegion)
+"map <leader>? <Action>(CollapseAllRegions)
+"map <leader>? <Action>(ExpandAllRegions)
+
+""" Git
+"map <leader>? <Action>(Vcs.QuickListPopupAction)
+
+""" Copilot
+"map <leader>? <Action>(copilot.enableCopilot)
+"map <leader>? <Action>(copilot.disableCopilot)
+"map <leader>? <Action>(copilot.requestCompletion)
+"map <leader>? <Action>(copilot.applyInlays)
+"map <leader>? <Action>(copilot.cycleNextInlays)
+"map <leader>? <Action>(copilot.cyclePrevInlays)
+
+""" Resolve IDE shortcut conflicts
+sethandler <C-a> a:vim
+sethandler <C-b> a:vim
+sethandler <C-d> a:vim
+sethandler <C-e> a:vim
+sethandler <C-f> a:vim
+sethandler <C-g> a:vim
+sethandler <C-h> a:vim
+sethandler <C-i> a:vim
+sethandler <C-j> a:vim
+sethandler <C-k> a:vim
+sethandler <C-l> a:vim
+sethandler <C-m> a:vim
+sethandler <C-n> a:vim
+sethandler <C-o> a:vim
+sethandler <C-p> a:vim
+sethandler <C-r> a:vim
+sethandler <C-s> a:vim
+sethandler <C-t> a:vim
+sethandler <C-v> a:vim
+sethandler <C-w> a:vim

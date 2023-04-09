@@ -1,79 +1,63 @@
-# If you come from bash you might have to change your $PATH.
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+# ------------------------------------------------------------------------------
+# Oh My Zsh
+# ------------------------------------------------------------------------------
 
-# Path to your oh-my-zsh installation.
+# Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="spaceship"
+# Theme
 ZSH_THEME="teodc"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Use case-sensitive completion
+#CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# Use hyphen-insensitive completion (case-sensitive completion must be off, _ and - will be interchangeable)
+#HYPHEN_INSENSITIVE="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Auto-update behavior
+#zstyle ':omz:update' mode disabled   # disable automatic updates
+#zstyle ':omz:update' mode auto       # update automatically without asking
+#zstyle ':omz:update' mode reminder   # just remind me to update when it's time
+zstyle ":omz:update" frequency 7     # how often to auto-update (in days)
 
-# Uncomment the following line to change how often to auto-update (in days).
-zstyle ":omz:update" frequency 7
+#Uncomment if pasting URLs and other text is messed up
+#DISABLE_MAGIC_FUNCTIONS="true"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# Disable colors in ls
+#DISABLE_LS_COLORS="true"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# Disable auto-setting terminal title
+#DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Enable command auto-correction
+#ENABLE_CORRECTION="true"
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# Display dots whilst waiting for completion
 COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Disable marking untracked files under VCS as dirty (makes repository status check for large repositories much faster)
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
+# Set the command execution time stamp shown in the history command output
 HIST_STAMPS="yyyy-mm-dd"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# Use another custom folder than $ZSH/custom
+#ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Plugins to load (plugins can be found in $ZSH/plugins/ and $ZSH_CUSTOM/plugins/)
 plugins=(
-    aws
-    docker
-    docker-compose
-    fd
-    gh
-    pip
-    python
-    taskwarrior
-    terraform
-    zsh-autosuggestions
+  aws
+  composer
+  docker
+  docker-compose
+  gh
+  kubectl
+  pip
+  poetry
+  terraform
+  z
+  zsh-autosuggestions
 )
 
 # Enable the zsh-completions plugin
@@ -81,37 +65,45 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# ------------------------------------------------------------------------------
+# User Configuration
+# ------------------------------------------------------------------------------
 
-export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
+export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin"
+export MANPATH="$MANPATH:/usr/local/manh"
 export LANG=en_US.UTF-8
+#export ARCHFLAGS="-arch x86_64"
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
+export XDG_CONFIG_HOME="$HOME/.config"
+export CLICOLOR=1
+export HOMEBREW_GITHUB_API_TOKEN=SECRET
+export GOPATH="$HOME/Workspace/go"
 
-# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
 else
   export EDITOR="vim"
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# History stuff
+HISTFILE=~/.zsh_history
+HISTSIZE=5000
+SAVEHIST=5000
 
-# Extra stuff
-export SSH_KEY_PATH="~/.ssh/id_ed25519"
-export XDG_CONFIG_HOME="$HOME/.config"
-export CLICOLOR=1
-#export HOMEBREW_GITHUB_API_TOKEN=SECRET
-
+# Prevent auto spelling correction
 unsetopt correct_all
 unsetopt correct
 
+# ------------------------------------------------------------------------------
 # Aliases
+# ------------------------------------------------------------------------------
+
 alias zshconf="vim ~/.zshrc"
 alias sshconf="vim ~/.ssh/config"
 alias vimconf="vim ~/.vimrc"
 alias tmuxconf="vim ~/.tmux.conf"
+alias gitconf="vim ~/.gitconfig"
+alias alacrittyconf="vim ~/.config/alacritty/alacritty.yml"
 
 alias h="history"
 alias hg="history | grep"
@@ -123,6 +115,10 @@ alias ls="lsd"
 alias ll="lsd -l"
 alias lst="lsd --tree"
 alias llt="lsd -l --tree"
+
+alias v="vim"
+alias nv="nvim"
+#alias vim="nvim"
 
 alias rsync-cp="rsync -avz --progress -h"
 alias rsync-mv="rsync -avz --progress -h --remove-source-files"
