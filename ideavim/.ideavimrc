@@ -249,9 +249,8 @@ vnoremap <Space> <NOP>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
-" Save current file
+" Save & close current file
 nnoremap <C-s> :w<CR>
-" Close current file
 nnoremap <C-q> :q<CR>
 
 " Redraw screen and clear current search highlighting
@@ -261,8 +260,8 @@ nnoremap <C-z> :nohl<CR><C-l>
 "nnoremap <C-t> :Explore<CR>
 
 " Center screen when navigating search results
-nnoremap n nzz
-nnoremap N Nzz
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Center screen when moving it
 nnoremap <C-u> <C-u>zz
@@ -292,6 +291,9 @@ xnoremap <leader>p "_dP
 " Don't move cursor when using J
 nnoremap J mzJ`z
 
+" Append above line to current one
+nmap K kddpkJ
+
 " Move line or visual block up/down
 "nnoremap <C-j> :mo +1<CR>
 "nnoremap <C-k> :mo -2<CR>
@@ -305,54 +307,48 @@ nnoremap J mzJ`z
 "vnoremap <C-l> >gv
 
 " Duplicate line or visual block without yanking it
-"nnoremap <leader>g :co .<CR>
-"vnoremap <leader>g :co '><CR>gv
+"nnoremap <leader>o :co .<CR>
+"vnoremap <leader>o :co '><CR>gv
 
 " Comment line or visual block
-nnoremap <leader>m <Plug>CommentaryLine
-vnoremap <leader>m <Plug>Commentary
+"nnoremap <leader>m <Plug>CommentaryLine
+"vnoremap <leader>m <Plug>Commentary
 
 """ Splits
-" Create a new horizontal split
+" Create new splits
 nnoremap <leader>- :new<CR>
-" Create a new veritcal split
 nnoremap <leader>_ :vnew<CR>
 " Make all windows equal height & width
 nnoremap <leader>= <C-w>=
-" Move cursor to the left window
+" Move cursor to the left/right/top/bottom window
 nnoremap <leader>h <C-w>h
-" Move cursor to tjhe right window
 nnoremap <leader>l <C-w>l
-" Move cursor to the window below
 nnoremap <leader>k <C-w>k
-" Move cursor to the window above
 nnoremap <leader>j <C-w>j
 " Move the current split window into its own tab
-nnoremap <leader>K <C-w>T
-
-""" Tabs
-" Open a new tab
-"nnoremap <leader>+ :tabnew<CR>
-" Move to the next tab
-"nnoremap <leader>] gt<CR>
-" Move to the previous tab
-"nnoremap <leader>[ gT<CR>
-" Close the current tab and all its windows
-"nnoremap <leader>w :tabc<CR>
-" Close all tabs except for the current one
-"nnoremap <leader>W :tabo<CR>
+"nnoremap <leader>? <C-w>T
 
 """ Buffers
 " Open new buffer
 "nnoremap <leader>B :enew<CR>
 " List all opened buffers & offer to move to one of them
 "nnoremap <Leader>b :buffers<CR>:buffer<Space>
-" Go to the next buffer
-"nnoremap <leader>} :bn<CR>
-" Go to the previous buffer
-"nnoremap <leader>{ :bp<CR>
+" Go to the next/previous buffer
+"nnoremap L :bn<CR>
+"nnoremap H :bp<CR>
 " Delete buffer
 "nnoremap <leader>q :bd<CR>
+
+""" Tabs
+" Open a new tab
+"nnoremap <leader>+ :tabnew<CR>
+" Move to the next/previous tab
+"nnoremap <leader>] gt<CR>
+"nnoremap <leader>[ gT<CR>
+" Close the current tab and all its windows
+"nnoremap <leader>w :tabc<CR>
+" Close all tabs except for the current one
+"nnoremap <leader>W :tabo<CR>
 
 " ------------------------------------------------------------------------------
 " IDE Actions
@@ -467,10 +463,12 @@ map <leader>\ <Action>(EditorCompleteStatement)
 
 """ Tabs
 map <leader>] <Action>(NextTab)
+map L <Action>(NextTab)
 map <leader>[ <Action>(PreviousTab)
+map H <Action>(PreviousTab)
 map <leader>w <Action>(CloseEditor)
-"map <leader>? <Action>(CloseAllEditors)
 map <leader>W <Action>(CloseAllEditorsButActive)
+"map <leader>? <Action>(CloseAllEditors)
 "map <leader>? <Action>(PinActiveEditorTab)
 
 """ Expand/collapse

@@ -85,17 +85,29 @@ mkdir ~/.config/lf
 cp lf/* ~/.config/lf
 ```
 
-## Amethyst
+### Amethyst
 
 ```
 cp amethyst/.amethyst.yml ~
 ```
 
-## Lazygit
+### Lazygit
 
 ```
 mkdir ~/.config/lazygit
 cp lazygit/* ~/.config/lazygit
+```
+
+### Nvim
+
+> WIP
+
+```
+brew install checkmake
+brew install dotenv-linter
+brew install luarocks
+luarocks install lanes
+markuplint?
 ```
 
 ## 📦 Packages & Apps

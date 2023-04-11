@@ -4,12 +4,12 @@
 
 """ vim-plug
 " Basic Usage:
-"   PlugInstall [name ...] [#threads]	Install plugins
-"   PlugUpdate [name ...] [#threads]	Install or update plugins
-"   PlugClean[!]						Remove unlisted plugins (bang version will clean without prompt)
-"   PlugUpgrade							Upgrade vim-plug itself
-"   PlugStatus							Check the status of plugins
-"   PlugDiff							Examine changes from the previous update and the pending changes
+"   PlugInstall [name ...] [#threads]
+"   PlugUpdate [name ...] [#threads]
+"   PlugClean[!]
+"   PlugUpgrade
+"   PlugStatus
+"   PlugDiff
 " See: https://github.com/junegunn/vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -20,199 +20,83 @@ endif
 " Options
 " ------------------------------------------------------------------------------
 
-" Enable syntax processing
-syntax on
+colorscheme catppuccin_macchiato " Set color scheme
+filetype plugin indent on " Enable filetype plugins
+syntax on " Enable syntax processing
 
-" Enable filetype plugins
-filetype plugin indent on
+let &t_EI = "\e[2 q" " Use a block cursor in any other mode
+let &t_SI = "\e[6 q" " Use a bar cursor while in insert mode
+let g:lightline = {'colorscheme': 'catppuccin_macchiato'} " Lightline theme
+let mapleader=" " " Define global map leader key
+let maplocalleader=" " " Define local map leader key
 
-" Set color scheme
-colorscheme catppuccin_macchiato
-let g:lightline = {'colorscheme': 'catppuccin_macchiato'}
-
-" Define map leader key
-let mapleader=" "
-let maplocalleader=" "
-
-" Use a bar cursor within insert mode and a block cursor everywhere else
-" Using iTerm2? Go-to preferences / profile / colors and disable the smart bar
-" cursor color. Then pick a cursor and highlight color that matches your theme.
-" That will ensure your cursor is always visible within insert mode.
-" Reference chart of values:
-"   Ps = 0 -> blinking block
-"   Ps = 1 -> blinking block (default)
-"   Ps = 2 -> steady block
-"   Ps = 3 -> blinking underline
-"   Ps = 4 -> steady underline
-"   Ps = 5 -> blinking bar (xterm)
-"   Ps = 6 -> steady bar (xterm)
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
-
-" Use 24-bit colors
-set termguicolors
-
-" Set UTF8 as standard encoding
-set encoding=utf8
-
-" Always show the signcolumn
-set signcolumn=yes
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-" Number of visual spaces per tab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-
-" Replace tabs with spaces
-set expandtab
-
-" Show hybrid line numbers
-set number relativenumber
-
-" Show the (partial) command as it’s being typed
-set showcmd
-
-" Use only 1 line for the command-line
-set cmdheight=1
-
-" Highlight current line
-set cursorline
-
-" Set number of history lines to remember
-set history=5000
-
-" Visual autocomplete for command menu
-set wildmenu
-
-" Highlight matching bracket
-set showmatch
-
-" Search as characters are entered
-set incsearch
-
-" Highlight matches
-set hlsearch
-
-" Listings don't pause when the screen is filled
-set nomore
-
-" Ignore case when searching
-set ignorecase
-
-" When searching, try to be smart about cases
-set smartcase
-
-" Configure backspace so it acts as it should
-set backspace=eol,start,indent
-
-" Auto read when a file is changed on disk
-set autoread
-
-" Configure backups & swap files
-set nobackup
-set writebackup
-set backupdir=~/.vim/backups
-set noswapfile
-set directory=~/.vim/swaps
-
-" Configure undo
-set undofile
-set undodir=~/.vim/undo
-set undolevels=5000
-set undoreload=5000
-
-" Some commands move the cursor to the start of the line
-set startofline
-
-" Always show current position
-set ruler
-
-" Auto indent
-set ai
-
-" Smart indent
-set si
-
-" Don't wrap lines
-set nowrap
-
-" No annoying sound/flash on errors
-set noerrorbells
-set novisualbell
-
-" Always show the status line
-set laststatus=2
-
-" Turn on the improvements of vim
-set nocompatible
-
-" Default clipboard
-set clipboard=""
-
-" Enables recognition of arrow key codes which start off with an ESC
-set esckeys
-
-" Prevent the cursor from changing the current column when jumping to another line
-set nostartofline
-
-" Optimize for fast terminal connections
-set ttyfast
-
-" Default 'g' flag for ':s'
-set gdefault
-
-" Write eol at the end of the file
-set eol
-
-" The minimal height of a window
-set wmh=1
-
-" ???
-set viminfo+=!
-
-" Enable per directory .vimrc files
-set exrc
-
-" Disable unsafe commands in .vimrc files
-set secure
-
-" Number of lines checked for set commands
-set modeline
-set modelines=4
-
-" Enable the use of the mouse in all modes
-"set mouse=a
-
-" Show the current mode
-set showmode
-
-" Show title of the window
-set title
-
-" Vertical & horizontal scrolling behavior
-set scroll=0
-set scrolloff=10
-set sidescroll=0
-set sidescrolloff=10
-
-" Time to wait for key codes
-set timeout
-set timeoutlen=300
-
-" Open new split panes to right and bottom
-set splitbelow
-set splitright
-
-" Prevent cursor to be positioned where there is no character
-set virtualedit=none
-
-" Show trailing spaces, tabs and other special formatting characters
-set list
-set listchars=tab:▸\ ,trail:·
+set ai " Auto indent
+set autoread " Auto read when a file is changed on disk
+set backspace=eol,start,indent " Configure backspace so it acts as it should
+set backupdir=~/.vim/backups " Backups path
+set clipboard="" " Default clipboard
+set cmdheight=1 " Use only 1 line for the command-line
+set colorcolumn=120 " Show a column
+set cursorline " Highlight current line
+set directory=~/.vim/swaps " Swap files path
+set encoding=utf8 " Set UTF8 as standard encoding
+set eol " Write eol at the end of the file
+set esckeys " Enables recognition of arrow key codes which start off with an ESC
+set expandtab " Replace tabs with spaces
+set ffs=unix,dos,mac " Use Unix as the standard file type
+set history=5000 " Set number of history lines to remember
+set hlsearch " Highlight matches
+set ignorecase " Ignore case when searching
+set incsearch " Search as characters are entered
+set laststatus=2 " Always show the status line
+set list " Show trailing spaces, tabs and other special formatting characters
+set listchars=tab:▸\ ,trail:• " Define formatting characters·
 "set listchars=tab:▸\ ,trail:•,eol:↲,nbsp:·,extends:»,precedes:«
+set modeline " Check lines for set commands
+set modelines=4 " Number of lines to check for set commands
+set mouse="" " Disable the use of the mouse in all modes
+set nobackup " Configure backups
+set nocompatible " Turn on the improvements of vim
+set noerrorbells " No annoying sound on errors
+set noexrc " Per directory .vimrc files
+set nogdefault " Default status of g flag when substituting
+set nomore " Listings don't pause when the screen is filled
+set nostartofline " Prevent the cursor from changing column when jumping to another line
+set noswapfile " Swap files
+set notitle " Don't set title of the window
+set novisualbell " No annoying flash on errors
+set nowrap " Don't wrap lines
+set number relativenumber " Show hybrid line numbers
+set ruler " Always show current position
+set scroll=0 " Scroll half the window height
+set scrolloff=10 " Minimal number of screen lines to keep above and below the cursor
+set secure " Disable unsafe commands in .vimrc files
+set shiftwidth=4 " Indentation width
+set showcmd " Show the (partial) command as it’s being typed
+set showmatch " Highlight matching bracket
+set showmode " Show the current mode
+set si " Smart indent
+set sidescroll=0 " Minimal number of columns to scroll horizontally
+set sidescrolloff=10 " Minimal number of columns to keep to the left and to the right of the cursor
+set signcolumn=yes " Always show the signcolumn
+set smartcase " When searching, try to be smart about cases
+set softtabstop=4 " Set width of tab and backspace indents
+set splitbelow " Open new vertical splits on the bottom
+set splitright " Open new horizontal splits on the right
+set tabstop=4 " Set width of tab indent
+set termguicolors " Use 24-bit colors
+set timeout " Wait for key codes
+set timeoutlen=300 " Time to wait for key codes
+set ttyfast " Optimize for fast terminal connections
+set undodir=~/.vim/undo " Undo files path
+set undofile " Configure undo
+set undolevels=5000 " Number of undos
+set undoreload=5000 " Number of undos 
+set viminfo+=! " ???
+set virtualedit=none " Prevent cursor to be positioned where there is no character
+set wildmenu " Visual autocomplete for command menu
+set wmh=1 " The minimal height of a window
+set writebackup " Configure backups
 
 " ------------------------------------------------------------------------------
 " Plugins
@@ -411,9 +295,8 @@ vnoremap <Space> <NOP>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
-" Save current file
+" Save & close current file
 nnoremap <C-s> :w<CR>
-" Close current file
 nnoremap <C-q> :q<CR>
 
 " Redraw screen and clear current search highlighting
@@ -454,6 +337,9 @@ xnoremap <leader>p "_dP
 " Don't move cursor when using J
 nnoremap J mzJ`z
 
+" Append above line to current one
+nmap K kddpkJ
+
 " Move line or visual block up/down
 nnoremap <C-j> :mo +1<CR>
 nnoremap <C-k> :mo -2<CR>
@@ -475,46 +361,40 @@ nnoremap <leader>m <Plug>CommentaryLine
 vnoremap <leader>m <Plug>Commentary
 
 """ Splits
-" Create a new horizontal split
+" Create new splits
 nnoremap <leader>- :new<CR>
-" Create a new veritcal split
 nnoremap <leader>_ :vnew<CR>
 " Make all windows equal height & width
 nnoremap <leader>= <C-w>=
-" Move cursor to the left window
+" Move cursor to the left/right/top/bottom window
 nnoremap <leader>h <C-w>h
-" Move cursor to the right window
 nnoremap <leader>l <C-w>l
-" Move cursor to the window below
 nnoremap <leader>k <C-w>k
-" Move cursor to the window above
 nnoremap <leader>j <C-w>j
 " Move the current split window into its own tab
-nnoremap <leader>K <C-w>T
-
-""" Tabs
-" Open a new tab
-nnoremap <leader>+ :tabnew<CR>
-" Move to the next tab
-nnoremap <leader>] gt<CR>
-" Move to the previous tab
-nnoremap <leader>[ gT<CR>
-" Close the current tab and all its windows
-nnoremap <leader>w :tabc<CR>
-" Close all tabs except for the current one
-nnoremap <leader>W :tabo<CR>
+"nnoremap <leader>K <C-w>T
 
 """ Buffers
 " Open new buffer
 nnoremap <leader>B :enew<CR>
 " List all opened buffers & offer to move to one of them
 nnoremap <Leader>b :buffers<CR>:buffer<Space>
-" Go to the next buffer
-nnoremap <leader>} :bn<CR>
-" Go to the previous buffer
-nnoremap <leader>{ :bp<CR>
+" Go to the next/previous buffer
+nnoremap L :bn<CR>
+nnoremap H :bp<CR>
 " Delete buffer
 nnoremap <leader>q :bd<CR>
+
+""" Tabs
+" Open a new tab
+nnoremap <leader>+ :tabnew<CR>
+" Move to the next/previous tab
+nnoremap <leader>] gt<CR>
+nnoremap <leader>[ gT<CR>
+" Close the current tab and all its windows
+nnoremap <leader>w :tabc<CR>
+" Close all tabs except for the current one
+nnoremap <leader>W :tabo<CR>
 
 " ------------------------------------------------------------------------------
 " Custom Commands
