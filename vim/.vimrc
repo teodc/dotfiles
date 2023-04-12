@@ -20,13 +20,13 @@ endif
 " Options
 " ------------------------------------------------------------------------------
 
-colorscheme catppuccin_macchiato " Set color scheme
+colorscheme catppuccin_mocha " Set color scheme
 filetype plugin indent on " Enable filetype plugins
 syntax on " Enable syntax processing
 
 let &t_EI = "\e[2 q" " Use a block cursor in any other mode
 let &t_SI = "\e[6 q" " Use a bar cursor while in insert mode
-let g:lightline = {'colorscheme': 'catppuccin_macchiato'} " Lightline theme
+let g:lightline = {'colorscheme': 'catppuccin_mocha'} " Lightline theme
 let mapleader=" " " Define global map leader key
 let maplocalleader=" " " Define local map leader key
 

@@ -85,6 +85,11 @@ else
   export EDITOR="vim"
 fi
 
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
 # History stuff
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
@@ -119,6 +124,11 @@ alias llt="lsd -l --tree"
 alias v="vim"
 alias nv="nvim"
 #alias vim="nvim"
+
+alias t="tmux"
+alias tl="tmux ls"
+alias ta="tmux a"
+alias tk="tmux kill-session"
 
 alias rsync-cp="rsync -avz --progress -h"
 alias rsync-mv="rsync -avz --progress -h --remove-source-files"

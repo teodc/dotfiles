@@ -1,6 +1,6 @@
 # Dotfiles
 
-My (almost) up-to-date dotfiles and the list of software/packages I use.
+My (almost) up-to-date dotfiles and list of software/packages I use.
 
 > I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever it's available.
 
@@ -12,10 +12,11 @@ My (almost) up-to-date dotfiles and the list of software/packages I use.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Hack Nerd Fonts
+### Nerd Fonts
 
 ```
 brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
 brew install --cask font-jetbrainsmono-nerd-font
 ```
 
@@ -33,8 +34,10 @@ cp zsh/.zshrc ~
 
 ### Alacritty
 
-- `cp alacritty/alacritty.yml ~/.config/alacritty`
-- `git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppuccin`
+```
+cp alacritty/alacritty.yml ~/.config/alacritty
+git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppuccin
+```
 
 ### tmux
 
@@ -49,10 +52,10 @@ cp tmux/themes/catppuccin ~/.config/tmux/themes
 ```
 cp vim/.vimrc ~
 mkdir ~/.vim/colors
-curl https://raw.githubusercontent.com/catppuccin/vim/main/colors/catppuccin_macchiato.vim -o ~/.vim/colors/catppuccin_macchiato.vim
+curl https://raw.githubusercontent.com/catppuccin/vim/main/colors/catppuccin_mocha.vim -o ~/.vim/colors/catppuccin_mocha.vim
 mkdir -p ~/.vim/pack/plugins/start
 git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline
-curl https://raw.githubusercontent.com/catppuccin/vim/main/autoload/lightline/colorscheme/catppuccin_macchiato.vim -o ~/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme/catppuccin_macchiato.vim
+curl https://raw.githubusercontent.com/catppuccin/vim/main/autoload/lightline/colorscheme/catppuccin_mocha.vim -o ~/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme/catppuccin_mocha.vim
 ```
 
 ### git
@@ -73,7 +76,7 @@ cp lsd/config.yaml ~/.config/lsd
 
 ```
 mkdir -p "$(bat --config-dir)/themes"
-curl https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-macchiato.tmTheme -o "$(bat --config-dir)/themes/Catppuccin-macchiato.tmTheme"
+curl https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme -o "$(bat --config-dir)/themes/Catppuccin-mocha.tmTheme"
 bat cache --build
 cp bat/config $(bat --config-dir)
 ```
@@ -237,14 +240,14 @@ How I improved my window management on macOS:
 This way, I can directly jump to a specific Space depending on what I want to do. I usually have my Spaces organized like this:
 
 - Main screen:
-    * `Space 1`: Main browser & notes
-    * `Space 2`: Terminal
-    * `Space 3`: Code editor
-    * `Space 4`: API client
-    * `Space 5`: Database GUI
+  - `Space 1`: Main browser & notes
+  - `Space 2`: Terminal
+  - `Space 3`: Code editor
+  - `Space 4`: API client
+  - `Space 5`: Database GUI
 - Side screen:
-    * `Space 6`: Communication tools
-    * `Space 7`: Dev browser
-    * `Space 8`: Music app
+  - `Space 6`: Communication tools
+  - `Space 7`: Dev browser
+  - `Space 8`: Music app
 
 Enjoy!
