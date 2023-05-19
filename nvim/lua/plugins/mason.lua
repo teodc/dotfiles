@@ -2,7 +2,7 @@ return {
     "williamboman/mason.nvim",
     opts = {
         ensure_installed = {
-            -- LSPs
+            -- LSPs ------------------------------------------------------------
             "ansible-language-server",
             "bash-language-server",
             "css-lsp",
@@ -25,12 +25,11 @@ return {
             "typescript-language-server",
             "yaml-language-server",
 
-            -- DAPs
+            -- DAPs ------------------------------------------------------------
             "go-debug-adapter",
-            "js-debug-adapter",
             "php-debug-adapter",
 
-            -- Linters
+            -- Linters ---------------------------------------------------------
             "actionlint",
             "ansible-lint",
             "cfn-lint",
@@ -48,7 +47,7 @@ return {
             "xo",
             "yamllint",
 
-            -- Formatters
+            -- Formatters ------------------------------------------------------
             "beautysh",
             "black",
             "fixjson",

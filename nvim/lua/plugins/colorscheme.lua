@@ -2,7 +2,7 @@ return {
     -- Add colorschemes
     { "folke/tokyonight.nvim", lazy = true, opts = { style = "moon" } },
     { "ellisonleao/gruvbox.nvim", lazy = true },
-    { "catppuccin/nvim", lazy = true, name = "catppuccin", opts = { flavour = "macchiato" } },
+    { "catppuccin/nvim", lazy = true, name = "catppuccin", opts = { flavour = "mocha" } },
 
     -- Select colorscheme to load
     {

@@ -4,7 +4,7 @@ My (almost) up-to-date dotfiles and list of software/packages I use.
 
 > I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever it's available.
 
-## ⚠️ Prerequesites
+## ⚠️ Prerequisites
 
 ### Homebrew
 
