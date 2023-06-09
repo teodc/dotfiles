@@ -5,11 +5,13 @@
 local map = vim.keymap
 
 -- This stays between us
-map.set({ "i", "v" }, "<C-c>", "<Esc>", { noremap = true })
+map.set({ "n", "i", "v" }, "<C-c>", "<Esc>", { noremap = true })
 
 -- File operations
 map.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file", noremap = true })
+map.set({ "i", "v" }, "<C-s>", "<Esc><cmd>w<cr>", { desc = "Save file", noremap = true })
 map.set("n", "<C-q>", "<cmd>q<cr>", { desc = "Close file", noremap = true })
+map.set({ "i", "v" }, "<C-q>", "<Esc><cmd>q<cr>", { desc = "Close file", noremap = true })
 
 -- Center screen when navigating search results
 map.set("n", "n", "nzzzv", { noremap = true })

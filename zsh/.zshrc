@@ -69,15 +69,19 @@ source $ZSH/oh-my-zsh.sh
 # User Configuration
 # ------------------------------------------------------------------------------
 
-export PATH="$PATH:/usr/local/bin:/usr/local/sbin:/opt/homebrew/bin:/opt/homebrew/sbin"
-export MANPATH="$MANPATH:/usr/local/manh"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export PATH="/Users/theo/.local/bin:$PATH"
+export MANPATH="/usr/local/man:$MANPATH"
 export LANG=en_US.UTF-8
 #export ARCHFLAGS="-arch x86_64"
 export SSH_KEY_PATH="~/.ssh/id_ed25519"
 export XDG_CONFIG_HOME="$HOME/.config"
+export TMUX_TMPDIR="$HOME/.tmux/tmp"
 export CLICOLOR=1
 export HOMEBREW_GITHUB_API_TOKEN=SECRET
-export GOPATH="$HOME/Workspace/go"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -103,12 +107,13 @@ unsetopt correct
 # Aliases
 # ------------------------------------------------------------------------------
 
+alias zshsrc="source ~/.zshrc"
 alias zshconf="vim ~/.zshrc"
 alias sshconf="vim ~/.ssh/config"
 alias vimconf="vim ~/.vimrc"
-alias tmuxconf="vim ~/.tmux.conf"
+alias tmuconf="vim ~/.tmux.conf"
 alias gitconf="vim ~/.gitconfig"
-alias alacrittyconf="vim ~/.config/alacritty/alacritty.yml"
+alias alaconf="vim ~/.config/alacritty/alacritty.yml"
 
 alias h="history"
 alias hg="history | grep"
@@ -127,6 +132,7 @@ alias nv="nvim"
 
 alias t="tmux"
 alias tl="tmux ls"
+alias tn="tmux new"
 alias ta="tmux a"
 alias tk="tmux kill-session"
 
@@ -134,8 +140,6 @@ alias rsync-cp="rsync -avz --progress -h"
 alias rsync-mv="rsync -avz --progress -h --remove-source-files"
 alias rsync-update="rsync -avzu --progress -h"
 alias rsync-sync="rsync -avzu --delete --progress -h"
-
-alias tw="task"
 
 alias lzg="lazygit"
 alias lzd="lazydocker"

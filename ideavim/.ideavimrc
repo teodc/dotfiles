@@ -54,7 +54,8 @@ set undoreload=5000
 set startofline
 
 " Default clipboard
-set clipboard="ideaput"
+set clipboard=""
+set clipboard+=ideaput
 
 " Default 'g' flag for ':s'
 set gdefault
@@ -100,10 +101,11 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " See: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
-nmap <leader>f <Plug>(easymotion-bd-f)
-nmap <leader>F <Plug>(easymotion-bd-f2)
-nmap <leader>t <Plug>(easymotion-bd-t)
-nmap <leader>T <Plug>(easymotion-bd-t2)
+"let g:EasyMotion_override_acejump = 0
+"nmap <leader>f <Plug>(easymotion-bd-f)
+"nmap <leader>F <Plug>(easymotion-bd-f2)
+"nmap <leader>t <Plug>(easymotion-bd-t)
+"nmap <leader>T <Plug>(easymotion-bd-t2)
 
 """ NERDTree
 " Basic Usage:
@@ -246,12 +248,17 @@ nnoremap <Space> <NOP>
 vnoremap <Space> <NOP>
 
 " This stays between us
+nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
 " Save & close current file
 nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+vnoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :q<CR>
+inoremap <C-q> <Esc>:q<CR>
+vnoremap <C-q> <Esc>:q<CR>
 
 " Redraw screen and clear current search highlighting
 nnoremap <C-z> :nohl<CR><C-l>
@@ -301,10 +308,10 @@ nmap K kddpkJ
 "vnoremap <C-k> :mo '<-2<CR>gv
 
 " Indent/outdent line or visual block
-"nnoremap <C-h> <<
-"nnoremap <C-l> >>
-"vnoremap <C-h> <gv
-"vnoremap <C-l> >gv
+nnoremap <C-h> <<
+nnoremap <C-l> >>
+vnoremap <C-h> <gv
+vnoremap <C-l> >gv
 
 " Duplicate line or visual block without yanking it
 "nnoremap <leader>o :co .<CR>
@@ -362,11 +369,11 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 
 """ Tool windows
 map <leader>1 <Action>(ActivateProjectToolWindow)
-map <leader>2 <Action>(ActivateStructureToolWindow)
-map <leader>3 <Action>(ActivateDatabaseToolWindow)
+map <leader>2 <Action>(ActivateBookmarksToolWindow)
+map <leader>3 <Action>(ActivateStructureToolWindow)
 map <leader>4 <Action>(ActivateTerminalToolWindow)
-map <leader>5 <Action>(ActivateProblemsViewToolWindow)
-map <leader>6 <Action>(ActivateTODOToolWindow)
+map <leader>5 <Action>(ActivateTODOToolWindow)
+map <leader>6 <Action>(ActivateProblemsViewToolWindow)
 "map <leader>? <Action>(ActivateVersionControlToolWindow)
 "map <leader>? <Action>(ActivateCommitToolWindow)
 "map <leader>? <Action>(Activategithub.copilotToolWindowToolWindow)
@@ -374,7 +381,8 @@ map <leader>0 <Action>(ActivateNotificationsToolWindow)
 map <leader>` <Action>(HideAllWindows)
 
 """ Files
-map <leader>t <Action>(NewFile)
+"map <leader>t <Action>(NewFile)
+map <leader>t <Action>(NewElement)
 map <leader>x <Action>(RecentFiles)
 map <leader>! <Action>(SelectInProjectView)
 
@@ -389,11 +397,11 @@ map <leader>? <Action>(FindInPath)
 map <leader>n <Action>(FindNext)
 map <leader>N <Action>(FindPrevious)
 map <leader>' <Action>(Replace)
-map <leader>\" <Action>(ReplaceInPath)
+map <leader>" <Action>(ReplaceInPath)
 
 """ Quick selection
 map <C-v> <Action>(EditorSelectWord)
-map <C-V> <Action>(EditorUnSelectWord)
+"map <C-?> <Action>(EditorUnSelectWord)
 map <C-n> <Action>(SelectNextOccurrence)
 map <C-p> <Action>(UnselectPreviousOccurrence)
 map <C-m> <Action>(SelectAllOccurrences)
@@ -411,8 +419,9 @@ map <leader>gm <Action>(GotoSuperMethod)
 map <leader>gu <Action>(FindUsages)
 
 """ Cursor jumps
-map [p <Action>(Back)
-map ]p <Action>(Forward)
+map <leader>f <Action>(AceAction)
+map <leader>[ <Action>(Back)
+map <leader>] <Action>(Forward)
 map [c <Action>(JumpToLastChange)
 map ]c <Action>(JumpToNextChange)
 map [m <Action>(MethodUp)
@@ -421,8 +430,8 @@ map ]m <Action>(MethodDown)
 """ Move line/selection
 map <C-k> <Action>(MoveLineUp)
 map <C-j> <Action>(MoveLineDown)
-map <C-l> <Action>(EditorIndentSelection)
-map <C-h> <Action>(EditorUnindentSelection)
+"map <C-l> <Action>(EditorIndentSelection)
+"map <C-h> <Action>(EditorUnindentSelection)
 
 """ Line operations
 map <leader>D <Action>(EditorDeleteLine)
@@ -442,7 +451,7 @@ map <leader>ci <Action>(OptimizeImports)
 map <leader>ca <Action>(AutoIndentLines)
 
 """ Refactoring
-map <leader>R <Action>(Refactorings).QuickListPopupAction
+map <leader>R <Action>(Refactorings.QuickListPopupAction)
 map <leader>rn <Action>(RenameElement)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rm <Action>(ExtractMethod)
@@ -454,17 +463,16 @@ map <leader>I <Action>(QuickImplementations)
 map <leader>G <Action>(Generate)
 
 """ Completion
-map <leader>q <Action>(CodeCompletion)
-map <leader>Q <Action>(SmartTypeCompletion)
+"map <leader>? <Action>(CodeCompletion)
+"map <leader>? <Action>(SmartTypeCompletion)
 map <leader>\ <Action>(EditorCompleteStatement)
+map <C-a> <Action>(QuickJavaDoc)
 
 """ Splits
 "...
 
 """ Tabs
-map <leader>] <Action>(NextTab)
 map L <Action>(NextTab)
-map <leader>[ <Action>(PreviousTab)
 map H <Action>(PreviousTab)
 map <leader>w <Action>(CloseEditor)
 map <leader>W <Action>(CloseAllEditorsButActive)

@@ -292,12 +292,17 @@ nnoremap <Space> <NOP>
 vnoremap <Space> <NOP>
 
 " This stays between us
+nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
 " Save & close current file
 nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+vnoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :q<CR>
+inoremap <C-q> <Esc>:q<CR>
+vnoremap <C-q> <Esc>:q<CR>
 
 " Redraw screen and clear current search highlighting
 nnoremap <C-z> :nohl<CR><C-l>

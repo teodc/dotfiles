@@ -111,6 +111,8 @@ brew install dotenv-linter
 brew install luarocks
 luarocks install lanes
 markuplint?
+
+cp -R nvim ~/.config
 ```
 
 ## 📦 Packages & Apps
