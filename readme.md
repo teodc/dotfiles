@@ -17,7 +17,7 @@ My (almost) up-to-date dotfiles and list of software/packages I use.
 ```
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
-brew install --cask font-jetbrainsmono-nerd-font
+brew install --cask font-jetbrains-mono-nerd-font
 ```
 
 ## 🛠 Configs
@@ -44,14 +44,14 @@ git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppu
 ```
 cp tmux/.tmux.conf ~
 mkdir -p ~/.config/tmux/themes
-cp tmux/themes/catppuccin ~/.config/tmux/themes
+cp -R tmux/themes/catppuccin ~/.config/tmux/themes
 ```
 
 ### vim
 
 ```
 cp vim/.vimrc ~
-mkdir ~/.vim/colors
+mkdir -p ~/.vim/colors
 curl https://raw.githubusercontent.com/catppuccin/vim/main/colors/catppuccin_mocha.vim -o ~/.vim/colors/catppuccin_mocha.vim
 mkdir -p ~/.vim/pack/plugins/start
 git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline
@@ -64,11 +64,13 @@ curl https://raw.githubusercontent.com/catppuccin/vim/main/autoload/lightline/co
 cp git/.gitconfig ~/.gitconfig
 ```
 
-> To set the signing key check how to [manage commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification)
+> To set the signing key check how
+> to [manage commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification)
 
 ### lsd
 
 ```
+mkdir -p ~/.config/lsd
 cp lsd/config.yaml ~/.config/lsd
 ```
 
@@ -84,7 +86,7 @@ cp bat/config $(bat --config-dir)
 ### lf
 
 ```
-mkdir ~/.config/lf
+mkdir -p ~/.config/lf
 cp lf/* ~/.config/lf
 ```
 
@@ -97,7 +99,7 @@ cp amethyst/.amethyst.yml ~
 ### Lazygit
 
 ```
-mkdir ~/.config/lazygit
+mkdir -p ~/.config/lazygit
 cp lazygit/* ~/.config/lazygit
 ```
 
@@ -126,7 +128,6 @@ ansible
 awscli
 bat
 black
-boundary
 certbot
 composer
 coreutils
@@ -159,6 +160,7 @@ php
 php-cs-fixer
 phpstan
 pnpm
+poetry
 psalm
 pwgen
 pylint
@@ -167,6 +169,7 @@ ripgrep
 rust
 screen
 ssh
+symfony-cli/tap/symfony-cli
 task
 tcpdump
 terraform
@@ -233,23 +236,23 @@ Twitter
 How I improved my window management on macOS:
 
 - Disable `Automatically rearrange Spaces based on most recent use`.
-- Create a dedicated Space for each app or app type in the `Mission Control` view.
+- Create a dedicated Space for each app (or type of app) in the `Mission Control` view.
 - Assign each app to its own Space with the `Assign To` option from the Dock.
 - Set the keyboard shortcuts to switch directly to Spaces: `Space 1`->`Option+1`, `Space 2`->`Option+2`, etc.
-- Use `Amethyst` (or `Yabai`) to tile and manage windows.
-- Use the `fullscreen` layout as default layout (and never use "Full Screen").
+- Use `Amethyst` (or `Yabai`) to manage and tile windows.
+- Default to Amethyst's `fullscreen` layout (and don't use Mac's "Full Screen").
 
-This way, I can directly jump to a specific Space depending on what I want to do. I usually have my Spaces organized like this:
+This way, I can directly jump to a specific Space based on what I want to do.
+I usually have my Spaces organized like this:
 
 - Main screen:
-  - `Space 1`: Main browser & notes
-  - `Space 2`: Terminal
-  - `Space 3`: Code editor
-  - `Space 4`: API client
-  - `Space 5`: Database GUI
+    - `Space 1`: Main browser & notes
+    - `Space 2`: Terminal
+    - `Space 3`: Code editor
+    - `Space 4`: API client
+    - `Space 5`: Database GUI
 - Side screen:
-  - `Space 6`: Communication tools
-  - `Space 7`: Dev browser
-  - `Space 8`: Music app
+    - `Space 6`: Communication tools
+    - `Space 7`: Dev browser
+    - `Space 8`: Music app
 
-Enjoy!
