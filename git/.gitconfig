@@ -19,6 +19,8 @@
     program = gpg
 [tag]
     gpgSign = true
+[init]
+    defaultBranch = main
 [fetch]
     prune = true
 [push]
