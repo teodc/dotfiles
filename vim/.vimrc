@@ -36,7 +36,7 @@ set backspace=eol,start,indent " Configure backspace so it acts as it should
 set backupdir=~/.vim/backups " Backups path
 set clipboard="" " Default clipboard
 set cmdheight=1 " Use only 1 line for the command-line
-set colorcolumn=120 " Show a column
+"set colorcolumn=120 " Show a column
 set cursorline " Highlight current line
 set directory=~/.vim/swaps " Swap files path
 set encoding=utf8 " Set UTF8 as standard encoding
@@ -339,11 +339,21 @@ nnoremap <leader>P "+P
 " Paste without losing selection from the clipboard
 xnoremap <leader>p "_dP
 
-" Don't move cursor when using J
-nnoremap J mzJ`z
+" Remap J and don't move cursor when using it
+nnoremap <leader>u mzJ`z
 
 " Append above line to current one
-nmap K kddpkJ
+"nmap <leader>k kddpkJ
+
+nnoremap L $
+vnoremap L $
+nnoremap H ^
+vnoremap H ^
+
+nnoremap J }
+vnoremap J }
+nnoremap K {
+vnoremap K {
 
 " Move line or visual block up/down
 nnoremap <C-j> :mo +1<CR>
@@ -381,21 +391,21 @@ nnoremap <leader>j <C-w>j
 
 """ Buffers
 " Open new buffer
-nnoremap <leader>B :enew<CR>
+nnoremap <leader>b :enew<CR>
 " List all opened buffers & offer to move to one of them
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
+nnoremap <Leader>B :buffers<CR>:buffer<Space>
 " Go to the next/previous buffer
-nnoremap L :bn<CR>
-nnoremap H :bp<CR>
+nnoremap ]b :bn<CR>
+nnoremap [b :bp<CR>
 " Delete buffer
 nnoremap <leader>q :bd<CR>
 
 """ Tabs
 " Open a new tab
-nnoremap <leader>+ :tabnew<CR>
+nnoremap <leader>g :tabnew<CR>
 " Move to the next/previous tab
-nnoremap <leader>] gt<CR>
-nnoremap <leader>[ gT<CR>
+nnoremap ]t gt<CR>
+nnoremap [t gT<CR>
 " Close the current tab and all its windows
 nnoremap <leader>w :tabc<CR>
 " Close all tabs except for the current one

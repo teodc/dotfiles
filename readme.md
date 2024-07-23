@@ -1,77 +1,73 @@
 # Dotfiles
 
-My (almost) up-to-date dotfiles and list of software/packages I use.
-
-> I use the [Catppuccin](https://github.com/catppuccin/catppuccin) theme wherever it's available.
-
-## ⚠️ Prerequisites
+## 🧰 Prerequisites
 
 ### Homebrew
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+cp Brewfile ~/
+brew bundle install --file=~/Brewfile
 ```
 
-### Nerd Fonts
+### Oh My Zsh
 
 ```
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
-brew install --cask font-jetbrains-mono-nerd-font
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-## 🛠 Configs
+## 🛠 Installations
 
 ### zsh
 
 ```
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
-cp zsh/teodc.zsh-theme $ZSH_CUSTOM/themes
-cp zsh/.zshrc ~
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+cp zsh/.zshrc ~/
 ```
 
 ### Alacritty
 
 ```
-cp alacritty/alacritty.yml ~/.config/alacritty
+cp alacritty/alacritty.yml ~/.config/alacritty/
 git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppuccin
 ```
 
 ### tmux
 
 ```
-cp tmux/.tmux.conf ~
-mkdir -p ~/.config/tmux/themes
-cp -R tmux/themes/catppuccin ~/.config/tmux/themes
+mkdir -p ~/.config/tmux
+cp tmux/tmux.conf ~/.config/tmux/
+mkdir -p ~/.tmux/plugins/
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
 
 ### vim
 
 ```
-cp vim/.vimrc ~
+cp vim/.vimrc ~/
 mkdir -p ~/.vim/colors
 curl https://raw.githubusercontent.com/catppuccin/vim/main/colors/catppuccin_mocha.vim -o ~/.vim/colors/catppuccin_mocha.vim
 mkdir -p ~/.vim/pack/plugins/start
 git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline
 curl https://raw.githubusercontent.com/catppuccin/vim/main/autoload/lightline/colorscheme/catppuccin_mocha.vim -o ~/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme/catppuccin_mocha.vim
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/swaps
+mkdir -p ~/.vim/undo
 ```
 
 ### git
 
 ```
-cp git/.gitconfig ~/.gitconfig
+cp git/.gitconfig ~/
 ```
-
-> To set the signing key check how
-> to [manage commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification)
 
 ### lsd
 
 ```
 mkdir -p ~/.config/lsd
-cp lsd/config.yaml ~/.config/lsd
+cp lsd/config.yaml ~/.config/lsd/
 ```
 
 ### bat
@@ -87,148 +83,55 @@ cp bat/config $(bat --config-dir)
 
 ```
 mkdir -p ~/.config/lf
-cp lf/* ~/.config/lf
+cp lf/* ~/.config/lf/
 ```
 
 ### Amethyst
 
 ```
-cp amethyst/.amethyst.yml ~
+cp amethyst/.amethyst.yml ~/
+```
+
+### IdeaVim
+
+```
+cp ideavim/.ideavimrc ~/
 ```
 
 ### Lazygit
 
 ```
 mkdir -p ~/.config/lazygit
-cp lazygit/* ~/.config/lazygit
+cp lazygit/config.yml ~/.config/lazygit/
 ```
 
-### Nvim
-
-> WIP
+### Starship
 
 ```
-brew install checkmake
-brew install dotenv-linter
-brew install luarocks
-luarocks install lanes
-markuplint?
-
-cp -R nvim ~/.config
+mkdir -p ~/.config/starship
+cp starship/starship.toml ~/.config/starship/
 ```
 
-## 📦 Packages & Apps
-
-### Homebrew Packages
-
-> Install with `brew install <package_name>`
+### Sublime Text
 
 ```
-ansible
-awscli
-bat
-black
-certbot
-composer
-coreutils
-curl
-diff-so-fancy
-dnsmasq
-docker-clean
-eksctl
-elixir
-fd
-flake8
-fzf
-gh
-git
-gnu-sed
-gnupg
-go
-htop
-iperf3
-isort
-jq
-kubectx
-lazydocker
-lazygit
-lf
-lsd
-nmap
-node
-php
-php-cs-fixer
-phpstan
-pnpm
-poetry
-psalm
-pwgen
-pylint
-python
-ripgrep
-rust
-screen
-ssh
-symfony-cli/tap/symfony-cli
-task
-tcpdump
-terraform
-tmux
-trash-cli
-tree
-unzip
-vault
-vim
-vit
-wget
-zsh
+# From the app: Preferences > Tools > Install Package Control
+git clone https://github.com/catppuccin/sublime-text.git ~/Library/Application\ Support/Sublime\ Text/Packages/Catppuccin
+cp sublime-text/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text/Packages/User/Preferences.sublime-settings
 ```
 
-### Homebrew Cask Apps
+## Extra Apps
 
-> Install with `brew install --cask <app_name>`
+### Non-cask Apps
 
 ```
-alacritty
-amethyst
-beamer
-brave-browser
-cyberduck
-discord
-docker
-firefox
-github
-google-chrome
-google-drive
-grammarly
-grammarly-desktop
-iina
-insomnia
-ipvanish-vpn
-macs-fan-control
-obs
-plex-media-server
-sequel-ace
-skype
-slack
-sloth
-spacelauncher
-sublime-text
-tableplus
-the-unarchiver
-transmission
-visual-studio-code
-vlc
-zoom
+...
 ```
 
 ### App Store Apps
 
 ```
-EasyRes
-ReadKit
 Simplenote
-Twitter
 ```
 
 ## 💰 macOS Productivity Tips

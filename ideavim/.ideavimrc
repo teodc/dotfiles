@@ -74,19 +74,25 @@ set sidescrolloff=10
 
 " Time to wait for key codes
 set timeout
-set timeoutlen=300
+set timeoutlen=400
 
 """ IdeaVim only commands
 " Keep the mode that was enabled before starting a refactoring
 set idearefactormode=keep
 " Behavior of IdeaVim icon in the status bar
-set ideastatusicon=gray
+set ideastatusicon=enabled
 " Execution of :wa (save all) command on :w (save)
 set ideawrite=all
 " Define the list of additional buffers where IdeaVim is enabled
 set ideavimsupport=dialog
 " Extended join behaviors (https://github.com/JetBrains/ideavim/wiki/ideajoin-examples)
 set ideajoin
+" Sync IJ bookmarks and Vim marks
+set ideamarks
+" https://github.com/TheBlob42/idea-which-key?tab=readme-ov-file#activation
+" set notimeout " disable the timeout option
+" set timeoutlen=5000 " increase the timeoutlen (default: 1000), don't add space around the equal sign
+" set which-key
 
 " ------------------------------------------------------------------------------
 " Plugins
@@ -295,11 +301,21 @@ nnoremap <leader>P "+P
 " Paste without losing selection from the clipboard
 xnoremap <leader>p "_dP
 
-" Don't move cursor when using J
-nnoremap J mzJ`z
+" Remap J and don't move cursor when using it
+nnoremap <leader>u mzJ`z
 
 " Append above line to current one
-nmap K kddpkJ
+"nmap <leader>U kddpkJ
+
+nnoremap L $
+vnoremap L $
+nnoremap H ^
+vnoremap H ^
+
+nnoremap J }
+vnoremap J }
+nnoremap K {
+vnoremap K {
 
 " Move line or visual block up/down
 "nnoremap <C-j> :mo +1<CR>
@@ -308,10 +324,10 @@ nmap K kddpkJ
 "vnoremap <C-k> :mo '<-2<CR>gv
 
 " Indent/outdent line or visual block
-nnoremap <C-h> <<
-nnoremap <C-l> >>
-vnoremap <C-h> <gv
-vnoremap <C-l> >gv
+"nnoremap <C-h> <<
+"nnoremap <C-l> >>
+"vnoremap <C-h> <gv
+"vnoremap <C-l> >gv
 
 " Duplicate line or visual block without yanking it
 "nnoremap <leader>o :co .<CR>
@@ -337,25 +353,29 @@ nnoremap <leader>j <C-w>j
 
 """ Buffers
 " Open new buffer
-"nnoremap <leader>B :enew<CR>
+"nnoremap <leader>b :enew<CR>
 " List all opened buffers & offer to move to one of them
-"nnoremap <Leader>b :buffers<CR>:buffer<Space>
+"nnoremap <Leader>B :buffers<CR>:buffer<Space>
 " Go to the next/previous buffer
-"nnoremap L :bn<CR>
-"nnoremap H :bp<CR>
+"nnoremap ]b :bn<CR>
+"nnoremap [b :bp<CR>
 " Delete buffer
 "nnoremap <leader>q :bd<CR>
 
 """ Tabs
 " Open a new tab
-"nnoremap <leader>+ :tabnew<CR>
+"nnoremap <leader>g :tabnew<CR>
 " Move to the next/previous tab
-"nnoremap <leader>] gt<CR>
-"nnoremap <leader>[ gT<CR>
+"nnoremap ]t gt<CR>
+"nnoremap [t gT<CR>
 " Close the current tab and all its windows
 "nnoremap <leader>w :tabc<CR>
 " Close all tabs except for the current one
 "nnoremap <leader>W :tabo<CR>
+
+# Remap number increment & decrement
+nnoremap <C-g> <C-a>
+vnoremap <C-g> <C-a>gv
 
 " ------------------------------------------------------------------------------
 " IDE Actions
@@ -401,13 +421,14 @@ map <leader>' <Action>(Replace)
 map <leader>" <Action>(ReplaceInPath)
 
 """ Quick selection
-map <C-v> <Action>(EditorSelectWord)
-"map <C-?> <Action>(EditorUnSelectWord)
+map <C-f> <Action>(EditorSelectWord)
+map <C-b> <Action>(EditorUnSelectWord)
 map <C-n> <Action>(SelectNextOccurrence)
 map <C-p> <Action>(UnselectPreviousOccurrence)
 map <C-m> <Action>(SelectAllOccurrences)
 
 """ Navigate code
+map <leader>a <Action>(ShowNavBar)
 map <leader>s <Action>(FileStructurePopup)
 map <leader>gs <Action>(GotoSymbol)
 map <leader>ga <Action>(GotoAction)
@@ -431,8 +452,8 @@ map ]m <Action>(MethodDown)
 """ Move line/selection
 map <C-k> <Action>(MoveLineUp)
 map <C-j> <Action>(MoveLineDown)
-"map <C-l> <Action>(EditorIndentSelection)
-"map <C-h> <Action>(EditorUnindentSelection)
+map <C-l> <Action>(EditorIndentSelection)
+map <C-h> <Action>(EditorUnindentSelection)
 
 """ Line operations
 map <leader>D <Action>(EditorDeleteLine)
@@ -473,12 +494,12 @@ map <C-a> <Action>(QuickJavaDoc)
 "...
 
 """ Tabs
-map L <Action>(NextTab)
-map H <Action>(PreviousTab)
+"map ? <Action>(NextTab)
+"map ? <Action>(PreviousTab)
 map <leader>w <Action>(CloseEditor)
-map <leader>W <Action>(CloseAllEditorsButActive)
 "map <leader>? <Action>(CloseAllEditors)
-"map <leader>? <Action>(PinActiveEditorTab)
+map <leader>W <Action>(CloseAllEditorsButActive)
+" map <leader>? <Action>(PinActiveEditorTab)
 
 """ Expand/collapse
 "map <leader>? <Action>(ExpandCollapseToggleAction)
@@ -501,6 +522,7 @@ map <leader>W <Action>(CloseAllEditorsButActive)
 """ Resolve IDE shortcut conflicts
 sethandler <C-a> a:vim
 sethandler <C-b> a:vim
+sethandler <C-c> a:vim
 sethandler <C-d> a:vim
 sethandler <C-e> a:vim
 sethandler <C-f> a:vim
@@ -514,8 +536,14 @@ sethandler <C-m> a:vim
 sethandler <C-n> a:vim
 sethandler <C-o> a:vim
 sethandler <C-p> a:vim
+sethandler <C-q> a:vim
 sethandler <C-r> a:vim
 sethandler <C-s> a:vim
 sethandler <C-t> a:vim
+sethandler <C-u> a:vim
 sethandler <C-v> a:vim
 sethandler <C-w> a:vim
+sethandler <C-x> a:vim
+sethandler <C-y> a:vim
+sethandler <C-z> a:vim
+

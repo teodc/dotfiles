@@ -6,7 +6,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Theme
-ZSH_THEME="teodc"
+#ZSH_THEME="teodc"
 
 # Use case-sensitive completion
 #CASE_SENSITIVE="true"
@@ -48,16 +48,11 @@ HIST_STAMPS="yyyy-mm-dd"
 # Plugins to load (plugins can be found in $ZSH/plugins/ and $ZSH_CUSTOM/plugins/)
 plugins=(
   aws
-  composer
-  docker
-  docker-compose
-  gh
-  kubectl
-  pip
-  poetry
-  terraform
-  z
+  fzf
+  git
+  httpie
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 # Enable the zsh-completions plugin
@@ -70,18 +65,30 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------------------------------------------------------
 
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-export PATH="/Users/theo/.local/bin:$PATH"
-export MANPATH="/usr/local/man:$MANPATH"
+export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
+export PATH="./vendor/bin:$PATH"
+export PATH="./bin:$PATH"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+#export GOPATH="$HOME/go"
+#export PATH="$GOPATH/bin:$PATH"
+
 export LANG=en_US.UTF-8
-#export ARCHFLAGS="-arch x86_64"
-export SSH_KEY_PATH="~/.ssh/id_ed25519"
+export ARCHFLAGS="arm64"
+export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TMUX_TMPDIR="$HOME/.tmux/tmp"
 export CLICOLOR=1
-export HOMEBREW_GITHUB_API_TOKEN=SECRET
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export HOMEBREW_GITHUB_API_TOKEN=*****
+export HOMEBREW_NO_ANALYTICS=1
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export DOCKER_DEFAULT_PLATFORM="linux/arm64"
+
+# Fixes the GPG "Inappropriate ioctl for device" issue
+export GPG_TTY=$(tty)
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -107,13 +114,17 @@ unsetopt correct
 # Aliases
 # ------------------------------------------------------------------------------
 
-alias zshsrc="source ~/.zshrc"
-alias zshconf="vim ~/.zshrc"
-alias sshconf="vim ~/.ssh/config"
-alias vimconf="vim ~/.vimrc"
-alias tmuconf="vim ~/.tmux.conf"
-alias gitconf="vim ~/.gitconfig"
-alias alaconf="vim ~/.config/alacritty/alacritty.yml"
+alias zshsrc="source $HOME/.zshrc"
+alias tmusrc="tmux source $XDG_CONFIG_HOME/tmux/tmux.conf"
+
+alias zshconf="vim $HOME/.zshrc"
+alias sshconf="vim $HOME/.ssh/config"
+alias vimconf="vim $HOME/.vimrc"
+alias tmuconf="vim $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias gitconf="vim $HOME/.gitconfig"
+alias alaconf="vim $XDG_CONFIG_HOME/alacritty/alacritty.toml"
+alias ideconf="vim $HOME/.ideavimrc"
+alias ameconf="vim ~/.amethyst.yml"
 
 alias h="history"
 alias hg="history | grep"
@@ -121,13 +132,13 @@ alias hgi="history | grep -i"
 
 alias cat="bat"
 
-alias ls="lsd"
-alias ll="lsd -l"
-alias lst="lsd --tree"
-alias llt="lsd -l --tree"
+alias ls="lsd -a"
+alias ll="lsd -al"
+alias lst="lsd -a --tree"
+alias llt="lsd -al --tree"
 
 alias v="vim"
-alias nv="nvim"
+#alias nv="nvim"
 #alias vim="nvim"
 
 alias t="tmux"
@@ -146,7 +157,7 @@ alias lzd="lazydocker"
 
 alias artisan="php artisan"
 alias tinker="php artisan tinker"
-alias symfony="~/.symfony/bin/symfony"
+alias console="php bin/console"
 
 alias py="python3"
 alias pypip="python3 -m pip"
@@ -155,3 +166,11 @@ alias pyvenv="python3 -m venv"
 alias dc="docker compose"
 alias dce="docker compose exec"
 
+alias kc="kubectl"
+
+# ------------------------------------------------------------------------------
+# Load Extras
+# ------------------------------------------------------------------------------
+
+eval "$(fzf --zsh)"
+eval "$(starship init zsh)"
