@@ -79,11 +79,13 @@ bat cache --build
 cp bat/config $(bat --config-dir)
 ```
 
-### lf
+### yazi
 
 ```
-mkdir -p ~/.config/lf
-cp lf/* ~/.config/lf/
+mkdir -p ~/.config/yazi
+cp yazi/yazi.toml ~/.config/yazi
+curl https://raw.githubusercontent.com/catppuccin/yazi/main/themes/mocha.toml -o ~/.config/yazi/theme.toml
+curl https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme -o ~/.config/yazi/Catppuccin-mocha.tmTheme
 ```
 
 ### Amethyst

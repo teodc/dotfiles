@@ -1,0 +1,23 @@
+[manager]
+linemode = "permissions"
+mouse_events = [ "click", "scroll" ]
+ratio = [ 1, 4, 3 ]
+scrolloff = 5
+show_hidden = true
+show_symlink = true
+sort_by = "natural"
+sort_dir_first = true
+sort_reverse = false
+sort_sensitive = false
+sort_translit = false
+
+[preview]
+cache_dir = ""
+image_filter = "triangle"
+image_quality = 75
+max_height = 900
+max_width = 600
+sixel_fraction = 15
+tab_size = 2
+ueberzug_offset = [ 0, 0, 0, 0 ]
+ueberzug_scale = 1
