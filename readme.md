@@ -122,6 +122,15 @@ git clone https://github.com/catppuccin/sublime-text.git ~/Library/Application\ 
 cp sublime-text/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text/Packages/User/Preferences.sublime-settings
 ```
 
+### Zed
+
+```
+mkdir -p ~/.config/zed
+cp zed/* ~/.config/zed/
+```
+
+> Extensions: HTML, Catppuccin Themes, Dockerfile, TOML, Docker Compose, Lua, Basher, Ruff
+
 ## Extra Apps
 
 ### Non-cask Apps
