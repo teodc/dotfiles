@@ -1,48 +1,61 @@
-[user]
-    name = teodc
-    #email = t*****@gmail.com
-    #signingKey = SECRET
-[color]
-    ui = auto
-[core]
-    editor = vim
-    pager = diff-so-fancy | less --tabs=4 -RFX
-[interactive]
-    diffFilter = diff-so-fancy --patch
-[status]
-    showUntrackedFiles = all
-[diff]
-    renames = true
-[commit]
-    gpgSign = true
-[gpg]
-    program = gpg
-[tag]
-    gpgSign = true
-[init]
-    defaultBranch = main
-[fetch]
-    prune = true
-[push]
-    default = simple
-    followTags = true
-[pull]
-    rebase = true
-[merge]
-    ff = only
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-[log]
-    abbrevCommit = true
-    decorate = short
-    date = iso
-    #showSignature = true
-[format]
-    pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 [alias]
     amend = commit --amend
     fp = fetch -p
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate=short --date=iso
+    wip = commit -m "WIP"
+    spull = "!f() { git switch \"$1\" && git pull && git switch -; }; f"
+[color]
+    ui = true
+[commit]
+    gpgSign = true
+    verbose = false
+[core]
+    editor = vim
+    pager = diff-so-fancy | less --tabs=4 -RF
+[credential]
+    helper = osxkeychain
+[diff]
+    algorithm = histogram
+    renames = true
+[fetch]
+    prune = true
+    prunetags = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    process = git-lfs filter-process
+    required = true
+    smudge = git-lfs smudge -- %f
+[format]
+    pretty = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+[gpg]
+    format = ssh
+[init]
+    defaultBranch = main
+[interactive]
+    diffFilter = diff-so-fancy --patch
+[log]
+    abbrevCommit = true
+    date = iso
+    decorate = short
+    #showSignature = true
+[merge]
+    ff = only
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+    default = simple
+    followTags = true
+[rebase]
+    #autosquash = true
+    autostash = false
+[rerere]
+    enabled = true
+[status]
+    showUntrackedFiles = all
+[tag]
+    gpgSign = true
+[user]
+    #email = ***@***.***
+    name = Théo
+    signingKey = ~/.ssh/id_ed25519
