@@ -1,15 +1,43 @@
 // https://zed.dev/docs/key-bindings
 [
-    {
-        "context": "Workspace",
-        "bindings": {
-            "shift shift": "file_finder::Toggle"
-        }
-    },
-    {
-        "context": "Editor",
-        "bindings": {
-            // "j k": ["workspace::SendKeystrokes", "escape"]
-        }
-    }
+	{
+		"context": "Workspace",
+		"bindings": {}
+	},
+	{
+		"context": "Editor",
+		"bindings": {}
+	},
+	{
+		"context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+		"bindings": {}
+	},
+	{
+		"context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+		"bindings": {}
+	},
+	{
+		"context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+		"bindings": {}
+	},
+	{
+		"context": "Editor && vim_mode == insert && !VimWaiting && !menu",
+		"bindings": {}
+	},
+	{
+		"context": "EmptyPane || SharedScreen",
+		"bindings": {}
+	},
+	{
+		"context": "Terminal",
+		"bindings": {}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {}
+	},
+	{
+		"context": "VimControl && !menu",
+		"bindings": {}
+	}
 ]

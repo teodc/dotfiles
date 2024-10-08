@@ -10,6 +10,7 @@ layouts:
 mod1:
   - option
   - shift
+
 mod2:
   - option
   - shift
@@ -20,6 +21,11 @@ window-margin-size: 4
 window-minimum-height: 0
 window-minimum-width: 0
 smart-window-margins: true
+disable-padding-on-builtin-display: false
+
+window-max-count: 0
+window-minimum-height: 0
+window-minimum-width: 0
 
 float-small-windows: true
 floating-is-blacklist: true
@@ -27,6 +33,7 @@ floating:
   - com.apple.systempreferences
 
 ignore-menu-bar: false
+hide-menu-bar-icon: false
 
 mouse-follows-focus: true
 focus-follows-mouse: false
@@ -57,62 +64,153 @@ debug-layout-info: false
 # --- Shortcuts ---
 # -----------------
 
+cycle-layout:
+  mod: mod1
+  key: space
+
+cycle-layout-backward:
+  mod: mod2
+  key: space
+
+shrink-main:
+  mod: mod1
+  key: h
+
+expand-main:
+  mod: mod1
+  key: l
+
+increase-main:
+  mod: mod1
+  key: ','
+
+decrease-main:
+  mod: mod1
+  key: '.'
+
+focus-ccw:
+  mod: mod1
+  key: j
+
+focus-cw:
+  mod: mod1
+  key: k
+
+focus-main:
+  mod: mod1
+  key: m
+
+focus-screen-ccw:
+  mod: <NONE>
+  key: <NONE>
+
+focus-screen-cw:
+  mod: <NONE>
+  key: <NONE>
+
+swap-screen-ccw:
+  mod: <NONE>
+  key: <NONE>
+
+swap-screen-cw:
+  mod: <NONE>
+  key: <NONE>
+
+swap-ccw:
+  mod: mod2
+  key: j
+
+swap-cw:
+  mod: mod2
+  key: k
+
+swap-main:
+  mod: mod1
+  key: enter
+
 focus-screen-1:
   mod: mod1
   key: w
-
 throw-screen-1:
   mod: mod2
   key: w
-
 focus-screen-2:
   mod: mod1
   key: e
-
 throw-screen-2:
   mod: mod2
   key: e
 
-focus-screen-3:
-  mod:
-  key:
-
-throw-screen-3:
-  mod:
-  key:
-
-focus-screen-4:
-  mod:
-  key:
-
-throw-screen-4:
-  mod:
-  key:
+throw-space-1:
+  mod: mod2
+  key: '1'
+throw-space-2:
+  mod: mod2
+  key: '2'
+throw-space-3:
+  mod: mod2
+  key: '3'
+throw-space-4:
+  mod: mod2
+  key: '4'
+throw-space-5:
+  mod: mod2
+  key: '5'
+throw-space-6:
+  mod: mod2
+  key: '6'
+throw-space-7:
+  mod: mod2
+  key: '7'
+throw-space-8:
+  mod: mod2
+  key: '8'
 
 select-tall-layout:
-  mod: mod1
-  key: a
+  mod: <NONE>
+  key: <NONE>
 
 select-wide-layout:
-  mod: mod1
-  key: s
+  mod: <NONE>
+  key: <NONE>
 
 select-fullscreen-layout:
-  mod: mod1
-  key: d
+  mod: <NONE>
+  key: <NONE>
 
 select-column-layout:
-  mod:
-  key:
+  mod: <NONE>
+  key: <NONE>
+
+throw-space-left:
+  mod: mod2
+  key: h
+
+throw-space-right:
+  mod: mod2
+  key: l
+
+toggle-float:
+  mod: <NONE>
+  key: <NONE>
+
+display-current-layout:
+  mod: mod1
+  key: i
 
 toggle-tiling:
-  mod:
-  key:
+  mod: <NONE>
+  key: <NONE>
+
+reevaluate-windows:
+  mod: mod1
+  key: z
 
 toggle-focus-follows-mouse:
-  mod:
-  key:
+  mod: <NONE>
+  key: <NONE>
 
 relaunch-amethyst:
   mod: mod2
-  key: x
+  key: z
+
