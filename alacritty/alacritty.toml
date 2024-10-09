@@ -51,7 +51,7 @@ style = "Regular"
 
 [font.offset]
 x = 0
-y = 1
+y = 0
 
 [scrolling]
 history = 10000
@@ -64,7 +64,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 [window]
 decorations = "none"
 decorations_theme_variant = "None"
-dynamic_padding = true
+dynamic_padding = false
 dynamic_title = false
 opacity = 1.0
 option_as_alt = "None"
@@ -81,7 +81,7 @@ columns = 0
 lines = 0
 
 [window.padding]
-x = 8
+x = 0
 y = 0
 
 [window.position]

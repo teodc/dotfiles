@@ -47,8 +47,6 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # Plugins to load (plugins can be found in $ZSH/plugins/ and $ZSH_CUSTOM/plugins/)
 plugins=(
-  aws
-  fzf
   git
   httpie
   zsh-autosuggestions
@@ -68,14 +66,9 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
-export PATH="./vendor/bin:$PATH"
-export PATH="./bin:$PATH"
-export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
-#export GOPATH="$HOME/go"
-#export PATH="$GOPATH/bin:$PATH"
-
+export GOPATH="$HOME/Workspace/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOBIN:$PATH"
 export LANG=en_US.UTF-8
 export ARCHFLAGS="arm64"
 export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
@@ -138,8 +131,8 @@ alias lst="lsd -a --tree"
 alias llt="lsd -al --tree"
 
 alias v="vim"
-#alias nv="nvim"
-#alias vim="nvim"
+alias nv="nvim"
+alias nvk='NVIM_APPNAME="nvim-kickstart" nvim'
 
 alias t="tmux"
 alias tl="tmux ls"
@@ -176,5 +169,5 @@ function lk {
 # Load Extras
 # ------------------------------------------------------------------------------
 
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 eval "$(starship init zsh)"
