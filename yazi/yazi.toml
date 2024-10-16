@@ -1,8 +1,8 @@
 [manager]
-linemode = "permissions"
+linemode = "readable_mtime"
 mouse_events = [ "click", "scroll" ]
 ratio = [ 1, 4, 3 ]
-scrolloff = 5
+scrolloff = 3
 show_hidden = true
 show_symlink = true
 sort_by = "natural"
@@ -12,12 +12,13 @@ sort_sensitive = false
 sort_translit = false
 
 [preview]
-cache_dir = ""
+#cache_dir = ""
+#max_height = 900
+#max_width = 600
 image_filter = "triangle"
-image_quality = 75
-max_height = 900
-max_width = 600
+image_quality = 80
 sixel_fraction = 15
-tab_size = 2
+tab_size = 4
 ueberzug_offset = [ 0, 0, 0, 0 ]
 ueberzug_scale = 1
+wrap = "no"

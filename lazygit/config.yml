@@ -7,28 +7,29 @@ gui:
     mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
     language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
     timeFormat: '2015-02-25 11:06 PST' # https://pkg.go.dev/time#Time.Format
-    # Catppuccin mocha theme
+    nerdFontsVersion: "3"
     theme:
-        lightTheme: false
         activeBorderColor:
-            - "#a6e3a1" # Green
+            - '#fab387'
             - bold
         inactiveBorderColor:
-            - "#cdd6f4" # Text
+            - '#a6adc8'
         optionsTextColor:
-            - "#89b4fa" # Blue
+            - '#89b4fa'
         selectedLineBgColor:
-            - "#313244" # Surface0
-        selectedRangeBgColor:
-            - "#313244" # Surface0
+            - '#313244'
         cherryPickedCommitBgColor:
-            - "#94e2d5" # Teal
+            - '#45475a'
         cherryPickedCommitFgColor:
-            - "#89b4fa" # Blue
+            - '#fab387'
         unstagedChangesColor:
-            - red # Red
+            - '#f38ba8'
+        defaultFgColor:
+            - '#cdd6f4'
+        searchingActiveBorderColor:
+            - '#f9e2af'
     authorColors:
-        '*': '#c6a0f6'
+        '*': '#b4befe'
     commitLength:
         show: true
     mouseEvents: true
@@ -39,7 +40,7 @@ gui:
     showRandomTip: false
     showBottomLine: true # for hiding the bottom information line (unless it has important information to tell you)
     showCommandLog: true
-    showIcons: false
+    showIcons: true
     commandLogSize: 6
     splitDiff: 'auto' # one of 'auto' | 'always'
 git:
@@ -132,7 +133,7 @@ keybinding:
         scrollDownMain-alt1: 'J' # main panel scroll down
         scrollUpMain-alt2: '<c-u>' # main panel scroll up
         scrollDownMain-alt2: '<c-d>' # main panel scroll down
-        executeCustomCommand: ':'
+        executeShellCommand: ':'
         createRebaseOptionsMenu: 'm'
         pushFiles: 'P'
         pullFiles: 'p'

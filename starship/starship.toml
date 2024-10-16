@@ -1,49 +1,26 @@
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
-# --- Global config
-
-add_newline = true
 palette = "catppuccin_mocha"
 
-# --- Modules config
-
-[character]
-success_symbol = "[ 󰘍](yellow)"
-error_symbol = "[ ](red)"
-vimcmd_symbol = "[ 󰘌](yellow)"
+add_newline = false
 
 [username]
-style_user = 'bold sapphire'
-style_root = 'bold maroon'
-format = '[$user]($style) in '
+format = "[$user]($style) in "
 show_always = true
-
-[directory]
-truncation_length = 10
-truncation_symbol = '…/'
-truncate_to_repo = false
-style = "bold teal"
-read_only = " 󰌾"
-read_only_style = "bold teal"
+style_root = "bold maroon"
+style_user = "bold sapphire"
 
 [cmd_duration]
-min_time = 500
-#show_milliseconds = true
-style = 'bold yellow'
+min_time = 1000
+style = "bold yellow"
 
-[package]
-#disabled = true
-symbol = "󰏗 "
-
-[git_branch]
-symbol = " "
-style = "bold flamingo"
-
-[git_status]
-style = "bold maroon"
-
-# --- Presets
+[character]
+error_symbol = "[ 󰘍](bold red)"
+success_symbol = "[ 󰘍](bold yellow)"
+vimcmd_replace_one_symbol = "[ 󰘌](bold purple)"
+vimcmd_replace_symbol = "[ 󰘌](bold purple)"
+vimcmd_symbol = "[ 󰘌](bold teal)"
+vimcmd_visual_symbol = "[ 󰘌](bold teal)"
 
 [aws]
 symbol = "  "
@@ -57,19 +34,33 @@ symbol = " "
 [conda]
 symbol = " "
 
+[crystal]
+symbol = " "
+
 [dart]
 symbol = " "
+
+[directory]
+read_only = " 󰌾"
+truncate_to_repo = false
+truncation_symbol = '…/'
 
 [docker_context]
 symbol = " "
 
 [elixir]
-symbol = " "
+symbol = " "
 
 [elm]
 symbol = " "
 
+[fennel]
+symbol = " "
+
 [fossil_branch]
+symbol = " "
+
+[git_branch]
 symbol = " "
 
 [golang]
@@ -96,6 +87,9 @@ symbol = " "
 [julia]
 symbol = " "
 
+[kotlin]
+symbol = " "
+
 [lua]
 symbol = " "
 
@@ -114,9 +108,13 @@ symbol = " "
 [nodejs]
 symbol = " "
 
+[ocaml]
+symbol = " "
+
 [os.symbols]
 Alpaquita = " "
 Alpine = " "
+AlmaLinux = " "
 Amazon = " "
 Android = " "
 Arch = " "
@@ -132,6 +130,7 @@ Garuda = "󰛓 "
 Gentoo = " "
 HardenedBSD = "󰞌 "
 Illumos = "󰈸 "
+Kali = " "
 Linux = " "
 Mabox = " "
 Macos = " "
@@ -148,15 +147,23 @@ Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
+RockyLinux = " "
 Redox = "󰀘 "
 Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
+Void = " "
 Windows = "󰍲 "
 
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
 [php]
-symbol = "󰟆 "
+symbol = " "
 
 [pijul_channel]
 symbol = " "
@@ -171,12 +178,16 @@ symbol = "󰟔 "
 symbol = " "
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
 
 [scala]
 symbol = " "
 
-# --- Palettes
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"

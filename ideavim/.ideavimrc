@@ -114,7 +114,8 @@ let g:EasyMotion_do_mapping = 0
 "nmap <leader>T <Plug>(easymotion-bd-t2)
 
 """ NERDTree
-" Basic Usage:
+" See: https://github.com/JetBrains/ideavim/wiki/NERDTree-support#supported-commands
+" Usage:
 "   Ctrl-t  Open NERDTree (mapped bellow)
 "   q       Close the NERDTree window
 "   o       Open files, directories and bookmarks
@@ -132,18 +133,18 @@ let g:EasyMotion_do_mapping = 0
 "   <C-K>   Jump up to previous sibling of the current directory
 "   R       Recursively refresh the current root
 "   m       Display the NERDTree menu
-" See: https://github.com/JetBrains/ideavim/wiki/NERDTree-support#supported-commands
-Plug 'preservim/nerdtree'
-let NERDTreeHijackNetrw = 0
-let NERDTreeShowHidden = 1
-nmap <C-t> :NERDTreeFind<CR>
-"nmap <C-t>? :NERDTree<CR>
-"nmap <C-t>? :NERDTreeRefreshRoot<CR>
-"nmap <C-t>? :NERDTreeToggle<CR>
-"nmap <C-t>? :NERDTreeFocus<CR>
+"Plug 'preservim/nerdtree'
+"let NERDTreeHijackNetrw = 0
+"let NERDTreeShowHidden = 1
+"nmap <C-t> :NERDTreeFind<CR>
+"nmap ? :NERDTree<CR>
+"nmap ? :NERDTreeRefreshRoot<CR>
+"nmap ? :NERDTreeToggle<CR>
+"nmap ? :NERDTreeFocus<CR>
 
 """ Surround
-" Basic Usage:
+" See: https://github.com/tpope/vim-surround
+" Usage:
 "   cs"'    Change surrounding "" to ''
 "   cst"    Change surrounding tag to ""
 "   ds"     Delete surrounding ""
@@ -151,17 +152,16 @@ nmap <C-t> :NERDTreeFind<CR>
 "   ysiw]   Wrap current word with [] (no spaces)
 "   ysiw{   Wrap current word with {  } (with spaces)
 "   yss<b>  Wrap current line with <b></b>
-" See: https://github.com/tpope/vim-surround
 Plug 'tpope/vim-surround'
 
 """ Multiple Cursors
-" Basic Usage:
+" See: https://github.com/terryma/vim-multiple-cursors
+" Usage:
 "   <C-n> Start multicursor
 "   <C-n> Next match
 "   <C-x> Skip next match
 "   <C-p> Remove current match and go back to previous one
 "   <C-m> Select all matches
-" See: https://github.com/terryma/vim-multiple-cursors
 "Plug 'terryma/vim-multiple-cursors'
 "let g:multi_cursor_support_imap = 0
 "let g:multi_cursor_start_word_key = '<C-n>'
@@ -180,18 +180,19 @@ let g:highlightedyank_highlight_duration = 100
 let g:highlightedyank_highlight_in_visual = 0
 
 """ Commentary
-" Basic Usage:
+" See: https://github.com/tpope/vim-commentary
+" Usage:
 "   gc{motion}  Comment or uncomment lines that {motion} moves over
 "   gcc         Comment or uncomment [count] lines
 "   {visual}gc  Comment or uncomment the highlighted lines
 "   gc          Text object for a comment (operator pending mode only)
 "   gcgc        Uncomment the current and adjacent commented lines
 "   gcu
-" See: https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-commentary'
 
 """ Indent Object
-" Basic Usage:
+" See: https://github.com/michaeljsmith/vim-indent-object
+" Usage:
 "   ii  Indent level (no line above)
 "   iI  Indent level (no lines above/below)
 "   ai  Indent level plus one line above
@@ -199,51 +200,50 @@ Plug 'tpope/vim-commentary'
 " Examples:
 "   gcii  Comment all the instructions inside the same indent level
 "   dai   Delete an if statement and all its instructions
-" See: https://github.com/michaeljsmith/vim-indent-object
 Plug 'michaeljsmith/vim-indent-object'
 
 """ Exchange
-" Basic Usage:
+" See: https://github.com/tommcdo/vim-exchange
+" Usage:
 "   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
 "   cxx         Like cx, but use the current line
 "   X           Like cx, but for Visual mode
 "   cxc         Clear any {motion} pending for exchange
-" See: https://github.com/tommcdo/vim-exchange
-Plug 'tommcdo/vim-exchange'
+"Plug 'tommcdo/vim-exchange'
 
 """ Textobj Entire
-" Basic Usage:
+" See: https://github.com/kana/vim-textobj-entire
+" Usage:
 "   ae  Targets the entire content of the current buffer
 "   ie  Similar to ae, but does not include leading and trailing empty lines
-" See: https://github.com/kana/vim-textobj-entire
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
+"Plug 'kana/vim-textobj-user'
+"Plug 'kana/vim-textobj-entire'
 
 """ Argtextobj
-" Basic Usage:
+" See: https://www.vim.org/scripts/script.php?script_id=2699
+" Usage:
 "   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
 "   ia  The parameter only
 " Examples:
 "   daa  Delete an argument
 "   cia  Change an argument
 "   vai  Select an argument
-" See: https://www.vim.org/scripts/script.php?script_id=2699
-Plug 'vim-scripts/argtextobj.vim'
-let g:argtextobj_pairs="[:],(:),<:>"
+"Plug 'vim-scripts/argtextobj.vim'
+"let g:argtextobj_pairs="[:],(:),<:>"
 
 """ Paragraph Motion
 " See: https://github.com/dbakker/vim-paragraph-motion
 Plug 'dbakker/vim-paragraph-motion'
 
 """ Matchit
-" Basic Usage:
+" See: https://github.com/chrisbra/matchit
+" Usage:
 "   %   Cycle forward through matching groups as specified by b:match_words
 "   g%  Cycle backwards through matching groups
 "   [%  Go to [count] previous unmatched group (similar to [{)
 "   ]%  Go to [count] next unmatched group (similar to ]})
 "   a%  In Visual mode, select the matching group containing the cursor (similar to v_a[)
-" See: https://github.com/chrisbra/matchit
-Plug 'chrisbra/matchit'
+"Plug 'chrisbra/matchit'
 
 " ------------------------------------------------------------------------------
 "  Remaps

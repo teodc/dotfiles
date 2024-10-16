@@ -18,80 +18,33 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## 🛠 Installations
 
-### zsh
-
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-cp zsh/.zshrc ~/
-```
-
 ### Alacritty
 
 ```
+mkdir -p ~/.config/alacritty/themes
 cp alacritty/alacritty.yml ~/.config/alacritty/
-git clone https://github.com/catppuccin/alacritty.git ~/.config/alacritty/catppuccin
-```
-
-### tmux
-
-```
-mkdir -p ~/.config/tmux
-cp tmux/tmux.conf ~/.config/tmux/
-mkdir -p ~/.tmux/plugins/
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-```
-
-### vim
-
-```
-cp vim/.vimrc ~/
-mkdir -p ~/.vim/colors
-curl https://raw.githubusercontent.com/catppuccin/vim/main/colors/catppuccin_mocha.vim -o ~/.vim/colors/catppuccin_mocha.vim
-mkdir -p ~/.vim/pack/plugins/start
-git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline
-curl https://raw.githubusercontent.com/catppuccin/vim/main/autoload/lightline/colorscheme/catppuccin_mocha.vim -o ~/.vim/pack/plugins/start/lightline/autoload/lightline/colorscheme/catppuccin_mocha.vim
-mkdir -p ~/.vim/backups
-mkdir -p ~/.vim/swaps
-mkdir -p ~/.vim/undo
-```
-
-### git
-
-```
-cp git/.gitconfig ~/
-```
-
-### lsd
-
-```
-mkdir -p ~/.config/lsd
-cp lsd/config.yaml ~/.config/lsd/
-```
-
-### bat
-
-```
-mkdir -p "$(bat --config-dir)/themes"
-curl https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme -o "$(bat --config-dir)/themes/Catppuccin-mocha.tmTheme"
-bat cache --build
-cp bat/config $(bat --config-dir)
-```
-
-### yazi
-
-```
-mkdir -p ~/.config/yazi
-cp yazi/yazi.toml ~/.config/yazi
-curl https://raw.githubusercontent.com/catppuccin/yazi/main/themes/mocha.toml -o ~/.config/yazi/theme.toml
-curl https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme -o ~/.config/yazi/Catppuccin-mocha.tmTheme
+curl https://raw.githubusercontent.com/catppuccin/alacritty/main/catppuccin-mocha.toml -o ~/.config/alacritty/themes/
 ```
 
 ### Amethyst
 
 ```
 cp amethyst/.amethyst.yml ~/
+```
+
+### bat
+
+```
+mkdir -p "$(bat --config-dir)/themes"
+cp bat/config $(bat --config-dir)
+curl https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme -o "$(bat --config-dir)/themes/"
+bat cache --build
+```
+
+### git
+
+```
+cp git/.gitconfig ~/
 ```
 
 ### IdeaVim
@@ -107,6 +60,25 @@ mkdir -p ~/.config/lazygit
 cp lazygit/config.yml ~/.config/lazygit/
 ```
 
+### lsd
+
+```
+mkdir -p ~/.config/lsd
+cp lsd/config.yaml ~/.config/lsd/
+```
+
+### nvim
+
+```
+...
+```
+
+### ssh
+
+```
+cp ssh/config ~/.ssh/
+```
+
 ### Starship
 
 ```
@@ -117,35 +89,58 @@ cp starship/starship.toml ~/.config/starship/
 ### Sublime Text
 
 ```
-# From the app: Preferences > Tools > Install Package Control
+# Preferences > Tools > Install Package Control
 git clone https://github.com/catppuccin/sublime-text.git ~/Library/Application\ Support/Sublime\ Text/Packages/Catppuccin
 cp sublime-text/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text/Packages/User/Preferences.sublime-settings
 ```
 
-### Zed
+### tmux
 
 ```
-mkdir -p ~/.config/zed
-cp zed/* ~/.config/zed/
+mkdir -p ~/.config/tmux
+cp tmux/tmux.conf ~/.config/tmux/
+# <prefix> + I
 ```
 
-> Extensions: HTML, Catppuccin Themes, Dockerfile, TOML, Docker Compose, Lua, Basher, Ruff
-
-## Extra Apps
-
-### Non-cask Apps
+### vim
 
 ```
-...
+cp vim/.vimrc ~/
+mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/backups
+mkdir -p ~/.vim/swaps
+mkdir -p ~/.vim/undo
+# PlugInstall
+```
+
+### yazi
+
+```
+mkdir -p ~/.config/yazi
+cp yazi/yazi.toml ~/.config/yazi
+cp yazi/init.lua ~/.config/yazi
+curl https://raw.githubusercontent.com/catppuccin/yazi/main/themes/mocha.toml -o ~/.config/yazi/theme.toml
+curl https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme -o ~/.config/yazi/catppuccin_mocha.tmTheme
+ya pack -a yazi-rs/plugins:full-border
+vim ~/.config/yazi/theme.toml # Edit line 32
+```
+
+### zsh
+
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+cp zsh/.zshrc ~/
 ```
 
 ### App Store Apps
 
 ```
-Simplenote
+...
 ```
 
-## 💰 macOS Productivity Tips
+## 🖥️ macOS Window Management
 
 How I improved my window management on macOS:
 
@@ -157,16 +152,16 @@ How I improved my window management on macOS:
 - Default to Amethyst's `fullscreen` layout (and don't use Mac's "Full Screen").
 
 This way, I can directly jump to a specific Space based on what I want to do.
+
 I usually have my Spaces organized like this:
 
 - Main screen:
-    - `Space 1`: Main browser & notes
+    - `Space 1`: Main browser
     - `Space 2`: Terminal
     - `Space 3`: Code editor
     - `Space 4`: API client
     - `Space 5`: Database GUI
 - Side screen:
     - `Space 6`: Communication tools
-    - `Space 7`: Dev browser
+    - `Space 7`: Notes
     - `Space 8`: Music app
-
