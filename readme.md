@@ -70,7 +70,7 @@ cp lsd/config.yaml ~/.config/lsd/
 ### nvim
 
 ```
-...
+cp -R nvim/ ~/.config/
 ```
 
 ### ssh
