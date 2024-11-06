@@ -26,7 +26,7 @@ return {
         persist_buffer_sort = true, -- Whether or not custom sorted buffers should persist
         separator_style = 'thin', -- Can be "thick", "thin", { 'any', 'any' }
         enforce_regular_tabs = true,
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         show_tab_indicators = false,
         indicator = {
           icon = '', -- This should be omitted if indicator style is not 'icon'
@@ -37,6 +37,18 @@ return {
         maximum_padding = 5,
         maximum_length = 15,
         sort_by = 'insert_at_end',
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'Project Files',
+            text_align = 'center',
+          },
+          {
+            filetype = 'undotree',
+            text = 'Undo Tree',
+            text_align = 'center',
+          },
+        },
       },
       highlights = {
         separator = {

@@ -10,16 +10,50 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree filesystem reveal right <CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree filesystem reveal<CR>', desc = 'Toggle Neotree', silent = true },
   },
   opts = {
+    close_if_last_window = false,
+    default_component_configs = {
+      git_status = {
+        symbols = {
+          added = '✚',
+          modified = '',
+          deleted = '✖',
+          renamed = '󰁕',
+          untracked = '',
+          ignored = '',
+          unstaged = '󰄱',
+          staged = '',
+          conflict = '',
+        },
+      },
+      file_size = { enabled = false },
+      type = { enabled = false },
+      last_modified = { enabled = false },
+      created = { enabled = false },
+      symlink_target = { enabled = false },
+    },
+    window = {
+      mappings = {
+        ['<space>'] = { 'toggle_node', nowait = true }, -- Disable `nowait` if you have existing combos starting with this char that you want to use
+        ['l'] = 'open',
+        ['h'] = 'close_node',
+      },
+    },
     filesystem = {
       filtered_items = {
         visible = true,
         hide_dotfiles = false,
         hide_gitignored = false,
+        never_show = {
+          '.DS_Store',
+          'thumbs.db',
+        },
       },
       window = {
+        position = 'left',
+        width = 40,
         mappings = {
           ['\\'] = 'close_window',
         },

@@ -5,8 +5,9 @@ return {
   dependencies = {
     {
       'L3MON4D3/LuaSnip',
+      version = 'v2.*',
       build = (function()
-        -- Build Step is needed for regex support in snippets.
+        -- Build step is needed for regex support in snippets.
         -- This step is not supported in many windows environments.
         -- Remove the below condition to re-enable on windows.
         if vim.fn.has('win32') == 1 or vim.fn.executable('make') == 0 then
@@ -26,43 +27,46 @@ return {
         },
       },
     },
-    'saadparwaiz1/cmp_luasnip',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-emoji',
+    'hrsh7th/cmp-cmdline',
+    'saadparwaiz1/cmp_luasnip',
   },
   config = function()
     -- See `:help cmp`
     local cmp = require('cmp')
     local luasnip = require('luasnip')
+
     luasnip.config.setup({})
 
     local kind_icons = {
-      Text = '󰉿',
-      Method = 'm',
-      Function = '󰊕',
-      Constructor = '',
-      Field = '',
-      Variable = '󰆧',
       Class = '󰌗',
+      Color = '󰏘',
+      Constant = '󰇽',
+      Constructor = '',
+      Enum = '',
+      EnumMember = '',
+      Event = '',
+      Field = '',
+      File = '󰈙',
+      Folder = '󰉋',
+      Function = '󰊕',
       Interface = '',
+      Keyword = '󰌋',
+      Method = 'm',
       Module = '',
+      Operator = '󰆕',
       Property = '',
+      Reference = '',
+      Snippet = '',
+      Struct = '',
+      Text = '󰉿',
+      TypeParameter = '󰊄',
       Unit = '',
       Value = '󰎠',
-      Enum = '',
-      Keyword = '󰌋',
-      Snippet = '',
-      Color = '󰏘',
-      File = '󰈙',
-      Reference = '',
-      Folder = '󰉋',
-      EnumMember = '',
-      Constant = '󰇽',
-      Struct = '',
-      Event = '',
-      Operator = '󰆕',
-      TypeParameter = '󰊄',
+      Variable = '󰆧',
     }
 
     cmp.setup({
@@ -71,7 +75,13 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
+
       completion = { completeopt = 'menu,menuone,noinsert' },
+
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
 
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
@@ -81,25 +91,20 @@ return {
         -- Select the [n]ext / [p]revious item
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-
         -- Scroll the documentation window [d]own / [u]p
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(4),
-
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
-
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display
         --  completions whenever it has completion options available.
         ['<C-Space>'] = cmp.mapping.complete({}),
-
         -- <c-l> will move you to the right of each of the expansion locations.
         -- <c-h> is similar, except moving you backwards.
         ['<C-l>'] = cmp.mapping(function()
@@ -112,7 +117,6 @@ return {
             luasnip.jump(-1)
           end
         end, { 'i', 's' }),
-
         -- Use Tab/Shift+Tab to:
         --   select next/previous item
         --   or move forward/backward of each of the expansion locations.
@@ -134,10 +138,10 @@ return {
             fallback()
           end
         end, { 'i', 's' }),
-
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       }),
+
       sources = {
         {
           name = 'lazydev',
@@ -148,7 +152,9 @@ return {
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
+        { name = 'emoji' },
       },
+
       formatting = {
         expandable_indicator = true,
         fields = { 'kind', 'abbr', 'menu' },
@@ -163,6 +169,29 @@ return {
           return vim_item
         end,
       },
+    })
+
+    -- `/` cmdline setup
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
+      },
+    })
+
+    -- `:` cmdline setup
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' },
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' },
+          },
+        },
+      }),
     })
   end,
 }

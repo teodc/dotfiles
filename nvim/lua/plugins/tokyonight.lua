@@ -4,6 +4,7 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
+    style = 'night',
     -- Use italic only for comments
     styles = {
       comments = { italic = true },
@@ -11,11 +12,6 @@ return {
       functions = {},
       variables = {},
     },
-    -- -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-    -- on_colors = function(colors)
-    --   colors.hint = colors.orange
-    --   colors.error = '#ff0000'
-    -- end
   },
   init = function()
     vim.cmd.colorscheme('tokyonight-night')

@@ -1,148 +1,136 @@
+""" https://github.com/JetBrains/ideavim/wiki
+
 " ------------------------------------------------------------------------------
 " Options
 " ------------------------------------------------------------------------------
 
-" Define map leader key
+syntax on " Enable syntax processing
+filetype plugin indent on " Enable filetype plugins
+
+" Define leader keys
 let mapleader=" "
 let maplocalleader=" "
 
-" Use a bar cursor within insert mode and a block cursor everywhere else
-let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"
+set breakindent " Enbale indent on break
+"set colorcolumn=120 " Show a visual guide
+set cursorline " Highlight current line
+set fileformat=unix " File format
+set fileencoding=utf-8 " Output encoding of the file that is written
+set history=5000 " Number of history lines to remember
+set hlsearch " Highlight search matches
+set ignorecase " Ignore case when searching
+set incsearch " Show where search pattern typed so far matches
+set list " Show certain whitespace characters in the editor
+set matchpairs="(:),{:},[:]" " Pairs of characters that % can match
+set nomore " Listings don't pause when the screen is filled
+set nostartofline " Prevent some commands to move the cursor at the start of the line
+set novisualbell " No annoying flash on errors
+set nowrap " Don't wrap lines
+set number relativenumber " Show hybrid line numbers
+set scroll=0 " Scroll half the window height
+set scrolloff=5 " Minimal number of screen lines to keep above and below the cursor
+set shell=/bin/zsh " The shell to use to execute commands with ! and :!
+set showcmd " Show the (partial) command as it’s being typed
+set showmatch " Highlight matching bracket
+set showmode " Show the current mode
+set sidescroll=0 " Minimal number of columns to scroll horizontally
+set sidescrolloff=10 " Minimal number of columns to keep to the left and to the right of the cursor
+set smartcase " When searching, try to be smart about cases
+set timeout " Wait for key codes
+set timeoutlen=300 " Time to wait for key codes
+set ttyfast " Optimize for fast terminal connections
+set viminfo+=! " Information to remember after restart
+set virtualedit=none " Prevent cursor to be positioned where there is no character
+set wrapscan " Search will wrap around the end of file
 
-" Show hybrid line numbers
-set number relativenumber
+" Configure clipboard
+set clipboard=""
+set clipboard+=unnamed
+set clipboard+=unnamedplus
+set clipboard+=ideaput
 
-" Show the (partial) command as it’s being typed
-set showcmd
-
-" Set number of history lines to remember
-set history=5000
-
-" Search as characters are entered
-set incsearch
-
-" Highlight matches
-set hlsearch
-
-" Listings don't pause when the screen is filled
-set nomore
-
-" Ignore case when searching
-set ignorecase
-
-" Use visual bell instead of beeping
-set novisualbell
-
-" When searching, try to be smart about cases
-set smartcase
-
-" Configure backups & swap files
+" Configure backups, swaps, and undos
 set nobackup
 set writebackup
 set backupdir=~/.vim/backups
 set noswapfile
 set directory=~/.vim/swaps
-
-" Configure undo
 set undofile
 set undodir=~/.vim/undo
 set undolevels=5000
 set undoreload=5000
 
-" Some commands move the cursor to the start of the line
-set startofline
+" Hyphenated & underscored words recognized while searching
+set iskeyword+=-
+set iskeyword+=_
 
-" Default clipboard
-set clipboard=""
-set clipboard+=ideaput
-
-" Default 'g' flag for ':s'
-set gdefault
-
-" ???
-set viminfo+=!
-
-" Show the current mode
-set showmode
-
-" Vertical & horizontal scrolling behavior
-set scroll=0
-set scrolloff=10
-set sidescroll=0
-set sidescrolloff=10
-
-" Time to wait for key codes
-set timeout
-set timeoutlen=400
-
-""" IdeaVim only commands
-" Keep the mode that was enabled before starting a refactoring
-set idearefactormode=keep
-" Behavior of IdeaVim icon in the status bar
-set ideastatusicon=enabled
-" Execution of :wa (save all) command on :w (save)
-set ideawrite=all
-" Define the list of additional buffers where IdeaVim is enabled
-set ideavimsupport=dialog
-" Extended join behaviors (https://github.com/JetBrains/ideavim/wiki/ideajoin-examples)
-set ideajoin
-" Sync IJ bookmarks and Vim marks
-set ideamarks
-" https://github.com/TheBlob42/idea-which-key?tab=readme-ov-file#activation
-" set notimeout " disable the timeout option
-" set timeoutlen=5000 " increase the timeoutlen (default: 1000), don't add space around the equal sign
-" set which-key
+" IdeaVim only commands
+set ideajoin " Extended join behaviors (https://github.com/JetBrains/ideavim/wiki/ideajoin-examples)
+set ideamarks " Maps Vim's global marks to IDE bookmarks
+set idearefactormode=keep " Specifies the mode to be used when a refactoring selects text to be edited (keep|select|visual)
+set ideastatusicon=enabled " Behavior of IdeaVim icon in the status bar (enabled|gray|disabled)
+set ideawrite=all " Defines the behaviour of the :w command (file|all)
+"set ideaglobalmode " Share a single mode across all open windows
+"set trackactionids " Track the current IDE action and display the action name in a notification
 
 " ------------------------------------------------------------------------------
 " Plugins
 " ------------------------------------------------------------------------------
 
-""" Quickscope
+" Quickscope
 " See: https://plugins.jetbrains.com/plugin/19417-ideavim-quickscope
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-""" EasyMotion
-" See: https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands
+" EasyMotion
+" See: https://github.com/easymotion/vim-easymotion
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
-"let g:EasyMotion_override_acejump = 0
-"nmap <leader>f <Plug>(easymotion-bd-f)
-"nmap <leader>F <Plug>(easymotion-bd-f2)
-"nmap <leader>t <Plug>(easymotion-bd-t)
-"nmap <leader>T <Plug>(easymotion-bd-t2)
+nmap <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>F <Plug>(easymotion-bd-f2)
+nmap <leader>t <Plug>(easymotion-bd-t)
+nmap <leader>T <Plug>(easymotion-bd-t2)
 
-""" NERDTree
-" See: https://github.com/JetBrains/ideavim/wiki/NERDTree-support#supported-commands
+" NERDTree
+" See: https://github.com/preservim/nerdtree
 " Usage:
-"   Ctrl-t  Open NERDTree (mapped bellow)
-"   q       Close the NERDTree window
-"   o       Open files, directories and bookmarks
-"   go      Open selected file, but leave cursor in the NERDTree
-"   i       Open selected file in a split window
-"   gi      Same as i, but leave the cursor on the NERDTree
-"   s       Open selected file in a new vsplit
-"   gs      Same as s, but leave the cursor on the NERDTree
-"   O       Recursively open the selected directory
-"   x       Close the current nodes parent
-"   X       Recursively close all children of the current node
-"   P       Jump to the root node
-"   p       Jump to current nodes parent
-"   <C-J>   Jump down to next sibling of the current directory
-"   <C-K>   Jump up to previous sibling of the current directory
-"   R       Recursively refresh the current root
-"   m       Display the NERDTree menu
-"Plug 'preservim/nerdtree'
-"let NERDTreeHijackNetrw = 0
-"let NERDTreeShowHidden = 1
-"nmap <C-t> :NERDTreeFind<CR>
-"nmap ? :NERDTree<CR>
-"nmap ? :NERDTreeRefreshRoot<CR>
-"nmap ? :NERDTreeToggle<CR>
-"nmap ? :NERDTreeFocus<CR>
+"  o      Open files, directories and bookmarks
+"  go     Open selected file, but leave cursor in the NERDTree
+"  t      Open selected node/bookmark in a new tab
+"  T      Same as 't' but keep the focus on the current tab
+"  i      Open selected file in a split windo
+"  gi     Same as i, but leave the cursor on the NERDTree
+"  s      Open selected file in a new vsplit
+"  gs     Same as s, but leave the cursor on the NERDTree
+"  O      Recursively open the selected directory
+"  x      Close the current nodes parent
+"  X      Recursively close all children of the current node
+"  P      Jump to the root node
+"  p      Jump to current nodes parent
+"  K      Jump up inside directories at the current tree depth
+"  J      Jump down inside directories at the current tree depth
+"  <C-J>  Jump down to next sibling of the current directory
+"  <C-K>  Jump up to previous sibling of the current directory
+"  r      Recursively refresh the current directory
+"  R      Recursively refresh the current root
+"  m      Display the NERDTree menu
+"  q      Close the NERDTree window
+"  A      Zoom (maximize/minimize) the NERDTree window
+"  d      Delete file or directory
+"  n      Create File
+"  N      Create Directory
+Plug 'preservim/nerdtree'
+" let g:NERDTreeHijackNetrw = 0
+" let g:NERDTreeShowHidden = 1
+" let g:NERDTreeFileLines = 1
+nmap - :NERDTreeFind<CR>
+" nmap <C-t>? :NERDTree<CR>
+" nmap <C-t>? :NERDTreeRefreshRoot<CR>
+" nmap <C-t>? :NERDTreeToggle<CR>
+" nmap <C-t>? :NERDTreeFocus<CR>
+" nmap <C-t>? :NERDTreeClose<CR>
 
-""" Surround
+" Surround
 " See: https://github.com/tpope/vim-surround
 " Usage:
 "   cs"'    Change surrounding "" to ''
@@ -154,96 +142,66 @@ let g:EasyMotion_do_mapping = 0
 "   yss<b>  Wrap current line with <b></b>
 Plug 'tpope/vim-surround'
 
-""" Multiple Cursors
-" See: https://github.com/terryma/vim-multiple-cursors
-" Usage:
-"   <C-n> Start multicursor
-"   <C-n> Next match
-"   <C-x> Skip next match
-"   <C-p> Remove current match and go back to previous one
-"   <C-m> Select all matches
-"Plug 'terryma/vim-multiple-cursors'
-"let g:multi_cursor_support_imap = 0
-"let g:multi_cursor_start_word_key = '<C-n>'
-"let g:multi_cursor_select_all_word_key = '<C-m>'
-"let g:multi_cursor_start_key = 'g<C-n>'
-"let g:multi_cursor_select_all_key = 'g<C-m>'
-"let g:multi_cursor_next_key = '<C-n>'
-"let g:multi_cursor_prev_key = '<C-p>'
-"let g:multi_cursor_skip_key = '<C-x>'
-"let g:multi_cursor_quit_key = '<Esc>'
+" " Multiple Cursors
+" " See: https://github.com/mg979/vim-visual-multi
+" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" let g:VM_mouse_mappings = 0
+" let g:VM_default_mappings = 0
+" let g:VM_maps = {}
+" let g:VM_maps['Find Under'] = '<C-n>'
+" let g:VM_maps['Find Subword Under'] = '<C-n>'
+" let g:VM_maps['Select All'] = '<C-N>'
 
-""" Highlightedyank
+" Highlightedyank
 " See: https://github.com/machakann/vim-highlightedyank
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 100
-let g:highlightedyank_highlight_in_visual = 0
+let g:highlightedyank_highlight_in_visual = 1
 
-""" Commentary
+" Commentary
 " See: https://github.com/tpope/vim-commentary
-" Usage:
-"   gc{motion}  Comment or uncomment lines that {motion} moves over
-"   gcc         Comment or uncomment [count] lines
-"   {visual}gc  Comment or uncomment the highlighted lines
-"   gc          Text object for a comment (operator pending mode only)
-"   gcgc        Uncomment the current and adjacent commented lines
-"   gcu
 Plug 'tpope/vim-commentary'
 
-""" Indent Object
+" Indent Object
 " See: https://github.com/michaeljsmith/vim-indent-object
 " Usage:
 "   ii  Indent level (no line above)
 "   iI  Indent level (no lines above/below)
 "   ai  Indent level plus one line above
 "   aI  Indent level plus one line above and below
-" Examples:
-"   gcii  Comment all the instructions inside the same indent level
-"   dai   Delete an if statement and all its instructions
 Plug 'michaeljsmith/vim-indent-object'
 
-""" Exchange
-" See: https://github.com/tommcdo/vim-exchange
-" Usage:
-"   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
-"   cxx         Like cx, but use the current line
-"   X           Like cx, but for Visual mode
-"   cxc         Clear any {motion} pending for exchange
-"Plug 'tommcdo/vim-exchange'
+" " Exchange
+" " See: https://github.com/tommcdo/vim-exchange
+" " Usage:
+" "   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
+" "   cxx         Like cx, but use the current line
+" "   X           Like cx, but for Visual mode
+" "   cxc         Clear any {motion} pending for exchange
+" Plug 'tommcdo/vim-exchange'
 
-""" Textobj Entire
-" See: https://github.com/kana/vim-textobj-entire
-" Usage:
-"   ae  Targets the entire content of the current buffer
-"   ie  Similar to ae, but does not include leading and trailing empty lines
-"Plug 'kana/vim-textobj-user'
-"Plug 'kana/vim-textobj-entire'
+" " Textobj Entire
+" " See: https://github.com/kana/vim-textobj-entire
+" " Usage:
+" "   ae  Targets the entire content of the current buffer
+" "   ie  Similar to ae, but does not include leading and trailing empty lines
+" Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-entire'
 
-""" Argtextobj
-" See: https://www.vim.org/scripts/script.php?script_id=2699
-" Usage:
-"   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
-"   ia  The parameter only
-" Examples:
-"   daa  Delete an argument
-"   cia  Change an argument
-"   vai  Select an argument
-"Plug 'vim-scripts/argtextobj.vim'
-"let g:argtextobj_pairs="[:],(:),<:>"
+" " Argtextobj
+" " See: https://www.vim.org/scripts/script.php?script_id=2699
+" " Usage:
+" "   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
+" "   ia  The parameter only
+" Plug 'vim-scripts/argtextobj.vim'
 
-""" Paragraph Motion
+" Paragraph Motion
 " See: https://github.com/dbakker/vim-paragraph-motion
 Plug 'dbakker/vim-paragraph-motion'
 
-""" Matchit
-" See: https://github.com/chrisbra/matchit
-" Usage:
-"   %   Cycle forward through matching groups as specified by b:match_words
-"   g%  Cycle backwards through matching groups
-"   [%  Go to [count] previous unmatched group (similar to [{)
-"   ]%  Go to [count] next unmatched group (similar to ]})
-"   a%  In Visual mode, select the matching group containing the cursor (similar to v_a[)
-"Plug 'chrisbra/matchit'
+" " Matchit
+" " See: https://github.com/chrisbra/matchit
+" Plug 'chrisbra/matchit'
 
 " ------------------------------------------------------------------------------
 "  Remaps
@@ -253,129 +211,148 @@ Plug 'dbakker/vim-paragraph-motion'
 nnoremap <Space> <NOP>
 vnoremap <Space> <NOP>
 
+" ESC also clears search results
+nnoremap <Esc> :nohlsearch<CR><Esc>
+
 " This stays between us
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
 
-" Save & close current file
+" Save & close
 nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
-vnoremap <C-s> <Esc>:w<CR>
 nnoremap <C-q> :q<CR>
-inoremap <C-q> <Esc>:q<CR>
-vnoremap <C-q> <Esc>:q<CR>
+"nnoremap <C-x> :qa<CR>
 
-" Redraw screen and clear current search highlighting
-nnoremap <C-z> :nohl<CR><C-l>
-
-" Open Netrw
-"nnoremap <C-t> :Explore<CR>
+" " Open Netrw
+" nnoremap <C-e> :Explore<CR>
 
 " Center screen when navigating search results
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Center screen when moving it
+" Center screen when scrolling
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-b> <C-b>zz
 nnoremap <C-f> <C-f>zz
 
-" Delete without yanking to the clipboard
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-
-" Delete line without yanking it
-"nnoremap <leader>D "_dd
-
-" Yank into the system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
-
-" Paste from the system clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-
-" Paste without losing selection from the clipboard
-xnoremap <leader>p "_dP
-
-" Remap J and don't move cursor when using it
-nnoremap <leader>u mzJ`z
-
-" Append above line to current one
-"nmap <leader>U kddpkJ
-
+" Easily move to beginning/end of line
 nnoremap L $
 vnoremap L $
 nnoremap H ^
 vnoremap H ^
 
-nnoremap J }
-vnoremap J }
-nnoremap K {
-vnoremap K {
+" " Easily move to next/previous paragraph
+" nnoremap J }
+" vnoremap J }
+" nnoremap K {
+" vnoremap K {
 
-" Move line or visual block up/down
-"nnoremap <C-j> :mo +1<CR>
-"nnoremap <C-k> :mo -2<CR>
-"vnoremap <C-j> :mo '>+1<CR>gv
-"vnoremap <C-k> :mo '<-2<CR>gv
+" " Move line or visual block up/down
+" nnoremap <C-j> :mo +1<CR>
+" vnoremap <C-j> :mo '>+1<CR>gv
+" nnoremap <C-k> :mo -2<CR>
+" vnoremap <C-k> :mo '<-2<CR>gv
 
-" Indent/outdent line or visual block
-"nnoremap <C-h> <<
-"nnoremap <C-l> >>
-"vnoremap <C-h> <gv
-"vnoremap <C-l> >gv
+" " Indent/outdent line or visual block
+" nnoremap <C-h> <<
+" vnoremap <C-h> <gv
+" nnoremap <C-l> >>
+" vnoremap <C-l> >gv
 
-" Duplicate line or visual block without yanking it
-"nnoremap <leader>o :co .<CR>
-"vnoremap <leader>o :co '><CR>gv
+" Keep selection when indenting
+vnoremap < <gv
+vnoremap > >gv
 
-" Comment line or visual block
-"nnoremap <leader>m <Plug>CommentaryLine
-"vnoremap <leader>m <Plug>Commentary
+" Delete single character whitout yanking
+nnoremap x "_x
+vnoremap x "_x
 
-""" Splits
-" Create new splits
-nnoremap <leader>- :new<CR>
-nnoremap <leader>_ :vnew<CR>
-" Make all windows equal height & width
-nnoremap <leader>= <C-w>=
-" Move cursor to the left/right/top/bottom window
-nnoremap <leader>h <C-w>h
-nnoremap <leader>l <C-w>l
-nnoremap <leader>k <C-w>k
-nnoremap <leader>j <C-w>j
-" Move the current split window into its own tab
-"nnoremap <leader>? <C-w>T
+" C without replacing clipboard selection
+nnoremap c "_c
+vnoremap C "_C
+nnoremap c "_c
+vnoremap C "_C
 
-""" Buffers
-" Open new buffer
-"nnoremap <leader>b :enew<CR>
+" Delete without yanking to the clipboard
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+nnoremap <leader>D "_D
+
+" " Yank into the system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+
+" " Paste from the system clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+
+" Paste without replacing clipboard selection
+xnoremap <leader>p "_dP
+
+" Merge line bellow with the current one without moving the cursor
+nnoremap J mzJ`z
+
+" " Copy the line/selection to the line bellow
+" nnoremap <leader>c :copy .<CR>
+" vnoremap <leader>c :copy '><CR>gv
+
+" " Comment line or visual block
+" nnoremap <leader>m <Plug>CommentaryLine
+" vnoremap <leader>m <Plug>Commentary
+
+" Windows (aka splits)
+" Create a new horizontal/vertical split
+nnoremap <leader>wh :new<CR>
+nnoremap <leader>wv :vnew<CR>
+" Make all splits equal height & width
+nnoremap <leader>we :wincmd =<CR>
+" Close current split
+nnoremap <leader>wq :wincmd q<CR>
+" Navigate between splits
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>j :wincmd j<CR>
+" Rezise window with arrows
+nnoremap <Up> :resize -2<CR>
+nnoremap <Down> :resize +2<CR>
+nnoremap <Left> :vertical resize -2<CR>
+nnoremap <Right> :vertical resize +2<CR>
+
+" Buffers
+" Create a new empty buffer
+nnoremap <leader>bc :enew<CR>
+" Open file in new buffer
+nnoremap <leader>bo :edit <Space>
 " List all opened buffers & offer to move to one of them
-"nnoremap <Leader>B :buffers<CR>:buffer<Space>
+nnoremap <Leader>bl :buffers<CR>:buffer<Space>
 " Go to the next/previous buffer
-"nnoremap ]b :bn<CR>
-"nnoremap [b :bp<CR>
-" Delete buffer
-"nnoremap <leader>q :bd<CR>
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+" Close buffer
+nnoremap <leader>bq :bdelete<CR>
 
-""" Tabs
-" Open a new tab
-"nnoremap <leader>g :tabnew<CR>
-" Move to the next/previous tab
-"nnoremap ]t gt<CR>
-"nnoremap [t gT<CR>
-" Close the current tab and all its windows
-"nnoremap <leader>w :tabc<CR>
-" Close all tabs except for the current one
-"nnoremap <leader>W :tabo<CR>
+" " Tabs
+" " Open a new tab
+" nnoremap <leader>tc :tabnew<CR>
+" " Move to the next/previous tab
+" nnoremap <leader>tn :tabnext<CR>
+" nnoremap <leader>tp :tabprevious<CR>
+" " Close the current tab and all its windows
+" nnoremap <leader>tq :tabclose<CR>
+" " Close all tabs except for the current one
+" nnoremap <leader>tx :tabonly<CR>
 
-# Remap number increment & decrement
-nnoremap <C-g> <C-a>
-vnoremap <C-g> <C-a>gv
+" " Remap number increment & decrement
+" nnoremap <C-?> <C-a>
+" vnoremap <C-?> <C-a>gv
+" nnoremap <C-?> <C-x>
+" vnoremap <C-?> <C-x>gv
 
 " ------------------------------------------------------------------------------
 " IDE Actions
@@ -385,49 +362,38 @@ vnoremap <C-g> <C-a>gv
 map \e :e ~/.ideavimrc<CR>
 map \r <Action>(IdeaVim.ReloadVimRc.reload)
 
+" Toggle Zen mode
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
-""" Tool windows
-map <leader>1 <Action>(ActivateProjectToolWindow)
-map <leader>2 <Action>(ActivateBookmarksToolWindow)
-map <leader>3 <Action>(ActivateStructureToolWindow)
-map <leader>4 <Action>(ActivateTODOToolWindow)
-map <leader>5 <Action>(ActivateProblemsViewToolWindow)
-map <leader>6 <Action>(Activategithub.copilotToolWindowToolWindow)
-" map <leader>6 <Action>(AIAssistant.ToolWindow.ShowOrFocus)
-map <leader>7 <Action>(ActivateTerminalToolWindow)
-map <leader>8 <Action>(ActivateCommitToolWindow)
-map <leader>9 <Action>(ActivateVersionControlToolWindow)
-map <leader>0 <Action>(ActivateNotificationsToolWindow)
-map <leader>` <Action>(HideAllWindows)
+" Tool panes
+"map ? <Action>(ActivateProjectToolWindow)
+"map ? <Action>(ActivateBookmarksToolWindow)
+"map ? <Action>(ActivateStructureToolWindow)
+"map ? <Action>(ActivateTODOToolWindow)
+"map ? <Action>(ActivateProblemsViewToolWindow)
+"map ? <Action>(Activategithub.copilotToolWindowToolWindow)
+"map ? <Action>(ActivateTerminalToolWindow)
+"map ? <Action>(ActivateCommitToolWindow)
+"map ? <Action>(ActivateVersionControlToolWindow)
+"map ? <Action>(ActivateNotificationsToolWindow)
+"map ? <Action>(HideAllWindows)
 
-""" Files
-"map <leader>t <Action>(NewFile)
-map <leader>t <Action>(NewElement)
-map <leader>x <Action>(RecentFiles)
-map <leader>! <Action>(SelectInProjectView)
+" Files
+map <leader>n <Action>(NewElement)
+map <leader>r <Action>(RecentFiles)
 
-""" Search
-"map <leader>? <Action>(SearchEverywhere)
-"map <leader>? <Action>(SearchEverywhere.NextTab)
-"map <leader>? <Action>(SearchEverywhere.PrevTab)
+" Find & replace
+map <leader>/ <Action>(FindInPath)
+map <leader>x <Action>(ReplaceInPath)
 
-"" Find & replace
-map <leader>/ <Action>(Find)
-map <leader>? <Action>(FindInPath)
-map <leader>n <Action>(FindNext)
-map <leader>N <Action>(FindPrevious)
-map <leader>' <Action>(Replace)
-map <leader>" <Action>(ReplaceInPath)
-
-""" Quick selection
+" Quick selection
 map <C-f> <Action>(EditorSelectWord)
 map <C-b> <Action>(EditorUnSelectWord)
 map <C-n> <Action>(SelectNextOccurrence)
 map <C-p> <Action>(UnselectPreviousOccurrence)
-map <C-m> <Action>(SelectAllOccurrences)
+map <C-a> <Action>(SelectAllOccurrences)
 
-""" Navigate code
+" Navigate code
 map <leader>a <Action>(ShowNavBar)
 map <leader>s <Action>(FileStructurePopup)
 map <leader>gs <Action>(GotoSymbol)
@@ -440,8 +406,8 @@ map <leader>gi <Action>(GotoImplementation)
 map <leader>gm <Action>(GotoSuperMethod)
 map <leader>gu <Action>(FindUsages)
 
-""" Cursor jumps
-map <leader>f <Action>(AceAction)
+" Cursor jumps
+map s <Action>(AceAction)
 map <leader>[ <Action>(Back)
 map <leader>] <Action>(Forward)
 map [c <Action>(JumpToLastChange)
@@ -449,69 +415,67 @@ map ]c <Action>(JumpToNextChange)
 map [m <Action>(MethodUp)
 map ]m <Action>(MethodDown)
 
-""" Move line/selection
+" Move line/selection
 map <C-k> <Action>(MoveLineUp)
 map <C-j> <Action>(MoveLineDown)
 map <C-l> <Action>(EditorIndentSelection)
 map <C-h> <Action>(EditorUnindentSelection)
 
-""" Line operations
-map <leader>D <Action>(EditorDeleteLine)
+" Line operations
 map <leader>o <Action>(EditorDuplicate)
 map <leader>m <Action>(CommentByLineComment)
 
-""" Errors
-map <leader>E <Action>(InspectCode)
-map <leader>ep <Action>(GotoPreviousError)
-map <leader>en <Action>(GotoNextError)
+" Errors
+map <leader>e <Action>(InspectCode)
+map [e <Action>(GotoPreviousError)
+map ]e <Action>(GotoNextError)
 
-""" Cleaning
+" Cleaning
 map <leader>C <Action>(ReformatCode)
-map <leader>cf <Action>(ShowReformatFileDialog)
+map <leader>cd <Action>(ShowReformatFileDialog)
 map <leader>cc <Action>(CodeCleanup)
 map <leader>ci <Action>(OptimizeImports)
 map <leader>ca <Action>(AutoIndentLines)
 
-""" Refactoring
+" Refactoring
 map <leader>R <Action>(Refactorings.QuickListPopupAction)
 map <leader>rn <Action>(RenameElement)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rm <Action>(ExtractMethod)
 map <leader>rv <Action>(IntroduceVariable)
 
-""" Code actions
+" Code actions
 map <leader>i <Action>(ShowIntentionActions)
-map <leader>I <Action>(QuickImplementations)
-map <leader>G <Action>(Generate)
+map <leader>q <Action>(QuickImplementations)
+map <leader>g <Action>(Generate)
 
-""" Completion
+" Completion
 "map <leader>? <Action>(CodeCompletion)
 "map <leader>? <Action>(SmartTypeCompletion)
-map <leader>\ <Action>(EditorCompleteStatement)
-map <C-a> <Action>(QuickJavaDoc)
+"map <leader>? <Action>(EditorCompleteStatement)
+"map K <Action>(QuickJavaDoc)
 
-""" Splits
+" Splits
 "...
 
-""" Tabs
+" Tabs
 "map ? <Action>(NextTab)
 "map ? <Action>(PreviousTab)
-map <leader>w <Action>(CloseEditor)
-"map <leader>? <Action>(CloseAllEditors)
-map <leader>W <Action>(CloseAllEditorsButActive)
-" map <leader>? <Action>(PinActiveEditorTab)
+"map ? <Action>(CloseEditor)
+"map ? <Action>(CloseAllEditors)
+map <C-x> <Action>(CloseAllEditorsButActive)
 
-""" Expand/collapse
+" Expand/collapse
 "map <leader>? <Action>(ExpandCollapseToggleAction)
 "map <leader>? <Action>(CollapseRegion)
 "map <leader>? <Action>(ExpandRegion)
 "map <leader>? <Action>(CollapseAllRegions)
 "map <leader>? <Action>(ExpandAllRegions)
 
-""" Git
+" Git
 "map <leader>? <Action>(Vcs.QuickListPopupAction)
 
-""" Copilot
+" Copilot
 "map <leader>? <Action>(copilot.enableCopilot)
 "map <leader>? <Action>(copilot.disableCopilot)
 "map <leader>? <Action>(copilot.requestCompletion)
@@ -519,7 +483,7 @@ map <leader>W <Action>(CloseAllEditorsButActive)
 "map <leader>? <Action>(copilot.cycleNextInlays)
 "map <leader>? <Action>(copilot.cyclePrevInlays)
 
-""" Resolve IDE shortcut conflicts
+" Resolve IDE shortcut conflicts
 sethandler <C-a> a:vim
 sethandler <C-b> a:vim
 sethandler <C-c> a:vim

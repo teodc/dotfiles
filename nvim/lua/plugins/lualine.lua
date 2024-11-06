@@ -7,10 +7,15 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = 'tokyonight',
+      theme = 'tokyonight-night',
+      --section_separators = { left = '', right = '' },
+      --component_separators = { left = '', right = '' },
       disabled_filetypes = {
         'alpha',
+        'diff',
+        'diffpanel_3',
         'neo-tree',
+        'undotree',
       },
     },
     extensions = {
@@ -18,7 +23,7 @@ return {
       'lazy',
       'mason',
       --'neo-tree',
-      --'oil',
+      'oil',
       'quickfix',
       --'trouble',
     },

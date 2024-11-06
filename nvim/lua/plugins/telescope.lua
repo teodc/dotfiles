@@ -5,7 +5,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-ui-select.nvim',
-    'debugloop/telescope-undo.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       -- Only load if `make` is available
@@ -24,7 +23,29 @@ return {
 
     require('telescope').setup({
       defaults = {
-        file_ignore_patterns = { '^./.git/', '^node_modules/', '^vendor/', '^./.venv/' },
+        sorting_strategy = 'ascending',
+        layout_strategy = 'horizontal',
+        results_title = false,
+        preview_title = false,
+        layout_config = {
+          vertical = {
+            width = 0.8,
+            height = 0.8,
+            preview_height = 0.5,
+          },
+          horizontal = {
+            width = 0.9,
+            height = 0.9,
+            preview_width = 0.6,
+          },
+          --prompt_position = 'bottom',
+        },
+        file_ignore_patterns = {
+          '^./.git/',
+          '^./.venv/',
+          '^node_modules/',
+          '^vendor/',
+        },
         mappings = {
           n = {
             ['q'] = actions.close,
@@ -37,86 +58,46 @@ return {
       --   },
       -- },
       pickers = {
-        find_files = {
-          hidden = true,
-        },
-      },
-      live_grep = {
-        additional_args = function(_)
-          return { '--hidden' }
-        end,
-      },
-      extensions = {
-        ['ui-select'] = {
-          require('telescope.themes').get_dropdown(),
-        },
-        undo = {
-          side_by_side = true, -- Requires https://github.com/dandavison/delta
-          layout_strategy = 'vertical',
-          layout_config = {
-            preview_height = 0.8,
-          },
-        },
+        buffers = { theme = 'dropdown', previewer = false, preview_title = false },
+        current_buffer_fuzzy_find = { layout_strategy = 'vertical', previewer = false, preview_title = false },
+        diagnostics = { preview_title = false },
+        find_files = { theme = 'dropdown', previewer = false, preview_title = false, hidden = true },
+        grep_string = { preview_title = false },
+        help_tags = { preview_title = false },
+        keymaps = { preview_title = false },
+        live_grep = { preview_title = false },
+        marks = { preview_title = false },
+        oldfiles = { preview_title = false, hidden = true },
+        resume = { preview_title = false },
       },
     })
 
     -- Enable extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
-    pcall(require('telescope').load_extension, 'undo')
 
     -- See `:help telescope.builtin`
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader><leader>', builtin.live_grep, { desc = 'Search Grep in CWD' })
-    vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = '[S]earch [R]ecent Files' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>se', builtin.buffers, { desc = '[S]earch [E]xisting Buffers' })
-    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
-    vim.keymap.set('n', '<leader>s.', builtin.resume, { desc = '[S]earch Resume ("." like repeat)' })
-    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>su', ':Telescope undo <CR>', { desc = '[S]earch [U]ndos' })
-    --vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch Select [T]elescope' })
-    --vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Search [G]it [B]ranches' })
-    --vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Search [G]it [C]ommits' })
-    --vim.keymap.set('n', '<leader>gcf', builtin.git_bcommits, { desc = 'Search [G]it [C]ommits for current [F]ile' })
-    --vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
-    --vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Search [G]it [S]tatus (diff view)' })
 
-    -- Search current document symbols (also defined in "plugins/lsp.lua")
-    --vim.keymap.set('n', '<leader>ss', function()
-    --  builtin.lsp_document_symbols {
-    --    symbols = { 'Class', 'Function', 'Method', 'Constructor', 'Interface', 'Module', 'Property' },
-    --  }
-    --end, { desc = '[S]each LSP Document [S]ymbols' })
-
-    -- Grep in opened files
-    vim.keymap.set('n', '<leader>s/', function()
-      builtin.live_grep({
-        grep_open_files = true,
-        prompt_title = 'Live Grep Open Files',
-      })
-    end, { desc = '[S]earch [/] in Open Files' })
-
-    -- Fuzzy search in current buffer
-    vim.keymap.set('n', '<leader>/', function()
-      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-        previewer = false,
-      }))
-    end, { desc = 'Fuzzily search in current buffer' })
-
-    -- Shortcut for searching your Neovim configuration files
-    vim.keymap.set('n', '<leader>sn', function()
-      builtin.find_files({ cwd = vim.fn.stdpath('config') })
-    end, { desc = '[S]earch [N]eovim files' })
-
-    vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = '#a9b1d6', bg = 'none' })
-    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#a9b1d6', bg = 'none' })
-    vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { fg = '#e0af68', bg = 'none' })
-    vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { fg = '#e0af68', bg = 'none' })
+    -- stylua: ignore start
+    vim.keymap.set('n', '<leader>/', function() builtin.current_buffer_fuzzy_find({ prompt_title = 'Fuzzily search current buffer' }) end, { desc = 'Fuzzily search current buffer' })
+    vim.keymap.set('n', '<leader><leader>', function() builtin.live_grep({ prompt_title = 'Grep in CWD' }) end, { desc = 'Grep in CWD' })
+    vim.keymap.set('n', '<leader>s.', function() builtin.resume({ prompt_title = 'Resume last search' }) end, { desc = 'Resume last search ("." like repeat)' })
+    vim.keymap.set('n', '<leader>s/', function() builtin.live_grep({ grep_open_files = true, prompt_title = 'Live grep open files' }) end, { desc = 'Search open files ("/" like search)' })
+    vim.keymap.set('n', '<leader><Tab>', function() builtin.buffers({ sort_lastused = true, sort_mru = true, prompt_title = 'List open buffers' }) end, { desc = 'List open buffers' })
+    vim.keymap.set('n', '<leader>sq', function() builtin.diagnostics({ prompt_title = 'Search diagnostics' }) end, { desc = 'Search diagnostics' })
+    vim.keymap.set('n', '<leader>sf', function() builtin.find_files({ prompt_title = 'Search project files' }) end, { desc = 'Search files' })
+    vim.keymap.set('n', '<leader>sh', function() builtin.help_tags({ prompt_title = 'Search help' }) end, { desc = 'Search help' })
+    vim.keymap.set('n', '<leader>sk', function() builtin.keymaps({ prompt_title = 'Search keymaps' }) end, { desc = 'Search keymaps' })
+    vim.keymap.set('n', '<leader>sm', function() builtin.marks({ prompt_title = 'Search marks' }) end, { desc = 'Search marks' })
+    vim.keymap.set('n', '<leader>sn', function() builtin.find_files({ cwd = vim.fn.stdpath('config'), prompt_title = 'Search Neovim files' }) end, { desc = 'Search Neovim files' })
+    vim.keymap.set('n', '<leader>sr', function() builtin.oldfiles({ prompt_title = 'Search recent files' }) end, { desc = 'Search recent files' })
+    vim.keymap.set('n', '<leader>sw', function() builtin.grep_string({ prompt_title = 'Search current word' }) end, { desc = 'Search current word' })
+    --vim.keymap.set('n', '<leader>sgb', builtin.git_branches, { desc = 'Search git branches' })
+    --vim.keymap.set('n', '<leader>sgc', builtin.git_commits, { desc = 'Search git commits' })
+    --vim.keymap.set('n', '<leader>sgcf', builtin.git_bcommits, { desc = 'Search git commits for current buffer' })
+    --vim.keymap.set('n', '<leader>sgf', builtin.git_files, { desc = 'Search git files' })
+    --vim.keymap.set('n', '<leader>sgs', builtin.git_status, { desc = 'Search git status (diff view)' })
+    -- stylua: ignore end
   end,
 }
