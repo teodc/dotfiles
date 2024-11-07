@@ -388,8 +388,8 @@ xnoremap <leader>p "_dP
 nnoremap J mzJ`z
 
 " Copy the line/selection to the line bellow
-nnoremap <leader>c :copy .<CR>
-vnoremap <leader>c :copy '><CR>gv
+nnoremap <leader>o :copy .<CR>
+vnoremap <leader>o :copy '><CR>gv
 
 " Comment line or visual block
 nnoremap <leader>m <Plug>CommentaryLine

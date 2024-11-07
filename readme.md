@@ -45,6 +45,7 @@ bat cache --build
 
 ```
 cp git/.gitconfig ~/
+cp git/.gitignore ~/
 ```
 
 ### IdeaVim

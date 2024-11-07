@@ -473,7 +473,11 @@ map <C-x> <Action>(CloseAllEditorsButActive)
 "map <leader>? <Action>(ExpandAllRegions)
 
 " Git
-"map <leader>? <Action>(Vcs.QuickListPopupAction)
+map <leader>V <Action>(Vcs.QuickListPopupAction)
+map <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>vr <Action>(ChangesView.Revert)
+map <leader>vd <Action>(Git.CompareWithBranch)
+map <leader>vc <Action>(Git.ResolveConflicts)
 
 " Copilot
 "map <leader>? <Action>(copilot.enableCopilot)

@@ -11,9 +11,26 @@
     verbose = false
 [core]
     editor = vim
-    pager = diff-so-fancy | less --tabs=4 -RF
+    excludeFiles = ~/.gitignore
+    pager = delta
 [credential]
     helper = osxkeychain
+[delta]
+    line-numbers = true # activated by default with side-by-side
+    navigate = true # use n and N to move between diff sections
+    side-by-side = true
+    # Tokyonight
+    line-numbers-minus-style      = "#914c54"
+    line-numbers-plus-style       = "#449dab"
+    line-numbers-zero-style       = "#3b4261"
+    minus-emph-style              = syntax "#713137"
+    minus-empty-line-marker-style = syntax "#37222c"
+    minus-non-emph-style          = syntax "#37222c"
+    minus-style                   = syntax "#37222c"
+    plus-emph-style               = syntax "#2c5a66"
+    plus-empty-line-marker-style  = syntax "#20303b"
+    plus-non-emph-style           = syntax "#20303b"
+    plus-style                    = syntax "#20303b"
 [diff]
     algorithm = histogram
     renames = true
@@ -32,13 +49,14 @@
 [init]
     defaultBranch = main
 [interactive]
-    diffFilter = diff-so-fancy --patch
+    diffFilter = delta --color-only
 [log]
     abbrevCommit = true
     date = iso
     decorate = short
     #showSignature = true
 [merge]
+    conflictstyle = diff3
     ff = only
 [pull]
     rebase = true
@@ -56,6 +74,6 @@
 [tag]
     gpgSign = true
 [user]
-    #email = ***@***.***
+    email = *****@*****
     name = Théo
-    signingKey = ~/.ssh/id_ed25519
+    signingKey = ~/.ssh/id_ed25519.pub

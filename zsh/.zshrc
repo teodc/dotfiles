@@ -67,10 +67,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-#export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
 export GOPATH="$HOME/Workspace/go"
 export GOBIN="$GOPATH/bin"
-#export PATH="$GOBIN:$PATH"
+export PATH="$GOBIN:$PATH"
+export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
 
 export ARCHFLAGS="x86_64"
 export CLICOLOR=1
@@ -159,12 +159,12 @@ alias v="vim"
 alias nv="nvim"
 alias nvk='NVIM_APPNAME="nvim-kickstart" nvim'
 
-alias t="tmux"
+alias t="tmux new-session -A -s main"
 alias tl="tmux ls"
-alias tn="tmux new"
-alias ta="tmux a"
-alias tk="tmux kill-session"
-alias tks="tmux kill-server"
+alias ta="tmux attach-session -t"
+alias tn="tmux new-session -A -s"
+alias tk="tmux kill-session -t"
+alias tx="tmux kill-server"
 
 alias rsync-cp="rsync -avz --progress -h"
 alias rsync-mv="rsync -avz --progress -h --remove-source-files"
@@ -187,6 +187,11 @@ alias dce="docker compose exec"
 
 alias kc="kubectl"
 
+# ------------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------------
+
+# Launch a Yazi that automatically cd into the cwd
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"
@@ -197,7 +202,7 @@ function y() {
 }
 
 # ------------------------------------------------------------------------------
-# Load Extras
+# Extras
 # ------------------------------------------------------------------------------
 
 source <(fzf --zsh)
