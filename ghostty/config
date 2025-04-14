@@ -1,0 +1,33 @@
+# https://ghostty.org/docs/config/reference
+
+adjust-cell-height = 9
+adjust-cell-width = 0
+auto-update = check
+auto-update-channel = stable
+background-blur = false
+background-opacity = 1
+clipboard-read = deny
+clipboard-write = allow
+#copy-on-select = clipboard
+cursor-click-to-move = true
+cursor-style = block
+cursor-style-blink = true
+cursor-text = #000000
+font-family = Hack Nerd Font Mono
+font-size = 27
+font-thicken = true
+font-thicken-strength = 100
+#keybind = cmd+k=clear_screen
+keybind = cmd+k=text:\x0c
+keybind = cmd+r=reload_config
+link-url = true
+macos-icon = official
+macos-window-shadow = false
+maximize = true
+mouse-hide-while-typing = true
+shell-integration = zsh
+shell-integration-features = no-cursor
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+window-decoration = none
+#window-padding-x = 10
+#window-padding-y = 10

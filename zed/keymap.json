@@ -1,0 +1,258 @@
+// https://zed.dev/docs/key-bindings
+// https://zed.dev/docs/vim
+
+// TODO: git, diag, goto, findAllRefs, refactor, code actions, format, generate, copy file ref, toggle panes, show intentions
+
+[
+	{
+		"context": "Global",
+		"bindings": {}
+	},
+	{
+		"context": "Workspace",
+		"bindings": {
+			// Open projects
+			"cmd-o": "workspace::Open",
+			"cmd-ctrl-o": "projects::OpenRecent",
+			"cmd-alt-o": "projects::OpenRemote",
+			// Search all files
+			"cmd-shift-f": "pane::DeploySearch",
+			"cmd-shift-h": ["pane::DeploySearch", { "replace_enabled": true }],
+			// Adjust buffer font size
+			"cmd-=": "zed::IncreaseBufferFontSize",
+			"cmd--": "zed::DecreaseBufferFontSize",
+			"cmd-0": "zed::ResetBufferFontSize"
+		}
+	},
+	{
+		"context": "Pane || EmptyPane",
+		"bindings": {
+			// TODO: Toggle panels
+			// Instead of only having toggles from everywhere,
+			// let's try to have toggles from the editor,
+			// the same cmd-<int> will close the panel from the panel itself
+			// and escape from the panel will focus back to the editor
+			"cmd-1": "project_panel::ToggleFocus",
+			"cmd-2": "outline_panel::ToggleFocus",
+			"cmd-3": "git_panel::ToggleFocus",
+			"cmd-7": "assistant::ToggleFocus",
+			"cmd-8": "collab_panel::ToggleFocus",
+			"cmd-9": "terminal_panel::ToggleFocus",
+			//"cmd-?": "chat_panel::ToggleFocus",
+			//"cmd-?": "notifications_panel::ToggleFocus",
+			"cmd-\\": "workspace::CloseAllDocks",
+			// Navigate panes
+			"ctrl-w h": "workspace::ActivatePaneLeft",
+			"ctrl-w j": "workspace::ActivatePaneDown",
+			"ctrl-w k": "workspace::ActivatePaneUp",
+			"ctrl-w l": "workspace::ActivatePaneRight"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"cmd-\\": "workspace::CloseAllDocks",
+			// Adjust buffer font size
+			"cmd-=": "zed::IncreaseBufferFontSize",
+			"cmd--": "zed::DecreaseBufferFontSize",
+			"cmd-0": "zed::ResetBufferFontSize"
+		}
+	},
+	{
+		"context": "Dock",
+		"bindings": {}
+	},
+	{
+		"context": "Editor && (vim_mode == normal) && !VimWaiting && !menu",
+		"bindings": {
+			// Save & close
+			"ctrl-s": "workspace::SaveAll",
+			"ctrl-q": "pane::CloseActiveItem",
+			"ctrl-x": ["pane::CloseInactiveItems", { "close_pinned": false }],
+			// Focus project panel
+			"\\": "pane::RevealInProjectPanel",
+			// Center editor layout
+			"space z": "workspace::ToggleCenteredLayout",
+			// Center screen while scrolling
+			"ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+			"ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+			"ctrl-b": ["workspace::SendKeystrokes", "ctrl-b z z"],
+			"ctrl-f": ["workspace::SendKeystrokes", "ctrl-f z z"],
+			// Delete without yanking
+			"shift-d": ["workspace::SendKeystrokes", "\" _ shift-d"],
+			// Create splits
+			"ctrl-w s": "pane::SplitHorizontal",
+			"ctrl-w v": "pane::SplitVertical",
+			"ctrl-w shift-s": "workspace::NewFileSplitHorizontal",
+			"ctrl-w shift-v": "workspace::NewFileSplitVertical",
+			// Resize slipts
+			"left": "vim::ResizePaneLeft",
+			"right": "vim::ResizePaneRight",
+			"down": "vim::ResizePaneDown",
+			"up": "vim::ResizePaneUp",
+			"ctrl-w =": "vim::ResetPaneSizes",
+			// Show buffer/project symbols
+			"space s": "outline::Toggle",
+			"space t": "project_symbols::Toggle",
+			// File search
+			"space space": "file_finder::Toggle",
+			// Toggle inlay hints
+			"space u": "editor::ToggleInlayHints"
+		}
+	},
+	{
+		"context": "Editor && (vim_mode == visual) && !VimWaiting && !menu",
+		"bindings": {
+			// Paste without replacing clipboard selection
+			"p": ["workspace::SendKeystrokes", "\" _ d shift-p"],
+			// Perfom ys in visual mode
+			"shift-s": ["vim::PushAddSurrounds", {}],
+			// Perform cx in visual mode
+			"shift-x": "vim::Exchange"
+		}
+	},
+	{
+		"context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+		"bindings": {
+			// Easily move to beginning/end of line
+			"shift-l": ["workspace::SendKeystrokes", "$"],
+			"shift-h": ["workspace::SendKeystrokes", "^"],
+			// Move lines
+			"ctrl-j": "editor::MoveLineDown",
+			"ctrl-k": "editor::MoveLineUp",
+			// Indent lines
+			"ctrl-h": "editor::Outdent",
+			"ctrl-l": "editor::Indent",
+			// Delete single characters without yanking
+			"x": ["workspace::SendKeystrokes", "\" _ x"],
+			"shift-x": ["workspace::SendKeystrokes", "\" _ shift-x"],
+			// C without replacing clipboard
+			"c": ["workspace::SendKeystrokes", "\" _ c"],
+			"shift-c": ["workspace::SendKeystrokes", "\" _ shift-c"],
+			// Delete without yanking
+			"space d": ["workspace::SendKeystrokes", "\" _ d"],
+			// Comment lines
+			"space m": ["editor::ToggleComments", { "advance_downwards": false }],
+			// Duplicate line/selection
+			"space o": "editor::DuplicateLineDown",
+			// Expand/Shrink selection
+			"ctrl-f": "editor::SelectLargerSyntaxNode",
+			"ctrl-b": "editor::SelectSmallerSyntaxNode",
+			// Center screen while navigating search results
+			"n": ["workspace::SendKeystrokes", "n z z"],
+			"shift-n": ["workspace::SendKeystrokes", "shift-n z z"],
+			//"*": ["workspace::SendKeystrokes", "* shift-n z z"],
+			//"#": ["workspace::SendKeystrokes", "# shift-n z z"],
+			// Increment/decrement
+			//"ctrl-?": "vim::Increment",
+			//"ctrl-?": "vim::Decrement",
+			//"g ctrl-?": ["vim::Increment", { "step": true }],
+			//"g ctrl-?": ["vim::Decrement", { "step": true }],
+			// Sneak
+			"space f": "vim::PushSneak",
+			"space shift-f": "vim::PushSneakBackward",
+			// Navigate camel case
+			// "w": "vim::NextSubwordStart",
+			// "b": "vim::PreviousSubwordStart",
+			// "e": "vim::NextSubwordEnd",
+			// "g e": "vim::PreviousSubwordEnd"
+			// Multi cursor
+			"ctrl-n": "vim::SelectNext",
+			"ctrl-p": "vim::SelectPrevious",
+			"ctrl-a": "editor::SelectAllMatches",
+			"ctrl-shift-n": ["editor::SelectNext", { "replace_newest": true }],
+			"ctrl-shift-p": ["editor::SelectPrevious", { "replace_newest": true }]
+		}
+	},
+	{
+		"context": "Editor && (vim_mode == insert) && !VimWaiting && !menu",
+		"bindings": {
+			// Show completions
+			"ctrl-space": "editor::ShowCompletions",
+			// Open the inline AI assistant
+			"ctrl-a": "assistant::InlineAssist",
+			// Request AI suggestion
+			"ctrl-p": "editor::ShowEditPrediction",
+			// Open the code actions menu
+			"ctrl-l": "editor::ToggleCodeActions",
+			// Hides all suggestions
+			"ctrl-z": "editor::Cancel"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			":": "command_palette::Toggle",
+			"n": "project_panel::NewFile",
+			"shift-n": "project_panel::NewDirectory",
+			"/": "project_panel::NewSearchInDirectory",
+			"space": "project_panel::Open",
+			"o": "project_panel::OpenPermanent",
+			"d": "project_panel::Delete",
+			"r": "project_panel::Rename",
+			"h": "project_panel::CollapseSelectedEntry",
+			"j": "menu::SelectNext",
+			"k": "menu::SelectPrevious",
+			"l": "project_panel::ExpandSelectedEntry",
+			"\\": "project_panel::ToggleFocus",
+			"escape": "project_panel::ToggleFocus",
+			"cmd-1": "workspace::ToggleLeftDock"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			":": "command_palette::Toggle",
+			"n": "project_panel::NewFile",
+			"shift-n": "project_panel::NewDirectory",
+			"/": "project_panel::NewSearchInDirectory",
+			"space": "project_panel::Open",
+			"o": "project_panel::OpenPermanent",
+			"d": "project_panel::Delete",
+			"r": "project_panel::Rename",
+			"h": "project_panel::CollapseSelectedEntry",
+			"j": "menu::SelectNext",
+			"k": "menu::SelectPrevious",
+			"l": "project_panel::ExpandSelectedEntry",
+			"\\": "project_panel::ToggleFocus",
+			"escape": "project_panel::ToggleFocus",
+			"cmd-1": "workspace::ToggleLeftDock"
+		}
+	},
+	// TODO: Fix tentative bellow
+	{
+		"context": "OutlinePanel",
+		"bindings": {
+			"escape": "outline_panel::ToggleFocus",
+			"cmd-2": "workspace::ToggleLeftDock"
+		}
+	},
+	{
+		"context": "GitPanel",
+		"bindings": {
+			"escape": "git_panel::ToggleFocus",
+			"cmd-3": "workspace::ToggleLeftDock"
+		}
+	},
+	{
+		"context": "AssistantPanel",
+		"bindings": {
+			"escape": "assistant::ToggleFocus",
+			"cmd-7": "workspace::ToggleRightDock"
+		}
+	},
+	{
+		"context": "CollabPanel",
+		"bindings": {
+			"escape": "collab_panel::ToggleFocus",
+			"cmd-8": "workspace::ToggleRightDock"
+		}
+	},
+	{
+		"context": "Terminal",
+		"bindings": {
+			"escape": "terminal_panel::ToggleFocus",
+			"cmd-9": "workspace::ToggleBottomDock"
+		}
+	}
+]

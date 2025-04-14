@@ -18,14 +18,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## 🛠 Installations
 
-### Alacritty
-
-```
-mkdir -p ~/.config/alacritty/themes
-cp alacritty/alacritty.yml ~/.config/alacritty/
-curl https://raw.githubusercontent.com/catppuccin/alacritty/main/catppuccin-mocha.toml -o ~/.config/alacritty/themes/
-```
-
 ### Amethyst
 
 ```
@@ -39,6 +31,13 @@ mkdir -p "$(bat --config-dir)/themes"
 cp bat/config $(bat --config-dir)
 curl https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme -o "$(bat --config-dir)/themes/"
 bat cache --build
+```
+
+### Ghostty
+
+```
+mkdir -p ~/.config/ghostty
+cp ghostty/config ~/.config/ghostty/
 ```
 
 ### git
@@ -119,11 +118,18 @@ mkdir -p ~/.vim/undo
 ```
 mkdir -p ~/.config/yazi
 cp yazi/yazi.toml ~/.config/yazi
+cp yazi/theme.toml ~/.config/yazi
+cp yazi/keymap.toml ~/.config/yazi
 cp yazi/init.lua ~/.config/yazi
-curl https://raw.githubusercontent.com/catppuccin/yazi/main/themes/mocha.toml -o ~/.config/yazi/theme.toml
-curl https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme -o ~/.config/yazi/catppuccin_mocha.tmTheme
+ya pack -a yazi-rs/flavors:catppuccin-mocha
 ya pack -a yazi-rs/plugins:full-border
-vim ~/.config/yazi/theme.toml # Edit line 32
+```
+
+### zed
+
+```
+mkdir -p ~/.config/zed
+cp zed/* ~/.config/zed
 ```
 
 ### zsh
@@ -135,34 +141,32 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zs
 cp zsh/.zshrc ~/
 ```
 
-### App Store Apps
+## 💰 Productivity Tips
+
+### 🖥️ macOS Window Management
+
+- Auto hide the Dock (required not to burn in hell)
+- Disable `Automatically rearrange Spaces based on most recent use`
+- Create a dedicated Space for each app (or type of app) in the `Mission Control` view
+- Assign each app to its own Space with the `Assign To` option from the Dock
+- Define keyboard shortcuts to switch to Spaces: `Space [1-9]`->`Ctrl+[1-9]`
+- Use `Amethyst` to manage and tile windows
+- Use only Amethyst's `fullscreen` layout (and don't use Mac's "Full Screen")
+
+Typical Spaces setup:
+- `Space 1`: Brave
+- `Space 2`: Ghostty
+- `Space 3`: Zed
+- `Space 4`: HTTPie
+- `Space 5`: TablePlus
+- `Space 6`: Legcord
+- `Space 7`: Simplenote
+- `Space 8`: ChatGPT
+
+### ⌨ macOS Keyboard
 
 ```
-...
+defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
-
-## 🖥️ macOS Window Management
-
-How I improved my window management on macOS:
-
-- Disable `Automatically rearrange Spaces based on most recent use`.
-- Create a dedicated Space for each app (or type of app) in the `Mission Control` view.
-- Assign each app to its own Space with the `Assign To` option from the Dock.
-- Set the keyboard shortcuts to switch directly to Spaces: `Space 1`->`Option+1`, `Space 2`->`Option+2`, etc.
-- Use `Amethyst` (or `Yabai`) to manage and tile windows.
-- Default to Amethyst's `fullscreen` layout (and don't use Mac's "Full Screen").
-
-This way, I can directly jump to a specific Space based on what I want to do.
-
-I usually have my Spaces organized like this:
-
-- Main screen:
-    - `Space 1`: Main browser
-    - `Space 2`: Terminal
-    - `Space 3`: Code editor
-    - `Space 4`: API client
-    - `Space 5`: Database GUI
-- Side screen:
-    - `Space 6`: Communication tools
-    - `Space 7`: Notes
-    - `Space 8`: Music app

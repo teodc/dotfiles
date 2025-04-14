@@ -1,6 +1,4 @@
-# -------------------
-# --- Preferences ---
-# -------------------
+# ----- Preferences -----
 
 layouts:
   - fullscreen
@@ -60,9 +58,7 @@ restore-layouts-on-launch: true
 
 debug-layout-info: false
 
-# -----------------
-# --- Shortcuts ---
-# -----------------
+# ----- Shortcuts -----
 
 cycle-layout:
   mod: mod1

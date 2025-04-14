@@ -64,14 +64,18 @@ set undoreload=5000
 set iskeyword+=-
 set iskeyword+=_
 
-" IdeaVim only commands
+" IdeaVim specific settings
 set ideajoin " Extended join behaviors (https://github.com/JetBrains/ideavim/wiki/ideajoin-examples)
 set ideamarks " Maps Vim's global marks to IDE bookmarks
 set idearefactormode=keep " Specifies the mode to be used when a refactoring selects text to be edited (keep|select|visual)
 set ideastatusicon=enabled " Behavior of IdeaVim icon in the status bar (enabled|gray|disabled)
 set ideawrite=all " Defines the behaviour of the :w command (file|all)
 "set ideaglobalmode " Share a single mode across all open windows
-"set trackactionids " Track the current IDE action and display the action name in a notification
+
+" IdeaVim embedded plugins
+set functiontextobj " if: inner function, af: around function
+set mini-ai " aq: around any quotes, iq: inside any quotes, ab: around any ()/{}/[], ib: inside any ()/{}/[]
+"set which-key
 
 " ------------------------------------------------------------------------------
 " Plugins
@@ -123,7 +127,7 @@ Plug 'preservim/nerdtree'
 " let g:NERDTreeHijackNetrw = 0
 " let g:NERDTreeShowHidden = 1
 " let g:NERDTreeFileLines = 1
-nmap - :NERDTreeFind<CR>
+nmap \ :NERDTreeFind<CR>
 " nmap <C-t>? :NERDTree<CR>
 " nmap <C-t>? :NERDTreeRefreshRoot<CR>
 " nmap <C-t>? :NERDTreeToggle<CR>
@@ -141,16 +145,6 @@ nmap - :NERDTreeFind<CR>
 "   ysiw{   Wrap current word with {  } (with spaces)
 "   yss<b>  Wrap current line with <b></b>
 Plug 'tpope/vim-surround'
-
-" " Multiple Cursors
-" " See: https://github.com/mg979/vim-visual-multi
-" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-" let g:VM_mouse_mappings = 0
-" let g:VM_default_mappings = 0
-" let g:VM_maps = {}
-" let g:VM_maps['Find Under'] = '<C-n>'
-" let g:VM_maps['Find Subword Under'] = '<C-n>'
-" let g:VM_maps['Select All'] = '<C-N>'
 
 " Highlightedyank
 " See: https://github.com/machakann/vim-highlightedyank
@@ -171,37 +165,39 @@ Plug 'tpope/vim-commentary'
 "   aI  Indent level plus one line above and below
 Plug 'michaeljsmith/vim-indent-object'
 
-" " Exchange
-" " See: https://github.com/tommcdo/vim-exchange
-" " Usage:
-" "   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
-" "   cxx         Like cx, but use the current line
-" "   X           Like cx, but for Visual mode
-" "   cxc         Clear any {motion} pending for exchange
-" Plug 'tommcdo/vim-exchange'
+" Exchange
+" See: https://github.com/tommcdo/vim-exchange
+" Usage:
+"   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
+"   cxx         Like cx, but use the current line
+"   X           Like cx, but for Visual mode
+"   cxc         Clear any {motion} pending for exchange
+Plug 'tommcdo/vim-exchange'
 
-" " Textobj Entire
-" " See: https://github.com/kana/vim-textobj-entire
-" " Usage:
-" "   ae  Targets the entire content of the current buffer
-" "   ie  Similar to ae, but does not include leading and trailing empty lines
-" Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-entire'
+" Textobj Entire
+" See: https://github.com/kana/vim-textobj-entire
+" Usage:
+"   ae  Targets the entire content of the current buffer
+"   ie  Similar to ae, but does not include leading and trailing empty lines
+Plug 'kana/vim-textobj-entire'
 
-" " Argtextobj
-" " See: https://www.vim.org/scripts/script.php?script_id=2699
-" " Usage:
-" "   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
-" "   ia  The parameter only
-" Plug 'vim-scripts/argtextobj.vim'
+" Argtextobj
+" See: https://www.vim.org/scripts/script.php?script_id=2699
+" Usage:
+"   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
+"   ia  The parameter only
+"   daa Delete an argument
+"   cia Change inner argument
+"   via Select inner argument
+Plug 'vim-scripts/argtextobj.vim'
 
 " Paragraph Motion
 " See: https://github.com/dbakker/vim-paragraph-motion
 Plug 'dbakker/vim-paragraph-motion'
 
-" " Matchit
-" " See: https://github.com/chrisbra/matchit
-" Plug 'chrisbra/matchit'
+" Matchit
+" See: https://github.com/chrisbra/matchit
+Plug 'chrisbra/matchit'
 
 " ------------------------------------------------------------------------------
 "  Remaps
@@ -223,9 +219,6 @@ vnoremap <C-c> <Esc>
 nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 "nnoremap <C-x> :qa<CR>
-
-" " Open Netrw
-" nnoremap <C-e> :Explore<CR>
 
 " Center screen when navigating search results
 nnoremap n nzzzv
@@ -271,21 +264,27 @@ vnoremap x "_x
 
 " C without replacing clipboard selection
 nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
 vnoremap C "_C
-nnoremap c "_c
-vnoremap C "_C
+
+" " S without replacing clipboard selection
+" nnoremap s "_s
+" vnoremap s "_s
+" nnoremap S "_S
+" vnoremap S "_S
 
 " Delete without yanking to the clipboard
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 nnoremap <leader>D "_D
 
-" " Yank into the system clipboard
+" Yank into the system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
 
-" " Paste from the system clipboard
+" Paste from the system clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
@@ -296,8 +295,8 @@ xnoremap <leader>p "_dP
 nnoremap J mzJ`z
 
 " " Copy the line/selection to the line bellow
-" nnoremap <leader>c :copy .<CR>
-" vnoremap <leader>c :copy '><CR>gv
+" nnoremap <leader>o :copy .<CR>
+" vnoremap <leader>o :copy '><CR>gv
 
 " " Comment line or visual block
 " nnoremap <leader>m <Plug>CommentaryLine
@@ -354,13 +353,16 @@ nnoremap <leader>bq :bdelete<CR>
 " nnoremap <C-?> <C-x>
 " vnoremap <C-?> <C-x>gv
 
+" Let's try something
+nnoremap * *Nzz
+
 " ------------------------------------------------------------------------------
 " IDE Actions
 " ------------------------------------------------------------------------------
 
-" Edit & reload the IdeaVim config
-map \e :e ~/.ideavimrc<CR>
-map \r <Action>(IdeaVim.ReloadVimRc.reload)
+" " Edit & reload the IdeaVim config
+" map \e :e ~/.ideavimrc<CR>
+" map \r <Action>(IdeaVim.ReloadVimRc.reload)
 
 " Toggle Zen mode
 map <leader>z <Action>(ToggleDistractionFreeMode)

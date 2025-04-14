@@ -81,6 +81,7 @@ set ttyfast " Optimize for fast terminal connections
 set updatetime=3000 " Slightly decrease the update time
 set viminfo+=! " ???
 set virtualedit=none " Prevent cursor to be positioned where there is no character
+set whichwrap+=<,>,[,],h,l " Cursor navigation wraps when moving past line ends
 set wildmenu " Visual autocomplete for command menu
 set wmh=1 " The minimal height of a window
 
@@ -186,7 +187,7 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeFileLines = 1
-nmap - :NERDTreeFind<CR>
+nmap \\ :NERDTreeFind<CR>
 "nmap <C-t>? :NERDTree<CR>
 "nmap <C-t>? :NERDTreeToggle<CR>
 "nmap <C-t>? :NERDTreeFocus<CR>
@@ -236,37 +237,39 @@ Plug 'tpope/vim-commentary'
 "   aI  Indent level plus one line above and below
 Plug 'michaeljsmith/vim-indent-object'
 
-" " Exchange
-" " See: https://github.com/tommcdo/vim-exchange
-" " Usage:
-" "   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
-" "   cxx         Like cx, but use the current line
-" "   X           Like cx, but for Visual mode
-" "   cxc         Clear any {motion} pending for exchange
-" Plug 'tommcdo/vim-exchange'
+" Exchange
+" See: https://github.com/tommcdo/vim-exchange
+" Usage:
+"   cx{motion}  On first use, define a {motion} to exchange. On second use, define another {motion} and perform the exchange.
+"   cxx         Like cx, but use the current line
+"   X           Like cx, but for Visual mode
+"   cxc         Clear any {motion} pending for exchange
+Plug 'tommcdo/vim-exchange'
 
-" " Textobj Entire
-" " See: https://github.com/kana/vim-textobj-entire
-" " Usage:
-" "   ae  Targets the entire content of the current buffer
-" "   ie  Similar to ae, but does not include leading and trailing empty lines
-" Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-entire'
+" Textobj Entire
+" See: https://github.com/kana/vim-textobj-entire
+" Usage:
+"   ae  Targets the entire content of the current buffer
+"   ie  Similar to ae, but does not include leading and trailing empty lines
+Plug 'kana/vim-textobj-entire'
 
-" " Argtextobj
-" " See: https://www.vim.org/scripts/script.php?script_id=2699
-" " Usage:
-" "   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
-" "   ia  The parameter only
-" Plug 'vim-scripts/argtextobj.vim'
+" Argtextobj
+" See: https://www.vim.org/scripts/script.php?script_id=2699
+" Usage:
+"   aa  Parameter and the next comma if first parameter, otherwise parameter and the previous coma
+"   ia  The parameter only
+"   daa Delete an argument
+"   cia Change inner argument
+"   via Select inner argument
+Plug 'vim-scripts/argtextobj.vim'
 
 " Paragraph Motion
 " See: https://github.com/dbakker/vim-paragraph-motion
 Plug 'dbakker/vim-paragraph-motion'
 
-" " Matchit
-" " See: https://github.com/chrisbra/matchit
-" Plug 'chrisbra/matchit'
+" Matchit
+" See: https://github.com/chrisbra/matchit
+Plug 'chrisbra/matchit'
 
 call plug#end()
 
@@ -282,15 +285,12 @@ silent! colorscheme catppuccin_mocha
 
 if has("autocmd")
 
-    " NERDTree-related autocmds
-
-    " " Exit Vim if NERDTree is the only window remaining in the only tab
+    " " NERDTree-related autocmds
+    " " - Exit Vim if NERDTree is the only window remaining in the only tab
     " autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-    " " Close the tab if NERDTree is the only window remaining in it
+    " " - Close the tab if NERDTree is the only window remaining in it
     " autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-    " " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree
+    " " - If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree
     " autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute 'normal! \<C-W>w' | execute 'buffer'.buf | endif
 
 endif
@@ -363,21 +363,27 @@ vnoremap x "_x
 
 " C without replacing clipboard selection
 nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
 vnoremap C "_C
-nnoremap c "_c
-vnoremap C "_C
+
+" S without replacing clipboard selection
+nnoremap s "_s
+vnoremap s "_s
+nnoremap S "_S
+vnoremap S "_S
 
 " Delete without yanking to the clipboard
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 nnoremap <leader>D "_D
 
-" " Yank into the system clipboard
+" Yank into the system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
 
-" " Paste from the system clipboard
+" Paste from the system clipboard
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 
@@ -445,6 +451,9 @@ nnoremap <leader>tx :tabonly<CR>
 " vnoremap <C-?> <C-a>gv
 " nnoremap <C-?> <C-x>
 " vnoremap <C-?> <C-x>gv
+
+" Let's try something
+nnoremap * *Nzz
 
 " ------------------------------------------------------------------------------
 " Custom Commands
