@@ -246,12 +246,12 @@ Plug 'michaeljsmith/vim-indent-object'
 "   cxc         Clear any {motion} pending for exchange
 Plug 'tommcdo/vim-exchange'
 
-" Textobj Entire
-" See: https://github.com/kana/vim-textobj-entire
-" Usage:
-"   ae  Targets the entire content of the current buffer
-"   ie  Similar to ae, but does not include leading and trailing empty lines
-Plug 'kana/vim-textobj-entire'
+" " Textobj Entire
+" " See: https://github.com/kana/vim-textobj-entire
+" " Usage:
+" "   ae  Targets the entire content of the current buffer
+" "   ie  Similar to ae, but does not include leading and trailing empty lines
+" Plug 'kana/vim-textobj-entire'
 
 " Argtextobj
 " See: https://www.vim.org/scripts/script.php?script_id=2699

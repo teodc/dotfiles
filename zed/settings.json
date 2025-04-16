@@ -65,7 +65,7 @@
 		"right_padding": 0.15
 	},
 	"chat_panel": {
-		"button": true,
+		"button": "always",
 		"default_width": 500,
 		"dock": "right"
 	},
@@ -81,7 +81,7 @@
 	"context_servers": {},
 	"current_line_highlight": "all",
 	"cursor_blink": true,
-	"cursor_shape": "block",
+	"cursor_shape": null,
 	"diagnostics": {
 		"include_warnings": true,
 		"inline": {
@@ -117,7 +117,7 @@
 	"formatter": "auto",
 	"git": {
 		"git_gutter": "tracked_files",
-		"hunk_style": "staged_border",
+		"hunk_style": "staged_hollow",
 		"inline_blame": {
 			"delay_ms": 500,
 			"enabled": false,
@@ -546,7 +546,7 @@
 		"blinking": "terminal_controlled",
 		"button": true,
 		"copy_on_select": false,
-		"cursor_shape": "block",
+		"cursor_shape": null,
 		"default_height": 400,
 		"detect_venv": {
 			"on": {
