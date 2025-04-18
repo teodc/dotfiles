@@ -63,6 +63,11 @@ source $ZSH/oh-my-zsh.sh
 # User Configuration
 # ------------------------------------------------------------------------------
 
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 export ARCHFLAGS="arm64"
 export CLICOLOR=1
 export DOCKER_DEFAULT_PLATFORM="linux/arm64"
@@ -79,10 +84,6 @@ export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export TERM="xterm-256color"
 export TMUX_TMPDIR="$XDG_CONFIG_HOME/tmux/tmp"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
