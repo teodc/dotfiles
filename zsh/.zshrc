@@ -63,28 +63,30 @@ source $ZSH/oh-my-zsh.sh
 # User Configuration
 # ------------------------------------------------------------------------------
 
-export XDG_CONFIG_HOME="$HOME/.config"
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export GOPATH="$HOME/Workspace/go"
-export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
-export PATH="$XDG_CONFIG_HOME/composer/vendor/bin:$PATH"
-
-export ARCHFLAGS="x86_64"
+export ARCHFLAGS="arm64"
 export CLICOLOR=1
-export DOCKER_DEFAULT_PLATFORM="linux/amd64"
-export HOMEBREW_GITHUB_API_TOKEN=*****
+export DOCKER_DEFAULT_PLATFORM="linux/arm64"
+export GOBIN="$GOPATH/bin"
+#export GOFLAGS=-mod=vendor
+export GOPATH="$HOME/Workspace/go"
+export GOROOT="$(brew --prefix go)/libexec"
+export GPG_TTY=$(tty)
+export HOMEBREW_GITHUB_API_TOKEN="*****"
 export HOMEBREW_NO_ANALYTICS=1
 export LANG="en_US.UTF-8"
+export OPENAI_API_KEY="*****"
 export SSH_KEY_PATH="$HOME/.ssh/id_ed25519"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export TERM="xterm-256color"
 export TMUX_TMPDIR="$XDG_CONFIG_HOME/tmux/tmp"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
-# Fixes the GPG "Inappropriate ioctl for device" issue
-export GPG_TTY=$(tty)
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$GOBIN:$PATH"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -92,30 +94,13 @@ else
   export EDITOR="vim"
 fi
 
-# TokyoNight for fzf
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --layout=reverse \
-  --border=none
-  --color=bg+:#283457 \
-  --color=bg:#16161e \
-  --color=border:#27a1b9 \
-  --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
-  --color=header:#ff9e64 \
-  --color=hl+:#2ac3de \
-  --color=hl:#2ac3de \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#2ac3de \
-  --color=query:#c0caf5:regular \
-  --color=scrollbar:#27a1b9 \
-  --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
-"
+# fzf theme
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--color=border:#313244,label:#cdd6f4"
 
 # History stuff
 HISTFILE=~/.zsh_history
@@ -133,14 +118,15 @@ unsetopt correct
 alias zshsrc="source $HOME/.zshrc"
 alias tmusrc="tmux source $XDG_CONFIG_HOME/tmux/tmux.conf"
 
-alias zshconf="vim $HOME/.zshrc"
-alias sshconf="vim $HOME/.ssh/config"
-alias vimconf="vim $HOME/.vimrc"
-alias tmuconf="vim $XDG_CONFIG_HOME/tmux/tmux.conf"
-alias gitconf="vim $HOME/.gitconfig"
+alias ameconf="vim ~/.amethyst.yml"
 alias ghoconf="vim $XDG_CONFIG_HOME/ghostty/config"
+alias gitconf="vim $HOME/.gitconfig"
 alias ideconf="vim $HOME/.ideavimrc"
-alias ameconf="vim $HOME/.amethyst.yml"
+alias sshconf="vim $HOME/.ssh/config"
+alias tmuconf="vim $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias vimconf="vim $HOME/.vimrc"
+alias zedconf="vim ~/.config/zed/settings.json"
+alias zshconf="vim $HOME/.zshrc"
 
 alias h="history"
 alias hg="history | grep"
@@ -174,14 +160,6 @@ alias rsync-sync="rsync -avzu --delete --progress -h"
 
 alias lzg="lazygit"
 alias lzd="lazydocker"
-
-alias artisan="php artisan"
-alias tinker="php artisan tinker"
-alias console="php bin/console"
-
-alias py="python3"
-alias pypip="python3 -m pip"
-alias pyvenv="python3 -m venv"
 
 alias dc="docker compose"
 alias dce="docker compose exec"

@@ -145,15 +145,17 @@ cp zsh/.zshrc ~/
 
 ### 🖥️ macOS Window Management
 
-- Auto hide the Dock (required not to burn in hell)
+How to (almost) get rid of brainless alt+tab:
+- Auto hide the Dock & the menu bar (not necessarly required but will prevent you from looking like a cretin)
 - Disable `Automatically rearrange Spaces based on most recent use`
 - Create a dedicated Space for each app (or type of app) in the `Mission Control` view
 - Assign each app to its own Space with the `Assign To` option from the Dock
 - Define keyboard shortcuts to switch to Spaces: `Space [1-9]`->`Ctrl+[1-9]`
 - Use `Amethyst` to manage and tile windows
-- Use only Amethyst's `fullscreen` layout (and don't use Mac's "Full Screen")
+- Use Amethyst's `fullscreen` layout by default (and never use Mac's "Full Screen")
+- Now you can jump to the app you want by simply switching to its Space, amazing
 
-Typical Spaces setup:
+My typical Spaces setup:
 - `Space 1`: Brave
 - `Space 2`: Ghostty
 - `Space 3`: Zed
@@ -162,9 +164,11 @@ Typical Spaces setup:
 - `Space 6`: Legcord
 - `Space 7`: Simplenote
 - `Space 8`: ChatGPT
+- `Space 9`: Music
 
 ### ⌨ macOS Keyboard
 
+How to speed up Mac's keyboard & vim better:
 ```
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
