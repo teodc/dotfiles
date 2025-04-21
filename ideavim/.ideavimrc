@@ -127,6 +127,8 @@ Plug 'preservim/nerdtree'
 " let g:NERDTreeHijackNetrw = 0
 " let g:NERDTreeShowHidden = 1
 " let g:NERDTreeFileLines = 1
+" let NERDTreeMapActivateNode = 'l'
+" let NERDTreeMapCloseDir = 'h'
 nmap \ :NERDTreeFind<CR>
 " nmap <C-t>? :NERDTree<CR>
 " nmap <C-t>? :NERDTreeRefreshRoot<CR>

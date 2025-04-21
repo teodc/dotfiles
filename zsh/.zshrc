@@ -73,7 +73,7 @@ export CLICOLOR=1
 export DOCKER_DEFAULT_PLATFORM="linux/arm64"
 export GOBIN="$GOPATH/bin"
 #export GOFLAGS=-mod=vendor
-export GOPATH="$HOME/Workspace/go"
+export GOPATH="$HOME/go"
 export GOROOT="$(brew --prefix go)/libexec"
 export GPG_TTY=$(tty)
 export HOMEBREW_GITHUB_API_TOKEN="*****"
