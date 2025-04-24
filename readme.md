@@ -166,11 +166,24 @@ My typical Spaces setup:
 - `Space 8`: ChatGPT
 - `Space 9`: Music
 
-### ⌨ macOS Keyboard
+### ⌨ macOS Extra Config
 
-How to speed up Mac's keyboard & vim better:
+Speed up keyboard & vim better:
 ```
 defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 ```
+
+Reduce some bothering animations:
+```
+defaults write -g NSToolbarFullScreenAnimationDuration -float 0.1
+defaults write com.apple.dock autohide-time-modifier -float 0.1
+defaults write com.apple.dock autohide-delay -float 0.1
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.finder DisableAllAnimations -bool true
+killall Dock
+killall Finder
+```
+
+In `Settings > Accessibility > Display`, enable `Reduce motion` and `Increase contrast`.
