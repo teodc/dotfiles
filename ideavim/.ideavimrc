@@ -11,7 +11,7 @@ filetype plugin indent on " Enable filetype plugins
 let mapleader=" "
 let maplocalleader=" "
 
-set breakindent " Enbale indent on break
+set breakindent " Enable indent on break
 "set colorcolumn=120 " Show a visual guide
 set cursorline " Highlight current line
 set fileformat=unix " File format
@@ -71,10 +71,11 @@ set idearefactormode=keep " Specifies the mode to be used when a refactoring sel
 set ideastatusicon=enabled " Behavior of IdeaVim icon in the status bar (enabled|gray|disabled)
 set ideawrite=all " Defines the behaviour of the :w command (file|all)
 "set ideaglobalmode " Share a single mode across all open windows
+"set trackactionids " Track the current IDE action and display the action name in a notification
 
 " IdeaVim embedded plugins
 set functiontextobj " if: inner function, af: around function
-set mini-ai " aq: around any quotes, iq: inside any quotes, ab: around any ()/{}/[], ib: inside any ()/{}/[]
+set mini-ai " aq: around any quotes, iq: inside any quotes, ab: around any ()/{}/[], ib inside any ()/{}/[]
 "set which-key
 
 " ------------------------------------------------------------------------------
@@ -126,15 +127,9 @@ nmap <leader>T <Plug>(easymotion-bd-t2)
 Plug 'preservim/nerdtree'
 " let g:NERDTreeHijackNetrw = 0
 " let g:NERDTreeShowHidden = 1
-" let g:NERDTreeFileLines = 1
 " let NERDTreeMapActivateNode = 'l'
 " let NERDTreeMapCloseDir = 'h'
 nmap \ :NERDTreeFind<CR>
-" nmap <C-t>? :NERDTree<CR>
-" nmap <C-t>? :NERDTreeRefreshRoot<CR>
-" nmap <C-t>? :NERDTreeToggle<CR>
-" nmap <C-t>? :NERDTreeFocus<CR>
-" nmap <C-t>? :NERDTreeClose<CR>
 
 " Surround
 " See: https://github.com/tpope/vim-surround
@@ -222,6 +217,9 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 "nnoremap <C-x> :qa<CR>
 
+" " Open Netrw
+" nnoremap <C-e> :Explore<CR>
+
 " Center screen when navigating search results
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -260,7 +258,7 @@ vnoremap H ^
 vnoremap < <gv
 vnoremap > >gv
 
-" Delete single character whitout yanking
+" Delete single character without yanking
 nnoremap x "_x
 vnoremap x "_x
 
@@ -317,7 +315,7 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>j :wincmd j<CR>
-" Rezise window with arrows
+" Resize window with arrows
 nnoremap <Up> :resize -2<CR>
 nnoremap <Down> :resize +2<CR>
 nnoremap <Left> :vertical resize -2<CR>
@@ -355,16 +353,16 @@ nnoremap <leader>bq :bdelete<CR>
 " nnoremap <C-?> <C-x>
 " vnoremap <C-?> <C-x>gv
 
-" Let's try something
+" Search for current word
 nnoremap * *Nzz
 
 " ------------------------------------------------------------------------------
 " IDE Actions
 " ------------------------------------------------------------------------------
 
-" " Edit & reload the IdeaVim config
-" map \e :e ~/.ideavimrc<CR>
-" map \r <Action>(IdeaVim.ReloadVimRc.reload)
+" Edit & reload the IdeaVim config
+"map \e :e ~/.ideavimrc<CR>
+"map \r <Action>(IdeaVim.ReloadVimRc.reload)
 
 " Toggle Zen mode
 map <leader>z <Action>(ToggleDistractionFreeMode)
@@ -382,13 +380,17 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 "map ? <Action>(ActivateNotificationsToolWindow)
 "map ? <Action>(HideAllWindows)
 
-" Files
-map <leader>n <Action>(NewElement)
-map <leader>r <Action>(RecentFiles)
+" File management
+map <leader>e <Action>(NewElement)
+
+" Copy references to file
+map <leader>cr <Action>(CopyReferencePopupGroup)
 
 " Find & replace
 map <leader>/ <Action>(FindInPath)
-map <leader>x <Action>(ReplaceInPath)
+map <leader>? <Action>(ReplaceInPath)
+map <leader>n <Action>(NextOccurence)
+map <leader>N <Action>(PreviousOccurence)
 
 " Quick selection
 map <C-f> <Action>(EditorSelectWord)
@@ -397,8 +399,12 @@ map <C-n> <Action>(SelectNextOccurrence)
 map <C-p> <Action>(UnselectPreviousOccurrence)
 map <C-a> <Action>(SelectAllOccurrences)
 
+" Navigate files
+map <leader>rf <Action>(RecentFiles)
+map <leader>rl <Action>(RecentLocations)
+map <leader>S <Action>(ShowNavBar)
+
 " Navigate code
-map <leader>a <Action>(ShowNavBar)
 map <leader>s <Action>(FileStructurePopup)
 map <leader>gs <Action>(GotoSymbol)
 map <leader>ga <Action>(GotoAction)
@@ -429,10 +435,11 @@ map <C-h> <Action>(EditorUnindentSelection)
 map <leader>o <Action>(EditorDuplicate)
 map <leader>m <Action>(CommentByLineComment)
 
-" Errors
-map <leader>e <Action>(InspectCode)
-map [e <Action>(GotoPreviousError)
-map ]e <Action>(GotoNextError)
+" Diagnostics
+map <leader>q <Action>(ShowErrorDescription)
+map <leader>Q <Action>(InspectCode)
+map [q <Action>(GotoPreviousError)
+map ]q <Action>(GotoNextError)
 
 " Cleaning
 map <leader>C <Action>(ReformatCode)
@@ -448,16 +455,28 @@ map <leader>rs <Action>(ChangeSignature)
 map <leader>rm <Action>(ExtractMethod)
 map <leader>rv <Action>(IntroduceVariable)
 
-" Code actions
-map <leader>i <Action>(ShowIntentionActions)
-map <leader>q <Action>(QuickImplementations)
+" Code generation & intentions
 map <leader>g <Action>(Generate)
+map <leader>i <Action>(ShowIntentionActions)
 
-" Completion
-"map <leader>? <Action>(CodeCompletion)
+" Documentation
+map K <Action>(QuickJavaDoc)
+
+" Completions
+map <leader>x <Action>(QuickImplementations)
+map <leader>X <Action>(CodeCompletion)
 "map <leader>? <Action>(SmartTypeCompletion)
 "map <leader>? <Action>(EditorCompleteStatement)
-"map K <Action>(QuickJavaDoc)
+
+" AI suff
+map <leader>a <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
+map <leader>A <Action>(AIAssistantHubPopupAction)
+"map <leader>? <Action>(?) <- Open AI chat panel (no action ID)
+"map <leader>? <Action>(?) <- Explain code (no action ID)
+"map <leader>? <Action>(?) <- Suggest refactoring (no action ID)
+"map <leader>? <Action>(?) <- Find problems (no action ID)
+"map <leader>? <Action>(?) <- New chat using selection (no action ID)
+"map <leader>? <Action>(?) <- Write documentation (no action ID)
 
 " Splits
 "...
@@ -476,7 +495,7 @@ map <C-x> <Action>(CloseAllEditorsButActive)
 "map <leader>? <Action>(CollapseAllRegions)
 "map <leader>? <Action>(ExpandAllRegions)
 
-" Git
+" Git (VCS)
 map <leader>V <Action>(Vcs.QuickListPopupAction)
 map <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>vr <Action>(ChangesView.Revert)
@@ -518,4 +537,3 @@ sethandler <C-w> a:vim
 sethandler <C-x> a:vim
 sethandler <C-y> a:vim
 sethandler <C-z> a:vim
-
