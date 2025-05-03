@@ -2,12 +2,16 @@
 
 Host *
   AddKeysToAgent yes
-  #IgnoreUnknown UseKeychain
-  #UseKeychain yes
-  IdentityFile ~/.ssh/id_ed25519
+  IgnoreUnknown UseKeychain
+  UseKeychain yes
+  IdentitiesOnly yes
 
 Host github.com
-  AddKeysToAgent yes
-  #IgnoreUnknown UseKeychain
-  #UseKeychain yes
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519
+
+Host gitlab.com
+  HostName gitlab.com
+  User git
   IdentityFile ~/.ssh/id_ed25519
