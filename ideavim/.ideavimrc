@@ -470,8 +470,8 @@ map <leader>X <Action>(CodeCompletion)
 
 " AI suff
 map <leader>a <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
-map <leader>A <Action>(AIAssistantHubPopupAction)
-"map <leader>? <Action>(?) <- Open AI chat panel (no action ID)
+map <leader>A <Action>(AIAssistant.ToolWindow.ShowOrFocus)
+"map <leader>? <Action>(AIAssistantHubPopupAction)
 "map <leader>? <Action>(?) <- Explain code (no action ID)
 "map <leader>? <Action>(?) <- Suggest refactoring (no action ID)
 "map <leader>? <Action>(?) <- Find problems (no action ID)
