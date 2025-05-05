@@ -380,11 +380,13 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 "map ? <Action>(ActivateNotificationsToolWindow)
 "map ? <Action>(HideAllWindows)
 
-" File management
-map <leader>e <Action>(NewElement)
+" Projects
+map <leader>rp <Action>(ManageRecentProjects)
 
-" Copy references to file
+" Files
+map <leader>e <Action>(NewElement)
 map <leader>cr <Action>(CopyReferencePopupGroup)
+map <leader>rf <Action>(RecentFiles)
 
 " Find & replace
 map <leader>/ <Action>(FindInPath)
@@ -399,13 +401,10 @@ map <C-n> <Action>(SelectNextOccurrence)
 map <C-p> <Action>(UnselectPreviousOccurrence)
 map <C-a> <Action>(SelectAllOccurrences)
 
-" Navigate files
-map <leader>rf <Action>(RecentFiles)
-map <leader>rl <Action>(RecentLocations)
-map <leader>S <Action>(ShowNavBar)
-
 " Navigate code
+map <leader>rl <Action>(RecentLocations)
 map <leader>s <Action>(FileStructurePopup)
+map <leader>S <Action>(ShowNavBar)
 map <leader>gs <Action>(GotoSymbol)
 map <leader>ga <Action>(GotoAction)
 map <leader>gc <Action>(GotoClass)
@@ -418,8 +417,8 @@ map <leader>gu <Action>(FindUsages)
 
 " Cursor jumps
 map s <Action>(AceAction)
-map <leader>[ <Action>(Back)
-map <leader>] <Action>(Forward)
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
 map [c <Action>(JumpToLastChange)
 map ]c <Action>(JumpToNextChange)
 map [m <Action>(MethodUp)
@@ -468,6 +467,13 @@ map <leader>X <Action>(CodeCompletion)
 "map <leader>? <Action>(SmartTypeCompletion)
 "map <leader>? <Action>(EditorCompleteStatement)
 
+" Git (VCS)
+map <leader>V <Action>(Vcs.QuickListPopupAction)
+map <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>vr <Action>(ChangesView.Revert)
+map <leader>vd <Action>(Git.CompareWithBranch)
+map <leader>vc <Action>(Git.ResolveConflicts)
+
 " AI suff
 map <leader>a <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
 map <leader>A <Action>(AIAssistant.ToolWindow.ShowOrFocus)
@@ -494,13 +500,6 @@ map <C-x> <Action>(CloseAllEditorsButActive)
 "map <leader>? <Action>(ExpandRegion)
 "map <leader>? <Action>(CollapseAllRegions)
 "map <leader>? <Action>(ExpandAllRegions)
-
-" Git (VCS)
-map <leader>V <Action>(Vcs.QuickListPopupAction)
-map <leader>vh <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>vr <Action>(ChangesView.Revert)
-map <leader>vd <Action>(Git.CompareWithBranch)
-map <leader>vc <Action>(Git.ResolveConflicts)
 
 " Copilot
 "map <leader>? <Action>(copilot.enableCopilot)
