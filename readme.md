@@ -2,6 +2,13 @@
 
 ## 🧰 Prerequisites
 
+### Clone repo
+
+```
+git clone git@github.com:teodc/dotfiles.git
+cd dotfiles
+```
+
 ### Homebrew
 
 ```
@@ -99,6 +106,7 @@ cp sublime-text/Preferences.sublime-settings ~/Library/Application\ Support/Subl
 ```
 mkdir -p ~/.config/tmux
 cp tmux/tmux.conf ~/.config/tmux/
+
 # <prefix> + I
 ```
 
@@ -110,6 +118,7 @@ mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/swaps
 mkdir -p ~/.vim/undo
+
 # PlugInstall
 ```
 
@@ -187,3 +196,4 @@ killall Finder
 ```
 
 In `Settings > Accessibility > Display`, enable `Reduce motion` and `Increase contrast`.
+
