@@ -89,12 +89,12 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " EasyMotion
 " See: https://github.com/easymotion/vim-easymotion
-Plug 'easymotion/vim-easymotion'
-let g:EasyMotion_do_mapping = 0
-nmap <leader>f <Plug>(easymotion-bd-f)
-nmap <leader>F <Plug>(easymotion-bd-f2)
-nmap <leader>t <Plug>(easymotion-bd-t)
-nmap <leader>T <Plug>(easymotion-bd-t2)
+"Plug 'easymotion/vim-easymotion'
+"let g:EasyMotion_do_mapping = 0
+"nmap <leader>f <Plug>(easymotion-bd-f)
+"nmap <leader>F <Plug>(easymotion-bd-f2)
+"nmap <leader>t <Plug>(easymotion-bd-t)
+"nmap <leader>T <Plug>(easymotion-bd-t2)
 
 " NERDTree
 " See: https://github.com/preservim/nerdtree
@@ -393,6 +393,10 @@ map <leader>/ <Action>(FindInPath)
 map <leader>? <Action>(ReplaceInPath)
 map <leader>n <Action>(NextOccurence)
 map <leader>N <Action>(PreviousOccurence)
+"map <leader>? <Action>(FindNext)
+"map <leader>? <Action>(FindPrevious)
+map <leader>f <Action>(FindWordAtCaret)
+map <leader>F <Action>(FindPrevWordAtCaret)
 
 " Quick selection
 map <C-f> <Action>(EditorSelectWord)
@@ -474,16 +478,6 @@ map <leader>vr <Action>(ChangesView.Revert)
 map <leader>vd <Action>(Git.CompareWithBranch)
 map <leader>vc <Action>(Git.ResolveConflicts)
 
-" AI suff
-map <leader>a <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
-map <leader>A <Action>(AIAssistant.ToolWindow.ShowOrFocus)
-"map <leader>? <Action>(AIAssistantHubPopupAction)
-"map <leader>? <Action>(?) <- Explain code (no action ID)
-"map <leader>? <Action>(?) <- Suggest refactoring (no action ID)
-"map <leader>? <Action>(?) <- Find problems (no action ID)
-"map <leader>? <Action>(?) <- New chat using selection (no action ID)
-"map <leader>? <Action>(?) <- Write documentation (no action ID)
-
 " Splits
 "...
 
@@ -500,6 +494,24 @@ map <C-x> <Action>(CloseAllEditorsButActive)
 "map <leader>? <Action>(ExpandRegion)
 "map <leader>? <Action>(CollapseAllRegions)
 "map <leader>? <Action>(ExpandAllRegions)
+
+" AI stuff
+" Modify selected code
+map <leader>A <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
+" Open assistant panel
+map <leader>aa <Action>(AIAssistant.ToolWindow.ShowOrFocus)
+" AI hub
+map <leader>ah <Action>(AIAssistantHubPopupAction)
+" Explain code
+"map <leader>ae <Action>(?)
+" Suggest refactoring
+"map <leader>ar <Action>(?)
+" Find problems
+"map <leader>ap <Action>(?)
+" New chat using selection
+"map <leader>ac <Action>(?)
+" Write documentation
+"map <leader>ad <Action>(?)
 
 " Copilot
 "map <leader>? <Action>(copilot.enableCopilot)
