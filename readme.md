@@ -97,6 +97,7 @@ cp starship/starship.toml ~/.config/starship/
 
 ```
 # Preferences > Tools > Install Package Control
+
 git clone https://github.com/catppuccin/sublime-text.git ~/Library/Application\ Support/Sublime\ Text/Packages/Catppuccin
 cp sublime-text/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text/Packages/User/Preferences.sublime-settings
 ```
@@ -165,15 +166,17 @@ How to (almost) get rid of brainless alt+tab:
 - Now you can jump to the app you want by simply switching to its Space, amazing
 
 My typical Spaces setup:
-- `Space 1`: Brave
-- `Space 2`: Ghostty
-- `Space 3`: Zed
-- `Space 4`: HTTPie
-- `Space 5`: TablePlus
-- `Space 6`: Legcord
-- `Space 7`: Simplenote
-- `Space 8`: ChatGPT
-- `Space 9`: Music
+- Monitor 1:
+  - `Space 1`: Browser
+  - `Space 2`: Terminal
+  - `Space 3`: IDE
+  - `Space 4`: HTTP client
+  - `Space 5`: Database GUI
+- Monitor 2:
+  - `Space 6`: Chat
+  - `Space 7`: Notes
+  - `Space 8`: AI
+  - `Space 9`: Music
 
 ### ⌨ macOS Extra Config
 
