@@ -115,6 +115,9 @@ setlocal iskeyword+=_
 let &t_EI = "\e[2 q"
 let &t_SI = "\e[6 q"
 
+" Netrw options
+"let g:netrw_keepdir=0 " Automatically set Vim's current directory to match the browsing directory
+
 " ------------------------------------------------------------------------------
 " Plugins
 " ------------------------------------------------------------------------------
@@ -187,10 +190,10 @@ Plug 'preservim/nerdtree'
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeFileLines = 1
-nmap \\ :NERDTreeFind<CR>
-"nmap <C-t>? :NERDTree<CR>
-"nmap <C-t>? :NERDTreeToggle<CR>
-"nmap <C-t>? :NERDTreeFocus<CR>
+nmap \ :NERDTreeFind<CR>
+"nmap ? :NERDTree<CR>
+"nmap ? :NERDTreeToggle<CR>
+"nmap ? :NERDTreeFocus<CR>
 
 " Surround
 " See: https://github.com/tpope/vim-surround
@@ -430,8 +433,6 @@ nnoremap <Leader>bl :buffers<CR>:buffer<Space>
 " Go to the next/previous buffer
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprevious<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
 " Close buffer
 nnoremap <leader>bq :bdelete<CR>
 

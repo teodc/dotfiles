@@ -1,6 +1,6 @@
 # https://ghostty.org/docs/config/reference
 
-adjust-cell-height = 9
+adjust-cell-height = 12
 adjust-cell-width = 0
 auto-update = check
 auto-update-channel = stable
