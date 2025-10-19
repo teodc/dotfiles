@@ -60,6 +60,12 @@ cp git/.gitignore ~/
 cp ideavim/.ideavimrc ~/
 ```
 
+### Karabiner-Elements
+
+```
+cp karabiner/karabiner.json ~/.config/karabiner/
+```
+
 ### Lazygit
 
 ```
@@ -135,13 +141,6 @@ ya pack -a yazi-rs/flavors:catppuccin-mocha
 ya pack -a yazi-rs/plugins:full-border
 ```
 
-### zed
-
-```
-mkdir -p ~/.config/zed
-cp zed/* ~/.config/zed
-```
-
 ### zsh
 
 ```
@@ -155,48 +154,43 @@ cp zsh/.zshrc ~/
 
 ### 🖥️ macOS Window Management
 
-How to (almost) get rid of brainless alt+tab:
-- Auto hide the Dock & the menu bar (not necessarly required but will prevent you from looking like a cretin)
-- Disable `Automatically rearrange Spaces based on most recent use`
-- Create a dedicated Space for each app (or type of app) in the `Mission Control` view
-- Assign each app to its own Space with the `Assign To` option from the Dock
-- Define keyboard shortcuts to switch to Spaces: `Space [1-9]`->`Ctrl+[1-9]`
-- Use `Amethyst` to manage and tile windows
-- Use Amethyst's `fullscreen` layout by default (and never use Mac's "Full Screen")
-- Now you can jump to the app you want by simply switching to its Space, amazing
-
-My typical Spaces setup:
-- Monitor 1:
-  - `Space 1`: Browser
-  - `Space 2`: Terminal
-  - `Space 3`: IDE
-  - `Space 4`: HTTP client
-  - `Space 5`: Database GUI
-- Monitor 2:
-  - `Space 6`: Chat
-  - `Space 7`: Notes
-  - `Space 8`: AI
-  - `Space 9`: Music
+- Use `Amethyst` to tile windows with the `fullscreen` layout by default.
+- Use `Karabiner-Elements` to open & jump to specific apps.
+- Bind most used apps to their own key (to prevent any crappy cmd+tab cycling):
+  - `shift+control+b`: Brave Browser
+  - `shift+control+m`: Music
+  - `shift+control+i`: IntelliJ IDEA
+  - `shift+control+k`: Slack
+  - `shift+control+c`: Discord
+  - `shift+control+a`: ChatGPT
+  - etc.
+- Add an extra num-key binding to apps that are part of your dev workflow (for even faster switching):
+  - `control+1`: Browser
+  - `control+2`: Terminal
+  - `control+3`: IDE
+  - `control+4`: HTTP client
+  - `control+5`: Database GUI
+  - `control+6`: Notes
 
 ### ⌨ macOS Extra Config
 
-Speed up keyboard & vim better:
-```
-defaults write -g ApplePressAndHoldEnabled -bool false
-defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
-defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
-```
-
-Reduce some bothering animations:
-```
-defaults write -g NSToolbarFullScreenAnimationDuration -float 0.1
-defaults write com.apple.dock autohide-time-modifier -float 0.1
-defaults write com.apple.dock autohide-delay -float 0.1
-defaults write com.apple.dock expose-animation-duration -float 0.1
-defaults write com.apple.finder DisableAllAnimations -bool true
-killall Dock
-killall Finder
-```
-
-In `Settings > Accessibility > Display`, enable `Reduce motion` and `Increase contrast`.
+- Auto hide the Dock & the menu bar.
+- Speed up keyboard & vim better:
+  ```
+  defaults write -g ApplePressAndHoldEnabled -bool false
+  defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+  ```
+- Reduce some bothering animations:
+  ```
+  defaults write -g NSToolbarFullScreenAnimationDuration -float 0.1
+  defaults write com.apple.dock autohide-time-modifier -float 0.1
+  defaults write com.apple.dock autohide-delay -float 0.1
+  defaults write com.apple.dock expose-animation-duration -float 0.1
+  defaults write com.apple.finder DisableAllAnimations -bool true
+  killall Dock
+  killall Finder
+  ```
+- In `Settings > Accessibility > Display`, enable `Reduce motion` and `Increase contrast`.
+- Disable `Automatically rearrange Spaces based on most recent use`.
 

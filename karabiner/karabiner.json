@@ -1,0 +1,216 @@
+{
+    "global": { "ask_for_confirmation_before_quitting": false },
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to hyper key",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Launch most used apps with shift+option+<alpha>",
+                        "manipulators": [
+                            {
+                                "description": "Launch finder",
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Finder.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch music",
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Music.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch web browser",
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Brave Browser.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch terminal",
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Ghostty.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch IDE",
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/IntelliJ IDEA.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch HTTP client",
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/HTTPie.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch database GUI",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/TablePlus.app'" }],
+                                "type": "basic"
+                            },
+                                                        {
+                                "description": "Launch notes app",
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Simplenote.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch drafts app",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Sublime Text.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch Discord",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/legcord.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch Slack",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Slack.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch WhatsApp",
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/WhatsApp.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Launch workflow apps with control+<num>",
+                        "manipulators": [
+                            {
+                                "description": "Launch web browser",
+                                "from": {
+                                    "key_code": "1",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Brave Browser.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch terminal",
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Ghostty.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch IDE",
+                                "from": {
+                                    "key_code": "3",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/IntelliJ IDEA.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch HTTP client",
+                                "from": {
+                                    "key_code": "4",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/HTTPie.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch database GUI",
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/TablePlus.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Launch notes app",
+                                "from": {
+                                    "key_code": "6",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [{ "shell_command": "open '/Applications/Simplenote.app'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 8705,
+                        "vendor_id": 4617
+                    },
+                    "ignore": false
+                }
+            ],
+            "name": "teodc",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}

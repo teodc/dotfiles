@@ -1,9 +1,11 @@
-# ----- Preferences -----
+# --- options ---
 
 layouts:
   - fullscreen
   - tall
   - wide
+  #- column
+  #- row
 
 mod1:
   - option
@@ -14,51 +16,39 @@ mod2:
   - shift
   - control
 
-window-margins: true
-window-margin-size: 4
-window-minimum-height: 0
-window-minimum-width: 0
-smart-window-margins: true
+debug-layout-info: false
 disable-padding-on-builtin-display: false
-
-window-max-count: 0
-window-minimum-height: 0
-window-minimum-width: 0
-
+enables-layout-hud-on-space-change: false
+enables-layout-hud: true
 float-small-windows: true
-floating-is-blacklist: true
 floating:
   - com.apple.systempreferences
-
-ignore-menu-bar: false
-hide-menu-bar-icon: false
-
-mouse-follows-focus: true
+floating-is-blacklist: true
 focus-follows-mouse: false
-mouse-swaps-windows: true
-mouse-resizes-windows: true
-
-enables-layout-hud: true
-enables-layout-hud-on-space-change: false
-
-use-canary-build: false
-
-new-windows-to-main: false
-
 follow-space-thrown-windows: true
-
-window-resize-step: 5
-
+hide-menu-bar-icon: false
+ignore-menu-bar: false
+mouse-follows-focus: true
+mouse-resizes-windows: true
+mouse-swaps-windows: true
+new-windows-to-main: false
+restore-layouts-on-launch: true
+screen-padding-bottom: 0
 screen-padding-left: 0
 screen-padding-right: 0
 screen-padding-top: 0
-screen-padding-bottom: 0
+smart-window-margins: true
+use-canary-build: false
+window-margin-size: 4
+window-margins: true
+window-max-count: 0
+window-minimum-height: 0
+window-minimum-height: 0
+window-minimum-width: 0
+window-minimum-width: 0
+window-resize-step: 5
 
-restore-layouts-on-launch: true
-
-debug-layout-info: false
-
-# ----- Shortcuts -----
+# --- bindings ---
 
 cycle-layout:
   mod: mod1
@@ -70,31 +60,34 @@ cycle-layout-backward:
 
 shrink-main:
   mod: mod1
-  key: h
+  key: left
 
 expand-main:
   mod: mod1
-  key: l
+  key: right
 
+# mod1+,
 increase-main:
-  mod: mod1
-  key: ','
+  mod: <NONE>
+  key: <NONE>
 
+# mod1+.
 decrease-main:
-  mod: mod1
-  key: '.'
+  mod: <NONE>
+  key: <NONE>
 
 focus-ccw:
   mod: mod1
-  key: j
+  key: down
 
 focus-cw:
   mod: mod1
-  key: k
+  key: up
 
+# mod1+m
 focus-main:
-  mod: mod1
-  key: m
+  mod: <NONE>
+  key: <NONE>
 
 focus-screen-ccw:
   mod: <NONE>
@@ -105,20 +98,20 @@ focus-screen-cw:
   key: <NONE>
 
 swap-screen-ccw:
-  mod: <NONE>
-  key: <NONE>
+  mod: mod2
+  key: left
 
 swap-screen-cw:
-  mod: <NONE>
-  key: <NONE>
+  mod: mod2
+  key: right
 
 swap-ccw:
   mod: mod2
-  key: j
+  key: down
 
 swap-cw:
   mod: mod2
-  key: k
+  key: up
 
 swap-main:
   mod: mod1
@@ -126,16 +119,16 @@ swap-main:
 
 focus-screen-1:
   mod: mod1
-  key: w
+  key: '['
 throw-screen-1:
   mod: mod2
-  key: w
+  key: '['
 focus-screen-2:
   mod: mod1
-  key: e
+  key: ']'
 throw-screen-2:
   mod: mod2
-  key: e
+  key: ']'
 
 throw-space-1:
   mod: mod2
@@ -162,6 +155,10 @@ throw-space-8:
   mod: mod2
   key: '8'
 
+select-fullscreen-layout:
+  mod: <NONE>
+  key: <NONE>
+
 select-tall-layout:
   mod: <NONE>
   key: <NONE>
@@ -170,29 +167,30 @@ select-wide-layout:
   mod: <NONE>
   key: <NONE>
 
-select-fullscreen-layout:
-  mod: <NONE>
-  key: <NONE>
-
 select-column-layout:
   mod: <NONE>
   key: <NONE>
 
+select-row-layout:
+  mod: <NONE>
+  key: <NONE>
+
 throw-space-left:
-  mod: mod2
-  key: h
+  mod: <NONE>
+  key: <NONE>
 
 throw-space-right:
-  mod: mod2
-  key: l
+  mod: <NONE>
+  key: <NONE>
 
 toggle-float:
   mod: <NONE>
   key: <NONE>
 
+# mod1+i
 display-current-layout:
-  mod: mod1
-  key: i
+  mod: <NONE>
+  key: <NONE>
 
 toggle-tiling:
   mod: <NONE>
@@ -200,13 +198,14 @@ toggle-tiling:
 
 reevaluate-windows:
   mod: mod1
-  key: z
+  key: delete
 
 toggle-focus-follows-mouse:
   mod: <NONE>
   key: <NONE>
 
+# mod2+z
 relaunch-amethyst:
-  mod: mod2
-  key: z
+  mod: <NONE>
+  key: <NONE>
 
