@@ -2,8 +2,8 @@
 
 layouts:
   - fullscreen
-  - tall
-  - wide
+  #- tall
+  #- wide
   #- column
   #- row
 
@@ -50,21 +50,25 @@ window-resize-step: 5
 
 # --- bindings ---
 
+# mod1+space
 cycle-layout:
-  mod: mod1
-  key: space
+  mod: <NONE>
+  key: <NONE>
 
+# mod2+space
 cycle-layout-backward:
-  mod: mod2
-  key: space
+  mod: <NONE>
+  key: <NONE>
 
+# mod1+h
 shrink-main:
-  mod: mod1
-  key: left
+  mod: <NONE>
+  key: <NONE>
 
+# mod1+l
 expand-main:
-  mod: mod1
-  key: right
+  mod: <NONE>
+  key: <NONE>
 
 # mod1+,
 increase-main:
@@ -76,46 +80,55 @@ decrease-main:
   mod: <NONE>
   key: <NONE>
 
+# mod1+j
 focus-ccw:
-  mod: mod1
-  key: down
+  mod: <NONE>
+  key: <NONE>
 
+# mod1+k
 focus-cw:
-  mod: mod1
-  key: up
+  mod: <NONE>
+  key: <NONE>
 
 # mod1+m
 focus-main:
   mod: <NONE>
   key: <NONE>
 
+# mod1+p
 focus-screen-ccw:
   mod: <NONE>
   key: <NONE>
 
+# mod1+n
 focus-screen-cw:
   mod: <NONE>
   key: <NONE>
 
+# mod2+h
 swap-screen-ccw:
-  mod: mod2
-  key: left
+  mod: <NONE>
+  key: <NONE>
 
+# mod2+l
 swap-screen-cw:
-  mod: mod2
-  key: right
+  mod: <NONE>
+  key: <NONE>
 
+# mod2+j
 swap-ccw:
-  mod: mod2
-  key: down
+  mod: <NONE>
+  key: <NONE>
 
+# mod2+k
 swap-cw:
-  mod: mod2
-  key: up
+  mod: <NONE>
+  key: <NONE>
 
+# mod1+enter
 swap-main:
-  mod: mod1
-  key: enter
+  mod: <NONE>
+  key: <NONE>
 
 focus-screen-1:
   mod: mod1
@@ -183,6 +196,7 @@ throw-space-right:
   mod: <NONE>
   key: <NONE>
 
+# mod1+t
 toggle-float:
   mod: <NONE>
   key: <NONE>
@@ -192,13 +206,15 @@ display-current-layout:
   mod: <NONE>
   key: <NONE>
 
+# mod2+t
 toggle-tiling:
   mod: <NONE>
   key: <NONE>
 
+# mod1+z
 reevaluate-windows:
   mod: mod1
-  key: delete
+  key: '\'
 
 toggle-focus-follows-mouse:
   mod: <NONE>
